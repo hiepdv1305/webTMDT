@@ -1,0 +1,29 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "https": "^1.0.0",
+    "jquery": "^3.6.0",
+    "jwt-decode": "^3.1.2",
+    "laravel-echo": "^1.11.7",
+    "tether": "^2.0.0",
+    "vue": "^2.5.17",
+    "vue-extend-layout": "^2.0.5",
+    "vue-router": "^3.0.1",
+    "wow.js": "^1.2.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "@vue/eslint-config-standard": "^3.0.1",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
