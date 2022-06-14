@@ -33,12 +33,12 @@ export default new Router({
       name: 'cart',
       component: () => import(/* webpackChunkName: "contact" */ './views/Cart.vue')
     },
-    // {
-    //   path: '/checkout',
-    //   name: 'checkout',
-    //   component: () => import(/* webpackChunkName: "contact" */ './views/Checkout.vue')
+    {
+      path: '/rechange',
+      name: 'rechange',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Rechange.vue')
 
-    // },
+    },
     {
       path: '*',
       name: 'Error',
