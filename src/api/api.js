@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://rol8xml301.execute-api.us-east-1.amazonaws.com/dev'
+const baseUrl = 'https://2nw4xvorsl.execute-api.us-east-1.amazonaws.com/dev'
 // request interceptor to add the auth token header to requests
 axios.interceptors.request.use(
   (config) => {
@@ -48,10 +48,10 @@ const api = {
     return new Promise((resolve) => setTimeout(resolve, ms))
   },
   login: (body) => {
-    return axios.post(`${baseUrl}/login`, body)
+    return axios.post(`${baseUrl}/user/login`, body)
   },
   register: (body) => {
-    return axios.post(`${baseUrl}/register`, body)
+    return axios.post(`${baseUrl}/user/register`, body)
   },
   getAllEvent: (body) => {
     return axios.get(`${baseUrl}/event/getAll`, body)

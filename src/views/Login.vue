@@ -6,7 +6,7 @@
             <div id="content" class="site-content" tabindex="-1">
                 <div class="container">
 
-                    <nav class="woocommerce-breadcrumb" ><a href="home.html">Home</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>My Account</nav><!-- .woocommerce-breadcrumb -->
+                    <nav class="woocommerce-breadcrumb" ><a href="/">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Đăng nhập</nav><!-- .woocommerce-breadcrumb -->
 
                     <div id="primary" class="content-area">
                         <main id="main" class="site-main">
@@ -21,47 +21,70 @@
 
                                                 <div class="col-1">
 
-                                                    <h2>Login</h2>
+                                                    <h2>Đăng nhập</h2>
 
-                                                    <form method="post" class="login">
+                                                    <!-- <form method="post" class="login"> -->
 
-                                                        <p class="before-login-text">Welcome back! Sign in to your account</p>
+                                                        <p class="before-login-text">Mừng trở lại! Đăng nhập vào tài khoản của bạn</p>
 
                                                         <p class="form-row form-row-wide">
-                                                            <label for="username">Username or email address<span class="required">*</span></label>
-                                                            <input type="text" class="input-text" name="username" id="username" value="" />
+                                                            <label for="username">Tên đăng nhập<span class="required">*</span></label>
+                                                            <input v-model="loginSchema.username" type="text" class="input-text"/>
                                                         </p>
 
                                                         <p class="form-row form-row-wide">
-                                                            <label for="password">Password<span class="required">*</span></label>
-                                                            <input class="input-text" type="password" name="password" id="password" />
+                                                            <label for="password">Mật khẩu<span class="required">*</span></label>
+                                                            <input v-model="loginSchema.password" class="input-text" type="password" />
                                                         </p>
 
                                                         <p class="form-row">
-                                                            <input class="button" type="submit" value="Login" name="login">
-                                                            <label for="rememberme" class="inline"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember me</label>
+                                                            <button @click="login" class="button">Đăng nhập</button>
+                                                            <label for="rememberme" class="inline"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Nhớ tài khoản</label>
                                                         </p>
 
-                                                        <p class="lost_password"><a href="login-and-register.html">Lost your password?</a></p>
+                                                        <p class="lost_password"><a href="login-and-register.html">Quên mật khẩu?</a></p>
 
-                                                    </form>
+                                                    <!-- </form> -->
 
                                                 </div><!-- .col-1 -->
 
                                                 <div class="col-2">
 
-                                                    <h2>Register</h2>
+                                                    <h2>Đăng ký</h2>
 
-                                                    <form method="post" class="register">
+                                                    <!-- <form class="register"> -->
 
-                                                        <p class="before-register-text">Create your very own account</p>
+                                                        <p class="before-register-text">Tạo tài khoản</p>
 
                                                         <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Email address<span class="required">*</span></label>
-                                                            <input type="email" class="input-text" name="email" id="reg_email" value="" />
+                                                            <label for="reg_email">Email<span class="required">*</span></label>
+                                                            <input v-model="registerSchema.email" type="email" class="input-text" />
                                                         </p>
-
-                                                        <p class="form-row"><input type="submit" class="button" name="register" value="Register" /></p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label for="reg_email">Họ tên<span class="required">*</span></label>
+                                                            <input v-model="registerSchema.fullname" type="text" class="input-text"  />
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label for="reg_email">Số điện thoại<span class="required">*</span></label>
+                                                            <input v-model="registerSchema.phonenumber" type="phone" class="input-text"  />
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label for="reg_email">Địa chỉ<span class="required">*</span></label>
+                                                            <input v-model="registerSchema.address" type="address" class="input-text"/>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label for="reg_email">Tên đăng nhập<span class="required">*</span></label>
+                                                            <input v-model="registerSchema.username" type="text" class="input-text"/>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label for="reg_email">Mật khẩu<span class="required">*</span></label>
+                                                            <input v-model="registerSchema.password" type="password" class="input-text"/>
+                                                        </p>
+                                                        <p class="form-row form-row-wide">
+                                                            <label for="reg_email">Xác nhận mật khẩu<span class="required">*</span></label>
+                                                            <input v-model="registerSchema.confirmpassword" type="password" class="input-text"/>
+                                                        </p>
+                                                        <button @click="register" class="button"> Đăng ký</button>
 
                                                         <div class="register-benefits">
                                                             <h3>Sign up today and you will be able to :</h3>
@@ -72,7 +95,7 @@
                                                             </ul>
                                                         </div>
 
-                                                    </form>
+                                                    <!-- </form> -->
 
                                                 </div><!-- .col-2 -->
 
@@ -323,32 +346,49 @@ export default {
   name: 'login',
   data () {
     return {
-      schema: {
-        // username: '',
-        // password: ''
+      registerSchema: {
+        fullname: '',
+        email: '',
+        phonenumber: '',
+        username: '',
+        password: '',
+        confirmpassword: ''
+      },
+      loginSchema: {
+        username: '',
+        password: ''
       }
     }
   },
   methods: {
-    // async login () {
-    //   if (this.schema.username === '') {
-    //     alert('validate username')
-    //   } else if (this.schema.password === '') {
-    //     alert('validate password')
-    //   } else {
-    //     try {
-    //       let result = await api.login(this.schema)
-    //       console.log(result)
-    //       if (result.data.statusCode === 200) {
-    //         localStorage.setItem('accessToken', result.data.data)
+    async register () {
+      console.log(this.registerSchema)
+      let result = await api.register(this.registerSchema)
+      console.log(result)
+      if (result.data.statusCode === 200) {
+        // this.$router.push({ path: '/login' })
+        alert('Đăng ký tài khoản thành công')
+      }
+    },
+    async login () {
+      if (this.loginSchema.username === '') {
+        alert('validate username')
+      } else if (this.loginSchema.password === '') {
+        alert('validate password')
+      } else {
+        try {
+          let result = await api.login(this.loginSchema)
+          console.log(result)
+          if (result.data.statusCode === 200) {
+            localStorage.setItem('accessToken', result.data.data)
 
-    //         this.$router.push({ path: '/' })
-    //       }
-    //     } catch (e) {
-    //       alert(e.message)
-    //     }
-    //   }
-    // }
+            this.$router.push({ path: '/' })
+          }
+        } catch (e) {
+          alert(e.message)
+        }
+      }
+    }
   }
 }
 </script>

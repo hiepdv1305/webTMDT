@@ -4,12 +4,10 @@
     <div class="wrapper">
       <ul class="steps">
         <li >Step 1</li>
-        <li class="is-active">Step 2</li>
-        <li >Step 3</li>
+        <li >Step 2</li>
+        <li class="is-active">Step 3</li>
       </ul>
-      <form class="form-wrapper" style="
-    height: 800px;
-" >
+      <form class="form-wrapper"  >
         <div v-if="step === 1">
           <header>
               <h2 class="h1" style="margin-bottom:100px">Chọn ngân hàng của bạn:</h2>
@@ -125,9 +123,11 @@
           </div>
         </div>
         <div v-if="step === 2">
+        <div style="text-align: center;">
+          <h3 class="h3">Điền thông tin chuyển khoản vào mẫu sau để hoàn tất quá trình nạp tiền</h3>
+          <h5>(Chuyển tiền tới tài khoản 10233847192923 với nội dung <i>webTMDT naptien djadkajda</i>)</h5 >
+        </div>
           <div class="page">
-            <h3 class="h3">Chuyển tiền tới tài khoản 10233847192923 với nội dung <i>webTMDT naptien djadkajda</i></h3>
-              <h4>Điền thông tin chuyển khoản vào mẫu sau để hoàn tất quá trình nạp tiền</h4  >
             <label class="field field_v1">
               <input class="field__input" placeholder="1203913313112">
               <span class="field__label-wrap">
@@ -152,12 +152,64 @@
                 <span class="field__label">Cú pháp</span>
               </span>
             </label>
-            <button type="button" class="previous_button" @click="step=step-1">Quay lại</button>
+          <div style="display: flex;
+    justify-content: flex-end;">
+              <button type="button" class="previous_button" @click="step=step-1">Quay lại</button>
             <button type="button" class="next action_button" @click="step=step+1">Tiếp tục</button>
+          </div>
           </div>
         </div>
         <div v-if="step === 3">
-          <h3>Kiểm tra lại thông tin</h3>
+          <h4 class="h4" style="text-align: center;">Kiểm tra lại thông tin</h4>
+          <div class="text-center" style="display: flex; justify-content: center;">
+            <div class="col-lg-4 col-md-6 col-xs-12">
+              <aside class="widget clearfix">
+                  <div class="body"><h4 class="widget-title"></h4>
+                      <ul class="product_list_widget">
+                          <li>
+                              <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Số tài khoản:</b></span></ins></span>
+                          </li>
+
+                          <li>
+                              <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Tên chủ tài khoản:</b></span></ins></span>
+                          </li>
+
+                          <li>
+                              <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Số tiền:</b></span></ins></span>
+                          </li>
+                          <li>
+                              <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Cú pháp:</b></span></ins></span>
+                          </li>
+                      </ul>
+                  </div>
+              </aside>
+          </div>
+          <div class="col-lg-4 col-md-6 col-xs-12">
+            <aside class="widget clearfix">
+                <div class="body">
+                    <ul class="product_list_widget">
+                        <li>
+                                  <span class="electro-price"  style="margin-left: 0px;"><ins><span class="amount">102866961987</span></ins></span>
+                        </li>
+
+                        <li>
+                                  <span class="electro-price"  style="margin-left: 0px;"><span class="amount">Dong Hiep</span></span>
+                        </li>
+
+                        <li>
+                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">100.000đ</span></span>
+                        </li>
+                        <li>
+                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">webTMDT naptien aldhsiefdhf</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+          </div>
+          </div>
+         <div style="display: flex;justify-content: center; margin-top: 30px;">
+           <button type="button" class="next action_button" @click="step=step+1">Đồng ý</button>
+         </div>
         </div>
         <fieldset class="section">
         </fieldset>
@@ -189,7 +241,7 @@ export default {
       event: {},
       product: {},
       point: 1,
-      step: 2,
+      step: 3,
       schema: {
         bankName: '',
         ownName: '',
@@ -733,8 +785,10 @@ body{
     right: 1rem;
     bottom: 1rem;
   }
+  .product_list_widget{
+    padding-left: 120px;
+  }
 }
-
 .r-link{
     --uirLinkDisplay: var(--rLinkDisplay, inline-flex);
     --uirLinkTextColor: var(--rLinkTextColor);
@@ -754,13 +808,15 @@ body{
   border-color: #405867;
   color: #fff;
 }
-.action-button {
-  background: #e9f015;
-  color: #99a2a8;
-  border-color: #e9f015;
+.action_button {
+  background: #fed700;
+  color: #fff;
+  font-weight: bold;
+  border-color: #fed700;
 }
-.action-button:hover,.action-button:focus {
+.action_button:hover,.action_button:focus {
   background: #405867;
   border-color: #405867;
 }
+
 </style>

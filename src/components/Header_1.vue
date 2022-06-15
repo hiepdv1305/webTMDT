@@ -451,8 +451,6 @@
                 <div class="container">
                     <ul class="nav navbar-nav departments-menu animate-dropdown">
                         <li class="nav-item dropdown ">
-
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="departments-menu-toggle" ></a>
                             <ul id="menu-vertical-menu" class="dropdown-menu yamm departments-menu-dropdown">
                                 <li class="highlight menu-item animate-dropdown active"><a title="Value of the Day" href="product-category.html">Value of the Day</a></li>
                                 <li class="highlight menu-item animate-dropdown"><a title="Top 100 Offers" href="home-v3.html">Top 100 Offers</a></li>
@@ -914,7 +912,7 @@
                     </ul>
                     <form class="navbar-search" method="get" action="/">
                         <!-- <label class="sr-only screen-reader-text" for="search">Search for:</label> -->
-                        <div class="input-group">
+                        <div class="input-group" style="margin-left:285px">
                             <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Tìm kiếm" />
                             <div class="input-group-addon search-categories">
                                 <select name='product_cat' id='product_cat' class='postform resizeselect' >

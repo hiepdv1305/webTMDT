@@ -40,6 +40,12 @@ export default new Router({
 
     },
     {
+      path: '/profile',
+      name: 'profile',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Profile.vue')
+
+    },
+    {
       path: '*',
       name: 'Error',
       meta: {

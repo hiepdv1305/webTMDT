@@ -6,12 +6,12 @@
             <div id="content" class="site-content" tabindex="-1">
                 <div class="container">
 
-                    <nav class="woocommerce-breadcrumb"><a href="home.html">Home</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Cart</nav>
+                    <nav class="woocommerce-breadcrumb"><a href="home.html">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Sự kiện của bạn</nav>
 
                     <div id="primary" class="content-area">
                         <main id="main" class="site-main">
                             <article class="page type-page status-publish hentry">
-                                <header class="entry-header"><h1 itemprop="name" class="entry-title">Cart</h1></header><!-- .entry-header -->
+                                <header class="entry-header"><h1 itemprop="name" class="entry-title">Sự kiện của bạn</h1></header><!-- .entry-header -->
 
                                 <form>
 
@@ -20,10 +20,10 @@
                                             <tr>
                                                 <th class="product-remove">&nbsp;</th>
                                                 <th class="product-thumbnail">&nbsp;</th>
-                                                <th class="product-name">Product</th>
-                                                <th class="product-price">Price</th>
-                                                <th class="product-quantity">Quantity</th>
-                                                <th class="product-subtotal">Total</th>
+                                                <th class="product-name">Sự kiện</th>
+                                                <th class="product-price">Giá</th>
+                                                <th class="product-quantity">Số điểm</th>
+                                                <th class="product-subtotal">Tổng</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -88,39 +88,20 @@
                                                     <span class="amount">$1,300.00</span>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="actions" colspan="6">
-
-                                                    <div class="coupon">
-
-                                                        <label for="coupon_code">Coupon:</label> <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code"> <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
-
-                                                    </div>
-
-                                                    <input type="submit" value="Update Cart" name="update_cart" class="button">
-
-                                                    <div class="wc-proceed-to-checkout">
-
-                                                        <a class="checkout-button button alt wc-forward" href="checkout.html">Proceed to Checkout</a>
-                                                    </div>
-
-                                                    <input type="hidden" value="1eafc42c5e" name="_wpnonce"><input type="hidden" value="/electro/cart/" name="_wp_http_referer">
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </form>
-                                <div class="cart-collaterals">
+                                <!-- <div class="cart-collaterals">
 
                                     <div class="cart_totals ">
 
-                                        <h2>Cart Totals</h2>
+                                        <h2>Tổng</h2>
 
                                         <table class="shop_table shop_table_responsive">
 
                                             <tbody>
                                                 <tr class="cart-subtotal">
-                                                    <th>Subtotal</th>
+                                                    <th></th>
                                                     <td data-title="Subtotal"><span class="amount">$3,299.00</span></td>
                                                 </tr>
 
@@ -170,7 +151,7 @@
                                             <a class="checkout-button button alt wc-forward" href="checkout.html">Proceed to Checkout</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </article>
                         </main><!-- #main -->
                     </div><!-- #primary -->
