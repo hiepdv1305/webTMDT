@@ -4,50 +4,162 @@
     <div class="wrapper">
       <ul class="steps">
         <li >Step 1</li>
-        <li >Step 2</li>
-        <li class="is-active">Step 3</li>
+        <li class="is-active">Step 2</li>
+        <li >Step 3</li>
       </ul>
       <form class="form-wrapper" style="
-    height: 450px;
+    height: 800px;
 " >
-        <fieldset class="section ">
-          <h3>Your Details</h3>
-          <input type="text" name="name" id="name" placeholder="Name">
-          <input type="text" name="email" id="email" placeholder="Email">
-          <div class="button">Next</div>
-        </fieldset>
-        <fieldset class="section ">
-          <h3>Account Type</h3>
-          <div class="row cf">
-            <div class="four col">
-              <input type="radio" name="r1" id="r1" checked>
-              <label for="r1">
-                <h4>Designer</h4>
-              </label>
-            </div>
-            <div class="four col">
-              <input type="radio" name="r1" id="r2"><label for="r2">
-                <h4>Developer</h4>
-              </label>
-            </div>
-            <div class="four col">
-              <input type="radio" name="r1" id="r3"><label for="r3">
-                <h4>Project Manager</h4>
-              </label>
-            </div>
+        <div v-if="step === 1">
+          <header>
+              <h2 class="h1" style="margin-bottom:100px">Chọn ngân hàng của bạn:</h2>
+          </header>
+
+          <div class="woocommerce columns-4">
+              <ul class="product-loop-categories">
+
+                  <!-- <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/Agribank-logo-01.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li> -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-BIDV.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Sacombank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Techcombank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Vietcombank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-VPbank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-BIDV.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Sacombank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Techcombank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Vietcombank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-VPbank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+
+                  <li class="product-category product">
+                      <a href="shop.html">
+                          <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
+                      </a>
+
+                  </li><!-- /.item -->
+              </ul>
           </div>
-          <div class="button">Next</div>
-        </fieldset>
-        <fieldset class="section is-active">
-          <h3>Choose a Password</h3>
-          <input type="password" name="password" id="password" placeholder="Password">
-          <input type="password" name="password2" id="password2" placeholder="Re-enter Password">
-          <input class="submit button" type="submit" value="Sign Up">
-        </fieldset>
+        </div>
+        <div v-if="step === 2">
+          <div class="page">
+            <h3 class="h3">Chuyển tiền tới tài khoản 10233847192923 với nội dung <i>webTMDT naptien djadkajda</i></h3>
+              <h4>Điền thông tin chuyển khoản vào mẫu sau để hoàn tất quá trình nạp tiền</h4  >
+            <label class="field field_v1">
+              <input class="field__input" placeholder="1203913313112">
+              <span class="field__label-wrap">
+                <span class="field__label">Số tài khoản</span>
+              </span>
+            </label>
+            <label class="field field_v2">
+              <input class="field__input" placeholder="e.g. Dong Hiep">
+              <span class="field__label-wrap">
+                <span class="field__label">Tên chủ tài khoản</span>
+              </span>
+            </label>
+            <label class="field field_v2">
+              <input class="field__input" placeholder="e.g. 100000">
+              <span class="field__label-wrap">
+                <span class="field__label">Số tiền</span>
+              </span>
+            </label>
+            <label class="field field_v2">
+              <input class="field__input" placeholder="e.g. adjahdkad">
+              <span class="field__label-wrap">
+                <span class="field__label">Cú pháp</span>
+              </span>
+            </label>
+            <button type="button" class="previous_button" @click="step=step-1">Quay lại</button>
+            <button type="button" class="next action_button" @click="step=step+1">Tiếp tục</button>
+          </div>
+        </div>
+        <div v-if="step === 3">
+          <h3>Kiểm tra lại thông tin</h3>
+        </div>
         <fieldset class="section">
-          <h3>Account Created!</h3>
-          <p>Your account has now been created.</p>
-          <div class="button">Reset Form</div>
         </fieldset>
       </form>
     </div>
@@ -77,7 +189,7 @@ export default {
       event: {},
       product: {},
       point: 1,
-      step: 1,
+      step: 2,
       schema: {
         bankName: '',
         ownName: '',
@@ -164,6 +276,24 @@ export default {
 }
 </script>
 <style>
+  @import "../assets/css/animate.min.css";
+  @import "../assets/css/bootstrap.css";
+  @import "../assets/css/bootstrap.min.css";
+  @import "../assets/css/config.css";
+  @import "../assets/css/font-awesome.min.css";
+  @import "../assets/css/font-electro.css";
+  @import "../assets/css/owl-carousel.css";
+  @import "../assets/css/style.css";
+  @import "../assets/css/colors/black.css";
+  @import "../assets/css/colors/blue.css";
+  @import "../assets/css/colors/flat-blue.css";
+  @import "../assets/css/colors/gold.css";
+  @import "../assets/css/colors/green.css";
+  @import "../assets/css/colors/orange.css";
+  @import "../assets/css/colors/pink.css";
+  @import "../assets/css/colors/red.css";
+  @import "../assets/css/colors/yellow.css";
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic");
 html, body{
   width: 100%;
   height: 100%;
@@ -395,5 +525,242 @@ fieldset{
 .form-wrapper input[type="radio"]:checked + label h4{
   color: #3498db;
 }
+.field__input{
+  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.field__input:focus::-webkit-input-placeholder{
+  color: var(--uiFieldPlaceholderColor);
+}
+
+.field__input:focus::-moz-placeholder{
+  color: var(--uiFieldPlaceholderColor);
+}
+
+/*
+=====
+CORE STYLES
+=====
+*/
+
+.field{
+  --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+  --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
+  --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);
+  --uiFieldBorderColorActive: var(--fieldBorderColorActive, rgba(22, 22, 22, 1));
+
+  display: var(--fieldDisplay, inline-flex);
+  position: relative;
+  font-size: var(--fieldFontSize, 1rem);
+}
+
+.field__input{
+  box-sizing: border-box;
+  width: var(--fieldWidth, 100%);
+  height: var(--fieldHeight, 3rem);
+  padding: var(--fieldPaddingTop, 1.25rem) var(--uiFieldPaddingRight) var(--fieldPaddingBottom, .5rem) var(--uiFieldPaddingLeft);
+  border-bottom: var(--uiFieldBorderWidth) solid var(--fieldBorderColor, rgba(0, 0, 0, .25));
+}
+
+.field__input:focus{
+  outline: none;
+}
+
+.field__input::-webkit-input-placeholder{
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.field__input::-moz-placeholder{
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.field__input:focus::-webkit-input-placeholder{
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.field__input:focus::-moz-placeholder{
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.field__label-wrap{
+  box-sizing: border-box;
+  pointer-events: none;
+  cursor: text;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.field__label-wrap::after{
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.field__input:focus ~ .field__label-wrap::after{
+  opacity: 1;
+}
+
+.field__label{
+  position: absolute;
+  left: var(--uiFieldPaddingLeft);
+  top: calc(50% - .5em);
+
+  line-height: 1;
+  font-size: var(--fieldHintFontSize, inherit);
+
+  transition: top .2s cubic-bezier(0.9, -0.15, 0.1, 1.15), opacity .2s ease-out, font-size .2s ease-out;
+  will-change: bottom, opacity, font-size;
+}
+
+.field__input:focus ~ .field__label-wrap .field__label,
+.field__input:not(:placeholder-shown) ~ .field__label-wrap .field__label{
+  --fieldHintFontSize: var(--fieldHintFontSizeFocused, .75rem);
+
+  top: var(--fieldHintTopHover, .25rem);
+}
+.field_v1 .field__label-wrap::after{
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  transition: opacity .2s ease-out;
+  will-change: opacity;
+}
+.field_v2 .field__label-wrap{
+  overflow: hidden;
+}
+
+.field_v2 .field__label-wrap::after{
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  transform: translate3d(-105%, 0, 0);
+  will-change: transform, opacity;
+  transition: transform .285s ease-out .2s, opacity .2s ease-out .2s;
+}
+
+.field_v2 .field__input:focus ~ .field__label-wrap::after{
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0;
+}
+
+/*
+effect 3
+*/
+
+.field_v3 .field__label-wrap::after{
+  border: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  will-change: opacity, height;
+  transition: height .2s ease-out, opacity .2s ease-out;
+}
+
+.field_v3 .field__input:focus ~ .field__label-wrap::after{
+  height: 100%;
+}
+
+/*
+=====
+LEVEL 4. SETTINGS
+=====
+*/
+
+.field{
+  --fieldBorderColor: #D1C4E9;
+  --fieldBorderColorActive: #673AB7;
+}
+
+/*
+=====
+DEMO
+=====
+*/
+
+body{
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page{
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 1rem;
+
+  display: grid;
+  grid-gap: 30px;
+}
+
+.linktr{
+  order: -1;
+  padding: 1.75rem;
+  text-align: center;
+}
+
+.linktr__goal{
+  background-color: rgb(209, 246, 255);
+  color: rgb(8, 49, 112);
+  box-shadow: rgb(8 49 112 / 24%) 0px 2px 8px 0px;
+  border-radius: 2rem;
+  padding: .5rem 1.25rem;
+}
+
+@media (min-width: 1024px){
+  .linktr{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+.r-link{
+    --uirLinkDisplay: var(--rLinkDisplay, inline-flex);
+    --uirLinkTextColor: var(--rLinkTextColor);
+    --uirLinkTextDecoration: var(--rLinkTextDecoration, none);
+
+    display: var(--uirLinkDisplay) !important;
+    color: var(--uirLinkTextColor) !important;
+    text-decoration: var(--uirLinkTextDecoration) !important;
+}
+.previous_button {
+  background: transparent;
+  color: #99a2a8;
+  border-color: #99a2a8;
+}
+.previous_button:hover,.previous_button:focus {
+  background: #405867;
+  border-color: #405867;
+  color: #fff;
+}
+.action-button {
+  background: #e9f015;
+  color: #99a2a8;
+  border-color: #e9f015;
+}
+.action-button:hover,.action-button:focus {
+  background: #405867;
+  border-color: #405867;
+}
 </style>
