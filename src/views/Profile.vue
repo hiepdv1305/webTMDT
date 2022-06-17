@@ -17,7 +17,8 @@
                      <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
                    </div>
                     <!-- Profile picture help block-->
-                    <div class=" font-italic text-muted mb-4">Số dư tài khoản: 1.000.000 đ</div>
+                    <div class=" font-italic text-primary mb-4"><b>{{user.username}}</b></div>
+                    <div class=" font-italic text-muted mb-4">Số dư tài khoản: {{user.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</div>
                     <!-- Profile picture upload button-->
                     <button class="btn btn-primary" type="button">Cập nhật</button>
                 </div>
@@ -26,52 +27,52 @@
         <div class="col-xl-8">
             <!-- Account details card-->
             <div class="card mb-4">
-                <div class="card-header">Thông tin tài khoản</div>
-                <div class="card-body" style="padding: 10px 20px;">
-                    <form>
-                        <!-- Form Group (username)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Username</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="hiepdv">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (first name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">Họ</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Dong">
-                            </div>
-                            <!-- Form Group (last name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Tên</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Hiep">
-                            </div>
-                        </div>
-                        <!-- Form Group (email address)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
-                        </div>
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Địa chỉ</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="Hà nội">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Số điện thoại</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Ngày sinh</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>
-                        </div>
-                        <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button" style="margin-top: 15px;">Save changes</button>
-                    </form>
+                <div class="card-header" style="display: flex; justify-content: space-between; ">
+                    <div>Thông tin tài khoản</div>
+                    <div v-if="!edit" @click="edit=true" style="text-decoration: underline; cursor: pointer; color: #0062bd;"><i class="fa fa-pencil"></i> Cập nhật</div>
+                    <div v-if="edit" @click="edit=false" style="text-decoration: underline; cursor: pointer; color: #0062bd;"><i class="fa fa-close"></i> Đóng</div>
+                </div>
+                <div class="card-body" v-if="!edit" style="padding: 10px 20px;">
+                    <div>
+                        <label class="small mb-1" for="inputUsername">Họ tên</label>
+                        <div>{{user.fullname}}</div>
+                    </div>
+                    <div>
+                        <label class="small mb-1" for="inputUsername">Số điện thoại</label>
+                        <div>{{user.phonenumber}}</div>
+                    </div>
+                    <div>
+                        <label class="small mb-1" for="inputUsername">Email</label>
+                        <div>{{user.email}}</div>
+                    </div>
+                    <div>
+                        <label class="small mb-1" for="inputUsername">Địa chỉ</label>
+                        <div>{{user.address}}</div>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end;">
+                        <button @click="logout" class="btn btn-primary" type="button">Đăng xuất</button>
+                    </div>
+                </div>
+                <div class="card-body" v-if="edit" style="padding: 10px 20px;">
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputEmailAddress">Họ tên</label>
+                        <input v-model="user.fullname" class="form-control" id="inputEmailAddress" type="text" placeholder="Enter your email address" >
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputPhone">Số điện thoại</label>
+                        <input v-model="user.phonenumber" class="form-control" id="inputPhone" type="tel" >
+                    </div>
+                    <!-- Form Group (email address)-->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputEmailAddress">Email</label>
+                        <input v-model="user.email" class="form-control" id="inputEmailAddress" type="email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputEmailAddress">Địa chỉ</label>
+                        <input v-model="user.address" class="form-control" id="inputEmailAddress" type="text" >
+                    </div>
+                    <!-- Save changes button-->
+                    <button @click="updateUser" class="btn btn-primary" type="button" style="margin-top: 15px;">Cập nhật</button>
                 </div>
             </div>
         </div>
@@ -95,32 +96,34 @@ export default {
   name: 'login',
   data () {
     return {
-      schema: {
-        // username: '',
-        // password: ''
-      }
+        user: null,
+        edit: false
     }
   },
+  mounted () {
+    this.getUserInfomation()
+  },
   methods: {
-    // async login () {
-    //   if (this.schema.username === '') {
-    //     alert('validate username')
-    //   } else if (this.schema.password === '') {
-    //     alert('validate password')
-    //   } else {
-    //     try {
-    //       let result = await api.login(this.schema)
-    //       console.log(result)
-    //       if (result.data.statusCode === 200) {
-    //         localStorage.setItem('accessToken', result.data.data)
+    async getUserInfomation(){
+        let res = await api.getUserInfomation();
+        console.log(res)
+        if(res.data.statusCode === 200){
+            this.user = res.data.data
+        }else{
+            window.location.replace('/login')
+        }
 
-    //         this.$router.push({ path: '/' })
-    //       }
-    //     } catch (e) {
-    //       alert(e.message)
-    //     }
-    //   }
-    // }
+    },
+
+    async logout () {
+      localStorage.removeItem('accessToken')
+      window.location.replace('/')
+    //   window.location.reload();
+    },
+    async updateUser(){
+        let res=await api.updateUser(this.user)
+        console.log(res)
+    }
   }
 }
 </script>

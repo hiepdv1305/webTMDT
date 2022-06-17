@@ -15,7 +15,7 @@
                         <main id="main" class="site-main">
 
                             <header class="page-header">
-                                <h1 class="page-title">Điện thoại &amp; Máy tính bảng</h1>
+                                <!-- <h1 class="page-title">Điện thoại &amp; Máy tính bảng</h1> -->
                                 <p class="woocommerce-result-count">Hiển thị 1&ndash;15 trong 20 kết quả</p>
                             </header>
 
@@ -45,28 +45,61 @@
 
                             <div class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
+                                <div role="tabpanel" class="tab-pane" id="grid" aria-expanded="true">
 
-                                    <ul class="products columns-3">
-                                        <li class="product first">
+                                    <ul v-for="(event,index ) in events" :key="event.eventId" class="products columns-3" style="display:flex">
+                                        <li v-if="index%3===0" class="product first">
                                             <div class="product-outer">
                                                 <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
+                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">{{event.category}}</a></span>
                                                     <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
+                                                        <h3>{{event.eventName}}</h3>
                                                         <div class="product-thumbnail">
 
-                                                            <img src="../assets/images/products/1.jpg" alt="">
+                                                            <img :src="event.image" alt="">
 
                                                         </div>
                                                     </a>
 
-                                                    <div class="price-add-to-cart">
+                                                    <div class="price-add-to-cart" style="margin-top: 280px;">
                                                         <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
+                                                            <div class="progress">
+                                                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: v-bind('event.currentPoint/event.totalPoint')" :aria-valuenow="event.currentPoint" aria-valuemin="0" :aria-valuemax="event.totalPoint"></div>
+                                                                </div>
+                                                                <span class="electro-price" style="font-weight: bold;color: #4a5b6a; margin-top: -15px"><span class="amount">{{event.currentPoint}}</span>/<span>{{event.totalPoint}}</span></span>
+                                                        </span>
+                                                        <a rel="nofollow" href="/singleproduct" class="button add_to_cart_button">Xem chi tiết</a>
+                                                    </div><!-- /.price-add-to-cart -->
+
+                                                    <div class="hover-area">
+                                                        <div class="action-buttons">
+                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
+                                                            <a href="#" class="add-to-compare-link">Compare</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.product-inner -->
+                                            </div><!-- /.product-outer -->
+                                        </li>
+                                        <li v-if="index%3===1" class="product ">
+                                            <div class="product-outer">
+                                                <div class="product-inner">
+                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">{{event.category}}</a></span>
+                                                    <a href="single-product.html">
+                                                        <h3>{{event.name}}</h3>
+                                                        <div class="product-thumbnail">
+
+                                                            <img :src="event.image" alt="">
+
+                                                        </div>
+                                                    </a>
+
+                                                    <div class="price-add-to-cart" style="margin-top: 280px;">
+                                                        <span class="price">
+                                                            <div class="progress">
+                                                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: v-bind('event.currentPoint/event.totalPoint')" :aria-valuenow="event.currentPoint" aria-valuemin="0" :aria-valuemax="event.totalPoint"></div>
+                                                                </div>
+                                                                <span class="electro-price" style="font-weight: bold;color: #4a5b6a; margin-top: -15px"><span class="amount">{{event.currentPoint}}</span>/<span>{{event.totalPoint}}</span></span>
                                                         </span>
                                                         <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
                                                     </div><!-- /.price-add-to-cart -->
@@ -81,40 +114,7 @@
                                                 <!-- /.product-inner -->
                                             </div><!-- /.product-outer -->
                                         </li>
-                                        <li class="product ">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/2.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product last">
+                                        <li v-if="index%3===2" class="product last">
                                             <div class="product-outer">
                                                 <div class="product-inner">
                                                     <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
@@ -123,402 +123,6 @@
                                                         <div class="product-thumbnail">
 
                                                             <img src="../assets/images/products/3.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product first">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/4.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product ">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/5.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product last">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/6.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product first">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/4.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product ">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/2.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product last">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/5.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product first">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/1.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product ">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/6.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product last">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/3.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product first">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/5.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product ">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/4.jpg" alt="">
-
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                <del><span class="amount">&#036;2,299.00</span></del>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                        <li class="product last">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-
-                                                            <img src="../assets/images/products/2.jpg" alt="">
 
                                                         </div>
                                                     </a>
@@ -1243,41 +847,42 @@
                                 </div>
 
                                 <div role="tabpanel" class="tab-pane" id="list-view" aria-expanded="true">
-                                    <ul class="products columns-3">
+                                    <ul v-for="event in events" :key="event.eventId" class="products columns-3">
                                         <li class="product list-view">
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/1.jpg" src="../assets/images/blank.gif" alt="">
+                                                        <img class="wp-post-image" :src="event.image" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="media-body media-middle">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
+                                                            <span class="loop-product-categories"><a rel="tag" href="#">{{event.category}}</a></span><a href="single-product.html"><h3>{{event.eventName}}</h3>
+                                                                <!-- <div class="product-rating">
                                                                     <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
+                                                                </div> -->
                                                                 <div class="product-short-description">
                                                                     <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
+                                                                        {{event.description}}
                                                                     </ul>
                                                                 </div>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: v-bind('event.currentPoint/event.totalPoint')" :aria-valuenow="event.currentPoint" aria-valuemin="0" :aria-valuemax="event.totalPoint"></div>
+                                                                </div>
+                                                                <span class="electro-price" style="font-weight: bold;color: #4a5b6a; margin-top: -15px"><span class="amount">{{event.currentPoint}}</span>/<span>{{event.totalPoint}}</span></span>
                                                             </a>
                                                         </div>
                                                         <div class="col-xs-12">
 
                                                             <div class="availability in-stock">Availablity: <span>In stock</span></div>
 
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
+                                                            <span class="price"><span class="electro-price"><span class="amount">{{event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span></span>
+                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="/singleproduct" rel="nofollow">Xem chi tiết</a>
                                                             <div class="hover-area">
                                                                 <div class="action-buttons">
                                                                     <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
+                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Yêu thích</a>
 
                                                                         <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
                                                                             <span class="feedback">Product added!</span>
@@ -1294,819 +899,7 @@
 
                                                                     </div>
                                                                     <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/2.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/3.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/4.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/5.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/6.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/4.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/2.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/5.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/1.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/6.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/3.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/5.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/4.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/2.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-
-                                                            <div class="availability in-stock">Availablity: <span>In stock</span></div>
-
-                                                            <span class="price"><span class="electro-price"><span class="amount">$629.00</span></span></span>
-                                                            <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-product_id="2706" data-quantity="1" href="single-product.html" rel="nofollow">Add to cart</a>
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2706">
-                                                                        <a class="add_to_wishlist" data-product-type="simple" data-product-id="2706" rel="nofollow" href="#">Wishlist</a>
-
-                                                                        <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
-                                                                            <span class="feedback">Product added!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
-                                                                            <span class="feedback">The product is already in the wishlist!</span>
-                                                                            <a rel="nofollow" href="#">Wishlist</a>
-                                                                        </div>
-
-                                                                        <div style="clear:both"></div>
-                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                    </div>
-                                                                    <div class="clear"></div>
-                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a>
+                                                                    <a data-product_id="2706" class="add-to-compare-link" href="#">So sánh</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -2116,631 +909,41 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="list-view-small" aria-expanded="true">
+                                <div role="tabpanel" class="tab-pane active" id="list-view-small" aria-expanded="true">
 
-                                    <ul class="products columns-3">
+                                    <ul v-for="event in events" :key="event.eventId" class="products columns-3">
                                         <li class="product list-view list-view-small">
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/1.jpg" src="../assets/images/blank.gif" alt="">
+                                                        <img class="wp-post-image" :src="event.image" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="media-body media-middle">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
+                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">{{event.category}}</a></span><a href="product-category.html"><h3>{{event.eventName}}</h3>
                                                                 <div class="product-short-description">
                                                                     <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
+                                                                        {{event.description}}
                                                                     </ul>
                                                                 </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
+                                                                <div class="progress">
+                                                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: v-bind('event.currentPoint/event.totalPoint')" :aria-valuenow="event.currentPoint" aria-valuemin="0" :aria-valuemax="event.totalPoint"></div>
                                                                 </div>
+                                                                <span class="electro-price" style="font-weight: bold;color: #4a5b6a; margin-top: -15px"><span class="amount">{{event.currentPoint}}</span>/<span>{{event.totalPoint}}</span></span>
                                                             </a>
                                                         </div>
                                                         <div class="col-xs-12">
                                                             <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
+                                                                <span class="price"><span class="electro-price"><span class="amount">{{event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span></span>
+                                                                <a class="button add_to_cart_button" href="/singleproduct" rel="nofollow">Xem chi tiết</a>
                                                             </div><!-- /.price-add-to-cart -->
 
                                                             <div class="hover-area">
                                                                 <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/2.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/3.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/4.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/5.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/6.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/4.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/2.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/5.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/1.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/6.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/3.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/5.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/4.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product list-view list-view-small">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="single-product.html">
-                                                        <img class="wp-post-image" data-echo="../assets/images/products/2.jpg" src="../assets/images/blank.gif" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body media-middle">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">Smartphones</a></span><a href="product-category.html"><h3>Ultrabook UX605CA-FC050T</h3>
-                                                                <div class="product-short-description">
-                                                                    <ul style="padding-left: 18px;">
-                                                                        <li>4.5 inch HD Screen</li>
-                                                                        <li>Android 4.4 KitKat OS</li>
-                                                                        <li>1.4 GHz Quad Core&trade; Processor</li>
-                                                                        <li>20 MP front Camera</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <div class="price-add-to-cart">
-                                                                <span class="price"><span class="electro-price"><span class="amount">$1,218.00</span></span></span>
-                                                                <a class="button add_to_cart_button" href="cart.html" rel="nofollow">Add to cart</a>
-                                                            </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">Compare</a>
+                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Yêu thích</a>
+                                                                    <a href="compare.html" class="add-to-compare-link">So sánh</a>
                                                                 </div>
                                                             </div>
 
@@ -3187,6 +1390,7 @@
 })(jQuery);
 </script>
 <script>
+import api from '../api/api'
 export default {
   name: 'home',
   components: {
@@ -3194,35 +1398,23 @@ export default {
   data () {
     return {
       count: 0,
+      events:null
     }
   },
-  created () {
-    var scripts = [
-      '../../assets/js/jquery.min.js',
-      '../../assets/js/tether.min.js',
-      '../../assets/js/bootstrap.min.js',
-      '../../assets/js/bootstrap-hover-dropdown.min.js',
-      '../../assets/js/owl.carousel.min.js',
-      '../../assets/js/echo.min.js',
-      '../../assets/js/wow.min.js',
-      '../../assets/js/jquery.easing.min.js',
-      '../../assets/js/jquery.waypoints.min.js',
-      '../../assets/js/electro.js',
-      '../switchstylesheet/switchstylesheet.js'
-    ]
-    scripts.forEach(script => {
-      let tag = document.createElement('script')
-      tag.setAttribute('src', script)
-      document.head.appendChild(tag)
-    })
-  },
   mounted () {
+    this.getAllEvent()
   },
   methods: {
+    async getAllEvent () {
+      let result = await api.getAllEvent()
+      console.log(result)
+      this.events = result.data.data.Items
+    },
   }
 }
 </script>
 <style>
+  /* @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"); */
   @import "../assets/css/animate.min.css";
   @import "../assets/css/bootstrap.css";
   @import "../assets/css/bootstrap.min.css";
@@ -3241,4 +1433,43 @@ export default {
   @import "../assets/css/colors/red.css";
   @import "../assets/css/colors/yellow.css";
   @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic");
+
+  .progress {
+    --bs-progress-height: 0.75rem;
+    --bs-progress-font-size: 0.75rem;
+    --bs-progress-bg: #e9ecef;
+    --bs-progress-border-radius: 0.375rem;
+    --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    --bs-progress-bar-color: #fff;
+    --bs-progress-bar-bg: #fed700;
+    --bs-progress-bar-transition: width 0.6s ease;
+    display: flex;
+    /* margin-top: -15px; */
+    height: var(--bs-progress-height);
+    overflow: hidden;
+    font-size: var(--bs-progress-font-size);
+    background-color: var(--bs-progress-bg);
+    border-radius: var(--bs-progress-border-radius);
+  }
+  .progress-bar-striped {
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: var(--bs-progress-height) var(--bs-progress-height);
+}
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--bs-progress-bar-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--bs-progress-bar-bg);
+    transition: var(--bs-progress-bar-transition);
+}
+.progress {
+    display: block;
+    width: 100%;
+    height: 0.75rem;
+    margin-bottom: 0.2rem;
+}
 </style>

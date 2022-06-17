@@ -4,7 +4,10 @@
                 <div class="container">
                     <nav>
                         <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
-                            <li class="menu-item animate-dropdown"><a title="My Account" href="/login"><i class="ec ec-user"></i>Đăng nhập/Đăng ký</a></li>
+                            <li class="menu-item"><router-link to="/rechange"><button class="action_button"><span>Nạp tiền</span></button></router-link></li>
+                            <li class="menu-item animate-dropdown"><i class="fa fa-bell"></i></li>
+                            <li v-if="!user" class="menu-item animate-dropdown"><a title="My Account" href="/login"><i class="ec ec-user"></i>Đăng nhập/Đăng ký</a></li>
+                            <li v-else class="menu-item animate-dropdown"><a title="My Account" href="/profile"><i class="ec ec-user"></i>{{user.username}}</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -16,7 +19,7 @@
 
                         <!-- ============================================================= Header Logo ============================================================= -->
                         <div class="header-logo">
-                            <a href="home.html" class="header-logo-link">
+                            <a href="/" class="header-logo-link">
                                 <svg version="1.1" x="0px" y="0px" width="175.748px"
                                     height="42.52px" viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52">
                                     <ellipse class="ellipse-bg" fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700" cx="170.05" cy="36.341" rx="5.32" ry="5.367"/>
@@ -1109,44 +1112,34 @@ export default {
   data () {
     return {
       sellected: '',
-      user: {},
+      user: null,
       total: 0,
       count: 0
     }
   },
   mounted () {
-    // this.getUser()
+    this.getUser()
     // this.getMyEvent()
     // this.sellected = this.$router.apps[0]._route.name
   },
   methods: {
-    // async logOut () {
-    //   localStorage.removeItem('accessToken')
-    //   window.location.replace('/')
-    // },
+    async logOut () {
+      localStorage.removeItem('accessToken')
+      window.location.replace('/')
+    },
 
-    // getUser () {
-    //   let token = localStorage.getItem('accessToken')
-    //   // console.log(token)
-    //   if (token) {
-    //     try {
-    //       this.user = jwt_decode(token)
-    //       // console.log(this.user)
-    //     } catch (err) {
-    //       console.log(err)
-    //     }
-    //   }
-    // },
-    // async getMyEvent () {
-    //   let a = await api.getMyEvent()
-    //   // console.log(a)
-    //   this.myEvents = a.data.data.Items
-    //   this.myEvents.forEach(event => {
-    //     this.total += event.price
-    //     this.count += 1
-    //   })
-    //   this.total = this.total.toLocaleString('vi', { style: 'currency', currency: 'VND' })
-    // }
+    getUser () {
+      let token = localStorage.getItem('accessToken')
+      // console.log(token)
+      if (token) {
+        try {
+          this.user = jwt_decode(token)
+          // console.log(this.user)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    },
   }
 }
 </script>
@@ -1169,4 +1162,10 @@ export default {
   @import "../assets/css/colors/red.css";
   @import "../assets/css/colors/yellow.css";
   @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic");
+  .action_button {
+  background: #fed700;
+  color: #fff;
+  font-weight: bold;
+  border-color: #fed700;
+}
 </style>

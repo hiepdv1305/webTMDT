@@ -52,7 +52,7 @@
 
                                                     <h2>Đăng ký</h2>
 
-                                                    <!-- <form class="register"> -->
+                                                    <!-- <form> -->
 
                                                         <p class="before-register-text">Tạo tài khoản</p>
 
@@ -352,7 +352,8 @@ export default {
         phonenumber: '',
         username: '',
         password: '',
-        confirmpassword: ''
+        confirmpassword: '',
+        address: ''
       },
       loginSchema: {
         username: '',
@@ -382,7 +383,7 @@ export default {
           if (result.data.statusCode === 200) {
             localStorage.setItem('accessToken', result.data.data)
 
-            this.$router.push({ path: '/' })
+            window.location.replace('/')
           }
         } catch (e) {
           alert(e.message)

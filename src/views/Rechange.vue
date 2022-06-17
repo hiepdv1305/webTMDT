@@ -3,9 +3,9 @@
     <nav class="woocommerce-breadcrumb"><a href="/">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Nạp tiền</nav>
     <div class="wrapper">
       <ul class="steps">
-        <li >Step 1</li>
-        <li >Step 2</li>
-        <li class="is-active">Step 3</li>
+        <li v-bind:class="{ 'is-active' : step === 1}">Step 1</li>
+        <li v-bind:class="{ 'is-active' : step === 2}">Step 2</li>
+        <li v-bind:class="{ 'is-active' : step === 3}">Step 3</li>
       </ul>
       <form class="form-wrapper"  >
         <div v-if="step === 1">
@@ -15,106 +15,97 @@
 
           <div class="woocommerce columns-4">
               <ul class="product-loop-categories">
-
-                  <!-- <li class="product-category product">
-                      <a href="shop.html">
-                          <img src="../assets/images/Agribank-logo-01.png" class="img-responsive" alt="">
-                      </a>
-
-                  </li> -->
-
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'bidv';create()">
                           <img src="../assets/images/logo-ngan-hang-BIDV.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
-
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'sacombank';create()">
                           <img src="../assets/images/logo-ngan-hang-Sacombank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'techcombank';create()">
                           <img src="../assets/images/logo-ngan-hang-Techcombank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'vietcombank';create()">
                           <img src="../assets/images/logo-ngan-hang-Vietcombank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'viettinbank';create()">
                           <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'vpbank';create()" >
                           <img src="../assets/images/logo-ngan-hang-VPbank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'vietinbank';create()">
                           <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'bidv';create()">
                           <img src="../assets/images/logo-ngan-hang-BIDV.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'sacombank';create()">
                           <img src="../assets/images/logo-ngan-hang-Sacombank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'techcombank';create()">
                           <img src="../assets/images/logo-ngan-hang-Techcombank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'vietcombank';create()">
                           <img src="../assets/images/logo-ngan-hang-Vietcombank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'vietinbank';create()">
                           <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'vpbank';create()">
                           <img src="../assets/images/logo-ngan-hang-VPbank.png" class="img-responsive" alt="">
                       </a>
 
                   </li><!-- /.item -->
 
                   <li class="product-category product">
-                      <a href="shop.html">
+                      <a @click="schema.bankName = 'vietinbank';create()">
                           <img src="../assets/images/logo-ngan-hang-Vietinbank.png" class="img-responsive" alt="">
                       </a>
 
@@ -129,25 +120,25 @@
         </div>
           <div class="page">
             <label class="field field_v1">
-              <input class="field__input" placeholder="1203913313112">
+              <input v-model="schema.bankAccountNumber" class="field__input" placeholder="1203913313112">
               <span class="field__label-wrap">
                 <span class="field__label">Số tài khoản</span>
               </span>
             </label>
             <label class="field field_v2">
-              <input class="field__input" placeholder="e.g. Dong Hiep">
+              <input v-model="schema.bankAccount" class="field__input" placeholder="e.g. Dong Hiep">
               <span class="field__label-wrap">
                 <span class="field__label">Tên chủ tài khoản</span>
               </span>
             </label>
             <label class="field field_v2">
-              <input class="field__input" placeholder="e.g. 100000">
+              <input v-model.number="schema.amout" class="field__input" placeholder="e.g. 100000">
               <span class="field__label-wrap">
                 <span class="field__label">Số tiền</span>
               </span>
             </label>
             <label class="field field_v2">
-              <input class="field__input" placeholder="e.g. adjahdkad">
+              <input v-model="schema.code" class="field__input" placeholder="e.g. adjahdkad">
               <span class="field__label-wrap">
                 <span class="field__label">Cú pháp</span>
               </span>
@@ -189,18 +180,18 @@
                 <div class="body">
                     <ul class="product_list_widget">
                         <li>
-                                  <span class="electro-price"  style="margin-left: 0px;"><ins><span class="amount">102866961987</span></ins></span>
+                                  <span class="electro-price"  style="margin-left: 0px;"><ins><span class="amount">{{schema.bankAccountNumber}}</span></ins></span>
                         </li>
 
                         <li>
-                                  <span class="electro-price"  style="margin-left: 0px;"><span class="amount">Dong Hiep</span></span>
+                                  <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.bankAccount}}</span></span>
                         </li>
 
                         <li>
-                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">100.000đ</span></span>
+                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span>
                         </li>
                         <li>
-                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">webTMDT naptien aldhsiefdhf</span></span>
+                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.code}}</span></span>
                         </li>
                     </ul>
                 </div>
@@ -208,7 +199,7 @@
           </div>
           </div>
          <div style="display: flex;justify-content: center; margin-top: 30px;">
-           <button type="button" class="next action_button" @click="step=step+1">Đồng ý</button>
+           <button type="button" class="next action_button" @click="rechange">Đồng ý</button>
          </div>
         </div>
         <fieldset class="section">
@@ -241,14 +232,13 @@ export default {
       event: {},
       product: {},
       point: 1,
-      step: 3,
+      step: 1,
       schema: {
         bankName: '',
-        ownName: '',
-        sourceAccount: '',
-        targetAccount: '',
+        bankAccountNumber: '',
+        bankAccount: '',
         amout: '',
-        transactionCode: ''
+        code: ''
       },
       currentBankAccount: [],
       agribank: agribank,
@@ -267,55 +257,31 @@ export default {
     // console.log(this.agribank)
   },
   methods: {
-    // async getEvent () {
-    //   let id = this.$route.path.substring(1).split('/')[1]
-    //   //   console.log(id)
-    //   let result = await api.getEvent(id)
-    //   // console.log(result)
-    //   this.event = result.data.data.Items[0]
-    // },
-    async momopayment () {
-      let paymentresult = await api.momopayment({
-        point: this.point
-      })
-      console.log(paymentresult)
-      window.location.href = paymentresult.data.data.payUrl
-      let eventId = this.event.eventId
-      let a = await api.createDeal({
-        eventId: eventId,
-        point: this.point,
-        image: this.event.image,
-        eventName: this.event.eventName,
-        price: this.point * 10000
-      })
-      console.log(a)
-      this.$router.push({ path: '/cart' })
-    },
     async create () {
       this.step += 1
       switch (this.schema.bankName) {
-        case 'Viettinbank':
+        case 'viettinbank':
           this.currentBankAccount = this.viettinbank
           break
-        case 'BIDV':
+        case 'bidv':
           this.currentBankAccount = this.bidv
           break
-        case 'Vietcombank':
+        case 'vietcombank':
           this.currentBankAccount = this.vietcombank
           break
-        case 'Techcombank':
+        case 'techcombank':
           this.currentBankAccount = this.techcombank
           break
-        case 'VPbank':
+        case 'vpbank':
           this.currentBankAccount = this.vpbank
           break
-        case 'Sacombank':
+        case 'sacombank':
           this.currentBankAccount = this.sacombank
           break
-        case 'Agribank':
+        case 'agribank':
           this.currentBankAccount = this.agribank
           break
-        case 'TPbank':
+        case 'tpbank':
           this.currentBankAccount = this.tpbank
           break
         default:
@@ -323,6 +289,15 @@ export default {
       }
       console.log(this.currentBankAccount)
       // await api.createrechange(this.schema)
+    },
+    async rechange () {
+      let result = await api.rechange(this.schema)
+      console.log(result)
+      if (result.data.statusCode === 200) {
+        alert('Nạp tiền thành công')
+      } else {
+        alert('lỗi hệ thống, xin thử lại sau')
+      }
     }
   }
 }

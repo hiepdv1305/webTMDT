@@ -71,8 +71,14 @@ const api = {
   momopayment: (body) => {
     return axios.post(`${baseUrl}/momopayment`, body)
   },
-  createrechange: (body) => {
-    return axios.post(`${baseUrl}/rechange/create`, body)
+  rechange: (body) => {
+    return axios.post(`${baseUrl}/user/rechange`, body)
+  },
+  getUserInfomation: (body) => {
+    return axios.get(`${baseUrl}/user/getinfomation`, body)
+  },
+  updateUser: (body) => {
+    return axios.post(`${baseUrl}/user/update`, body)
   }
 }
 
