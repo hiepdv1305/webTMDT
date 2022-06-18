@@ -79,6 +79,9 @@ const api = {
   },
   updateUser: (body) => {
     return axios.post(`${baseUrl}/user/update`, body)
+  },
+  eventGetDeal: (id) => {
+    return axios.get(`${baseUrl}/event/getAlldeal/${id}`)
   }
 }
 

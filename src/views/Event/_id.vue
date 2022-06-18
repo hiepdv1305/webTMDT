@@ -11,9 +11,9 @@
                         <span class="delimiter"><i class="fa fa-angle-right"></i></span>
                         <a href="product-category.html">Loại sản phẩm</a>
                         <span class="delimiter"><i class="fa fa-angle-right"></i></span>
-                        <a href="product-category.html">Tai nghe</a>
+                        <a href="product-category.html">{{event.category}}</a>
                         <span class="delimiter"><i class="fa fa-angle-right"></i>
-                        </span>Ultra Wireless S50 Headphones S50 with Bluetooth
+                        </span>{{event.eventName}}
                     </nav><!-- /.woocommerce-breadcrumb -->
 
                     <div id="primary" class="content-area">
@@ -26,7 +26,7 @@
                                         <span class="onsale">Sale!</span>
                                         <div class="images electro-gallery">
                                             <div class="thumbnails-single owl-carousel owl-loaded owl-drag">
-                                                <a href="../assets/images/single-product/s1-1.jpg" class="zoom owl-item active" title="" data-rel="prettyPhoto[product-gallery]"><img src="../assets/images/single-product/s1-1.jpg" class="wp-post-image" alt=""></a>
+                                                <a :href="event.image" class="zoom owl-item active" title="" data-rel="prettyPhoto[product-gallery]"><img :src="event.image" class="wp-post-image" alt=""></a>
 <!--
                                                 <a href="../assets/images/single-product/s1.jpg" class="zoom" title="" data-rel="prettyPhoto[product-gallery]"><img src="../assets/images/single-product/s1.jpg" class="wp-post-image" alt=""></a>
 
@@ -57,31 +57,17 @@
                                     <div class="summary entry-summary">
 
                                         <span class="loop-product-categories">
-                                            <a href="product-category.html" rel="tag">Tai nghe</a>
+                                            <a href="product-category.html" rel="tag">{{event.category}}</a>
                                         </span><!-- /.loop-product-categories -->
 
-                                        <h1 itemprop="name" class="product_title entry-title">Ultra Wireless S50 Headphones S50 with Bluetooth</h1>
-
-                                        <div class="woocommerce-product-rating">
-                                            <div class="star-rating" title="Rated 4.33 out of 5">
-                                                <span style="width:86.6%">
-                                                    <strong itemprop="ratingValue" class="rating">4.33</strong>
-                                                    out of <span itemprop="bestRating">5</span>             based on
-                                                    <span itemprop="ratingCount" class="rating">3</span>
-                                                    customer ratings
-                                                </span>
+                                        <h1 itemprop="name" class="product_title entry-title">{{event.eventName}}</h1>
+                                        <span class="price">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width:50%" :aria-valuenow="event.currentPoint" aria-valuemin="0" :aria-valuemax="event.totalPoint"></div>
                                             </div>
-
-                                            <a href="#reviews" class="woocommerce-review-link">(<span itemprop="reviewCount" class="count">3</span> customer reviews)</a>
-                                        </div><!-- .woocommerce-product-rating -->
-
-                                        <div class="brand">
-                                            <a href="product-category.html">
-                                                <img src="../assets/images/single-product/brand.png" alt="Gionee" />
-                                            </a>
-                                        </div><!-- .brand -->
-
-                                        <div class="availability in-stock">Availablity: <span>In stock</span></div><!-- .availability -->
+                                            <span class="electro-price" style="font-weight: bold;color: #4a5b6a; margin-top: -15px"><span class="amount">{{event.currentPoint}}</span>/<span>{{event.totalPoint}}</span></span>
+                                        </span>
+                                        <div class="availability in-stock">Trạng thái: <span>Đang diễn ra</span></div><!-- .availability -->
 
                                         <hr class="single-product-title-divider" />
 
@@ -95,71 +81,60 @@
                                         </div><!-- .action-buttons -->
 
                                         <div itemprop="description">
-                                            <ul>
-                                                <li>4.5 inch HD Touch Screen (1280 x 720)</li>
-                                                <li>Android 4.4 KitKat OS</li>
-                                                <li>1.4 GHz Quad Core™ Processor</li>
-                                                <li>20 MP front and 28 megapixel CMOS rear camera</li>
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                            <p><strong>SKU</strong>: FW511948218</p>
+                                            {{event.description}}
                                         </div><!-- .description -->
 
                                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
-                                            <p class="price"><span class="electro-price"><ins><span class="amount">&#36;1,215.00</span></ins> <del><span class="amount">&#36;2,299.00</span></del></span></p>
-
-                                            <meta itemprop="price" content="1215" />
-                                            <meta itemprop="priceCurrency" content="USD" />
-                                            <link itemprop="availability" href="http://schema.org/InStock" />
-
+                                            <p class="price"><span class="electro-price"><ins><span class="amount">{{event.price}}</span></ins></span></p>
                                         </div><!-- /itemprop -->
 
-                                        <form class="variations_form cart" method="post">
-
-                                            <table class="variations">
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="label"><label>Màu</label></td>
-                                                        <td class="value">
-                                                            <select class="" name="attribute_pa_color">
-                                                                <option value="">Choose an option</option>
-                                                                <option value="black-with-red" >Black with Red</option>
-                                                                <option value="white-with-gold"  selected='selected'>White with Gold</option>
-                                                            </select>
-                                                            <a class="reset_variations" href="#">Clear</a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
+                                        <div class="variations_form cart">
                                             <div class="single_variation_wrap">
                                                 <div class="woocommerce-variation single_variation"></div>
                                                 <div class="woocommerce-variation-add-to-cart variations_button">
                                                     <div class="quantity">
-                                                        <label>Quantity:</label>
-                                                        <input type="number" name="quantity" value="1" title="Qty" class="input-text qty text"/>
+                                                        <label>Số điểm:</label>
+                                                        <input v-model.number="point" type="number" name="quantity" value="1" min="1" title="Qty" class="input-text qty text"/>
                                                     </div>
-                                                    <button type="submit" class="single_add_to_cart_button button">Thêm vào giỏ hàng</button>
-                                                    <input type="hidden" name="add-to-cart" value="2452" />
-                                                    <input type="hidden" name="product_id" value="2452" />
-                                                    <input type="hidden" name="variation_id" class="variation_id" value="0" />
+                                                    <button class="single_add_to_cart_button button" @click="myModel=true">Mua ngay</button>
+                                                    <!-- <input type="button" class="btn btn-success btn-xs" @click="myModel=true" value="Add" /> -->
+                                                    <div v-if="myModel">
+                                                        <transition name="model">
+                                                        <div class="modal-mask">
+                                                        <div class="modal-wrapper">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                Tuyệt vời
+                                                            <button type="button" class="close" @click="myModel=false"><span aria-hidden="true">&times;</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h5>Bạn có chắc muốn dùng {{(point*10000).toLocaleString('vi', { style: 'currency', currency: 'VND' })}} để mua {{point}} điểm không</h5>
+                                                            <br />
+                                                            <div align="center">
+                                                            <button class="" type="button" @click="myModel=false">Hủy</button>
+                                                            <button style="background-color: #fed700; margin-left: 10px" type="button" @click="createDeal">Mua ngay</button>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </transition>
+                                                    </div>
+                                                    <!-- <button type="submit" class="single_add_to_cart_button button">Mua ngay</button> -->
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
 
                                     </div><!-- .summary -->
                                 </div><!-- /.single-product-wrapper -->
 
                                 <div class="woocommerce-tabs wc-tabs-wrapper">
                                     <ul class="nav nav-tabs electro-nav-tabs tabs wc-tabs" role="tablist">
-                                        <li class="nav-item accessories_tab">
-                                            <a href="#tab-accessories"  class="active">So sánh</a>
-                                        </li>
-
                                         <li class="nav-item description_tab">
-                                            <a href="#tab-description" data-toggle="tab">Mô tả</a>
+                                            <a :class="{ active: tab ===1 }" @click="tab=1" data-toggle="tab">Mô tả</a>
                                         </li>
 <!--
                                         <li class="nav-item specification_tab">
@@ -167,173 +142,15 @@
                                         </li> -->
 
                                         <li class="nav-item reviews_tab">
-                                            <a href="#tab-reviews" data-toggle="tab">Reviews</a>
+                                            <a :class="{ active: tab ===2 }" @click="tab=2" data-toggle="tab">Reviews</a>
+                                        </li>
+                                        <li class="nav-item reviews_tab">
+                                            <a :class="{ active: tab ===3 }" @click="tab=3" data-toggle="tab">Danh sách tham gia</a>
                                         </li>
                                     </ul>
 
                                     <div class="tab-content">
-                                        <div class="tab-pane active panel entry-content wc-tab" id="tab-accessories">
-
-                                            <div class="accessories">
-
-                                                <div class="electro-wc-message"></div>
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-9 col-left">
-                                                        <ul class="products columns-3">
-
-                                                            <li class="product first">
-                                                                <div class="product-outer">
-                                                                    <div class="product-inner">
-                                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                                        <a href="single-product.html">
-                                                                            <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                                            <div class="product-thumbnail">
-
-                                                                                <img data-echo="assets/images/products/4.jpg" src="../assets/images/products/4.jpg" alt="">
-
-                                                                            </div>
-                                                                        </a>
-
-                                                                        <div class="price-add-to-cart">
-                                                                            <span class="price">
-                                                                                <span class="electro-price">
-                                                                                    <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Thêm vào giỏ hàng</a>
-                                                                        </div><!-- /.price-add-to-cart -->
-
-                                                                        <div class="hover-area">
-                                                                            <div class="action-buttons">
-                                                                                <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                                <a href="#" class="add-to-compare-link">Compare</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- /.product-inner -->
-                                                                </div><!-- /.product-outer -->
-                                                            </li>
-                                                            <li class="product ">
-                                                                <div class="product-outer">
-                                                                    <div class="product-inner">
-                                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                                        <a href="single-product.html">
-                                                                            <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                                            <div class="product-thumbnail">
-                                                                                <img data-echo="assets/images/products/3.jpg" src="../assets/images/products/3.jpg" alt="">
-                                                                            </div>
-                                                                        </a>
-
-                                                                        <div class="price-add-to-cart">
-                                                                            <span class="price">
-                                                                                <span class="electro-price">
-                                                                                    <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                                        </div><!-- /.price-add-to-cart -->
-
-                                                                        <div class="hover-area">
-                                                                            <div class="action-buttons">
-                                                                                <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                                <a href="#" class="add-to-compare-link">Compare</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- /.product-inner -->
-                                                                </div><!-- /.product-outer -->
-                                                            </li>
-                                                            <li class="product last">
-                                                                <div class="product-outer">
-                                                                    <div class="product-inner">
-                                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                                        <a href="single-product.html">
-                                                                            <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                                            <div class="product-thumbnail">
-                                                                                <img data-echo="assets/images/products/5.jpg" src="../assets/images/products/5.jpg" alt="">
-                                                                            </div>
-                                                                        </a>
-
-                                                                        <div class="price-add-to-cart">
-                                                                            <span class="price">
-                                                                                <span class="electro-price">
-                                                                                    <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Thêm vào giỏ hàng</a>
-                                                                        </div><!-- /.price-add-to-cart -->
-
-                                                                        <div class="hover-area">
-                                                                            <div class="action-buttons">
-                                                                                <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                                                <a href="#" class="add-to-compare-link">Compare</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- /.product-inner -->
-                                                                </div><!-- /.product-outer -->
-                                                            </li>
-
-                                                        </ul><!-- /.products -->
-
-                                                        <div class="check-products">
-                                                            <div class="checkbox accessory-checkbox">
-                                                                <label>
-                                                                    <input checked disabled type="checkbox" class="product-check">
-                                                                    <span class="product-title">
-                                                                        <strong>This product: </strong>Ultra Wireless S50 Headphones S50 with Bluetooth
-                                                                    </span>
-                                                                    -
-                                                                    <span class="accessory-price">
-                                                                        <span class="amount">&#36;1,215.00</span>
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-
-                                                            <div class="checkbox accessory-checkbox">
-                                                                <label>
-                                                                    <input checked type="checkbox" class="product-check">
-                                                                    <span class="product-title">Universal Headphones Case in Black</span>
-                                                                    -
-                                                                    <span class="accessory-price">
-                                                                        <span class="amount">&#36;159.00</span>
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-
-                                                            <div class="checkbox accessory-checkbox">
-                                                                <label>
-                                                                    <input checked type="checkbox" class="product-check">
-                                                                    <span class="product-title">Headphones USB Wires</span>
-                                                                    -
-                                                                    <span class="accessory-price">
-                                                                        <span class="amount">&#36;50.00</span>
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-                                                        </div><!-- /.check-products -->
-
-                                                    </div><!-- /.col -->
-
-                                                    <div class="col-xs-12 col-sm-3 col-right">
-                                                        <div class="total-price">
-                                                            <span class="total-price-html">
-                                                                <span class="amount">&#036;1,424.00</span>
-                                                            </span>
-                                                            for <span class="total-products">3</span>
-                                                            items
-                                                        </div><!-- /.total-price -->
-
-                                                        <div class="accessories-add-all-to-cart">
-                                                            <button type="button" class="button btn btn-primary add-all-to-cart">Thêm tất cả vào giỏ hàng</button>
-                                                        </div><!-- /.accessories-add-all-to-cart -->
-                                                    </div><!-- /.col -->
-                                                </div><!-- /.row -->
-
-                                            </div><!-- /.accessories -->
-                                        </div>
-
-                                        <div class="tab-pane in panel entry-content wc-tab" id="tab-description">
+                                        <div :class="{ active: tab === 1 }" class="tab-pane in panel entry-content wc-tab">
                                             <div class="electro-description">
 
                                                 <h3>Perfectly Done</h3>
@@ -351,25 +168,8 @@
                                                             </td>
 
                                                             <td>
-                                                                <img class="alignright" data-echo="assets/images/single-product/ForDescription.jpg" src="assets/images/blank.gif" alt="">
+                                                                <img class="alignright" :src="event.image" alt="">
 
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-                                                <table class="layout">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="alignnone" data-echo="assets/images/single-product/ForDescription-1.png" src="assets/images/blank.gif" alt="">
-                                                            </td>
-
-                                                            <td>
-                                                                <h3 style="text-align: right;">Inteligent Bass</h3>
-                                                                <p style="text-align: right;">Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.</p>
-                                                                <h3 style="text-align: right;">Battery Life</h3>
-                                                                <p style="text-align: right;">Integer bibendum aliquet ipsum, in ultrices enim sodales sed. Quisque ut urna vitae lacus laoreet malesuada eu at massa. Pellentesque nibh augue, pellentesque nec dictum vel, pretium a arcu. Duis eu urna suscipit, lobortis elit quis, ullamcorper massa.</p>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -390,88 +190,7 @@
 
                                             </div><!-- /.product_meta -->
                                         </div>
-
-                                        <div class="tab-pane panel entry-content wc-tab" id="tab-specification">
-                                            <h3>Technical Specifications</h3>
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Brand</td>
-                                                        <td>Apple</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Item Height</td>
-                                                        <td>18 Millimeters</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Item Width</td>
-                                                        <td>31.4 Centimeters</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Screen Size</td>
-                                                        <td>13 Inches</td>
-                                                    </tr>
-                                                    <tr class="size-weight">
-                                                        <td>Item Weight</td>
-                                                        <td>1.6 Kg</td>
-                                                    </tr>
-                                                    <tr class="size-weight">
-                                                        <td>Product Dimensions</td>
-                                                        <td>21.9 x 31.4 x 1.8 cm</td>
-                                                    </tr>
-                                                    <tr class="item-model-number">
-                                                        <td>Item model number</td>
-                                                        <td>MF841HN/A</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Processor Brand</td>
-                                                        <td>Intel</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Processor Type</td>
-                                                        <td>Core i5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Processor Speed</td>
-                                                        <td>2.9 GHz</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>RAM Size</td>
-                                                        <td>8 GB</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hard Drive Size</td>
-                                                        <td>512 GB</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hard Disk Technology</td>
-                                                        <td>Solid State Drive</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Graphics Coprocessor</td>
-                                                        <td>Intel Integrated Graphics</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Graphics Card Description</td>
-                                                        <td>Integrated Graphics Card</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hardware Platform</td>
-                                                        <td>Mac</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Operating System</td>
-                                                        <td>Mac OS</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Average Battery Life (in hours)</td>
-                                                        <td>9</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div><!-- /.panel -->
-
-                                        <div class="tab-pane panel entry-content wc-tab" id="tab-reviews">
+                                        <div :class="{ active: tab === 2 }" class="tab-pane panel entry-content wc-tab">
                                             <div id="reviews" class="electro-advanced-reviews">
                                                 <div class="advanced-review row">
                                                     <div class="col-xs-12 col-md-6">
@@ -674,6 +393,39 @@
                                                 <div class="clear"></div>
                                             </div><!-- /.electro-advanced-reviews -->
                                         </div><!-- /.panel -->
+                                        <div :class="{ active: tab === 3 }" class="tab-pane in panel entry-content wc-tab">
+                                            <div v-if="participants.length===0">
+                                                <h3>Bạn hãy là người đầu tiên tham gia sự kiện này</h3>
+                                            </div>
+                                            <div v-else>
+                                                <table>
+                                                    <tr>
+                                                        <th>Username</th>
+                                                        <th>Số điểm</th>
+                                                        <th>Điểm bắt đầu - kết thúc</th>
+                                                    </tr>
+                                                    <tr v-for="participant in participants" :key="participant.dealId">
+                                                        <td>{{participant.username}}</td>
+                                                        <td>{{participant.point}}</td>
+                                                        <td v-if="participant.beginNumber===participant.endNumber">{{participant.beginNumber}}</td>
+                                                        <td v-else>{{participant.beginNumber}}--{{participant.endNumber}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="product_meta">
+                                                <span class="sku_wrapper">SKU: <span class="sku" itemprop="sku">FW511948218</span></span>
+
+                                                <span class="posted_in">Category:
+                                                    <a href="product-category.html" rel="tag">Tai nghe</a>
+                                                </span>
+
+                                                <span class="tagged_as">Tags:
+                                                    <a href="product-category.html" rel="tag">Fast</a>,
+                                                    <a href="product-category.html" rel="tag">Gaming</a>, <a href="product-category.html" rel="tag">Strong</a>
+                                                </span>
+
+                                            </div><!-- /.product_meta -->
+                                        </div>
                                     </div>
                                 </div><!-- /.woocommerce-tabs -->
 
@@ -1023,7 +775,6 @@
 
                 </div>
             </section>
-
         </div><!-- #page -->
     </body>
 </template>
@@ -1040,106 +791,149 @@
 <script src="../switchstylesheet/switchstylesheet.js"></script>
 <script>(function(){if(window===window.parent){document.getElementById('_wp_unfiltered_html_comment_disabled').name='_wp_unfiltered_html_comment';}})();</script>
 <script>
-    (function($) {
-        $(document).ready(function(){
-            $(".changecolor").switchstylesheet( { seperator:"color"} );
-            $('.show-theme-options').click(function(){
-                $(this).parent().toggleClass('open');
-                return false;
-            });
-
-            $('#home-pages').on( 'change', function() {
-                $.ajax({
-                    url : $('#home-pages option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#home-pages option:selected').val();
-                    }
-                });
-            });
-
-            $('#demo-pages').on( 'change', function() {
-                $.ajax({
-                    url : $('#demo-pages option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#demo-pages option:selected').val();
-                    }
-                });
-            });
-
-            $('#header-style').on( 'change', function() {
-                $.ajax({
-                    url : $('#header-style option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#header-style option:selected').val();
-                    }
-                });
-            });
-
-            $('#shop-style').on( 'change', function() {
-                $.ajax({
-                    url : $('#shop-style option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#shop-style option:selected').val();
-                    }
-                });
-            });
-
-            $('#product-category-col').on( 'change', function() {
-                $.ajax({
-                    url : $('#product-category-col option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#product-category-col option:selected').val();
-                    }
-                });
-            });
-
-            $('#single-products').on( 'change', function() {
-                $.ajax({
-                    url : $('#single-products option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#single-products option:selected').val();
-                    }
-                });
-            });
-
-            $('.style-toggle').on( 'click', function() {
-                $(this).parent('.config').toggleClass( 'open' );
-            });
-        });
-})(jQuery);
-</script>
-<script>
-import api from '../api/api'
+import api from '../../api/api'
 export default {
   name: 'login',
   data () {
     return {
-      schema: {
-      }
+      event: {},
+      point: 1,
+      myModel:false,
+      tab:1,
+      participants: []
     }
   },
+  mounted () {
+    this.getEvent()
+    this.eventGetDeal()
+  },
   methods: {
-
+    async getEvent () {
+      let id = this.$route.params.id
+      // console.log(id)
+      let result = await api.getEvent(id)
+      if(result.status ===200){
+        this.event = result.data.data
+      }
+        this.event.price = this.event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })
+    },
+    async createDeal(){
+        if(this.event.currentPoint+this.point>this.event.totalPoint){
+            alert("Số điểm bạn muốn mua vượt quá giới hạn");
+        }else{
+            let result = await api.createDeal({
+            eventId: this.$route.params.id,
+            point: this.point,
+            image: this.event.image,
+            eventName: this.event.eventName,
+            price: this.point*10000
+        })
+        console.log(result)
+        if(result.data.statusCode === 200){
+            this.myModel = false
+            window.location.reload();
+        }
+        else{
+            alert(result.data.message)
+            this.myModel = false
+        }
+        }
+    },
+    async eventGetDeal(){
+        let id = this.$route.params.id
+        let result = await api.eventGetDeal(id)
+        console.log(result)
+        this.participants = result.data.data.Items
+    }
   }
 }
 </script>
 <style>
-  @import "../assets/css/animate.min.css";
-  @import "../assets/css/bootstrap.css";
-  @import "../assets/css/bootstrap.min.css";
-  @import "../assets/css/config.css";
-  @import "../assets/css/font-awesome.min.css";
-  @import "../assets/css/font-electro.css";
-  @import "../assets/css/owl-carousel.css";
-  @import "../assets/css/style.css";
-  @import "../assets/css/colors/black.css";
-  @import "../assets/css/colors/blue.css";
-  @import "../assets/css/colors/flat-blue.css";
-  @import "../assets/css/colors/gold.css";
-  @import "../assets/css/colors/green.css";
-  @import "../assets/css/colors/orange.css";
-  @import "../assets/css/colors/pink.css";
-  @import "../assets/css/colors/red.css";
-  @import "../assets/css/colors/yellow.css";
+  @import "../../assets/css/animate.min.css";
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/bootstrap.min.css";
+  @import "../../assets/css/config.css";
+  @import "../../assets/css/font-awesome.min.css";
+  @import "../../assets/css/font-electro.css";
+  @import "../../assets/css/owl-carousel.css";
+  @import "../../assets/css/style.css";
+  @import "../../assets/css/colors/black.css";
+  @import "../../assets/css/colors/blue.css";
+  @import "../../assets/css/colors/flat-blue.css";
+  @import "../../assets/css/colors/gold.css";
+  @import "../../assets/css/colors/green.css";
+  @import "../../assets/css/colors/orange.css";
+  @import "../../assets/css/colors/pink.css";
+  @import "../../assets/css/colors/red.css";
+  @import "../../assets/css/colors/yellow.css";
   @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic");
+  .modal-mask {
+     position: fixed;
+     z-index: 9998;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, .5);
+     display: table;
+     transition: opacity .3s ease;
+   }
+
+   .modal-wrapper {
+     display: table-cell;
+     vertical-align: middle;
+   }
+     .progress {
+    --bs-progress-height: 0.75rem;
+    --bs-progress-font-size: 0.75rem;
+    --bs-progress-bg: #e9ecef;
+    --bs-progress-border-radius: 0.375rem;
+    --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    --bs-progress-bar-color: #fff;
+    --bs-progress-bar-bg: #fed700;
+    --bs-progress-bar-transition: width 0.6s ease;
+    display: flex;
+    /* margin-top: -15px; */
+    height: var(--bs-progress-height);
+    overflow: hidden;
+    font-size: var(--bs-progress-font-size);
+    background-color: var(--bs-progress-bg);
+    border-radius: var(--bs-progress-border-radius);
+  }
+  .progress-bar-striped {
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: var(--bs-progress-height) var(--bs-progress-height);
+}
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--bs-progress-bar-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--bs-progress-bar-bg);
+    transition: var(--bs-progress-bar-transition);
+}
+.progress {
+    display: block;
+    width: 100%;
+    height: 0.75rem;
+    margin-bottom: 0.2rem;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>

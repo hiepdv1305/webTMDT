@@ -24,9 +24,10 @@ export default new Router({
       component: () => import(/* webpackChunkName: "contact" */ './views/Category.vue')
     },
     {
-      path: '/singleproduct',
-      name: 'singleproduct',
-      component: () => import(/* webpackChunkName: "contact" */ './views/Single_product.vue')
+      path: '/event/:id',
+      name: 'event',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Event/_id.vue')
+
     },
     {
       path: '/cart',

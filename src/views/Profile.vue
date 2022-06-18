@@ -121,8 +121,16 @@ export default {
     //   window.location.reload();
     },
     async updateUser(){
-        let res=await api.updateUser(this.user)
-        console.log(res)
+        let res=await api.updateUser({
+            fullname: this.user.fullname,
+            address: this.user.address,
+            phonenumber: this.user.phonenumber,
+            email: this.user.email
+        })
+        if(res.status === 200){
+            alert("Cập nhật thông tin cá nhân thành công");
+            window.location.reload();
+        }
     }
   }
 }

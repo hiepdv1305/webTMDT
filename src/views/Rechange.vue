@@ -295,6 +295,7 @@ export default {
       console.log(result)
       if (result.data.statusCode === 200) {
         alert('Nạp tiền thành công')
+        window.location.replace('/profile')
       } else {
         alert('lỗi hệ thống, xin thử lại sau')
       }
