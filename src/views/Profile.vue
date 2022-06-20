@@ -18,7 +18,7 @@
                    </div>
                     <!-- Profile picture help block-->
                     <div class=" font-italic text-primary mb-4"><b>{{user.username}}</b></div>
-                    <div class=" font-italic text-muted mb-4">Số dư tài khoản: {{user.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</div>
+                    <div class=" font-italic text-muted mb-4">Số dư tài khoản: {{user.amout}}</div>
                     <!-- Profile picture upload button-->
                     <button class="btn btn-primary" type="button">Cập nhật</button>
                 </div>
@@ -96,7 +96,7 @@ export default {
   name: 'login',
   data () {
     return {
-        user: null,
+        user: {},
         edit: false
     }
   },
@@ -109,6 +109,7 @@ export default {
         console.log(res)
         if(res.data.statusCode === 200){
             this.user = res.data.data
+            this.user.amout = this.user.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })
         }else{
             window.location.replace('/login')
         }

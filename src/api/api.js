@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://2nw4xvorsl.execute-api.us-east-1.amazonaws.com/dev'
+const baseUrl = 'http://localhost:3000/dev'
 // request interceptor to add the auth token header to requests
 axios.interceptors.request.use(
   (config) => {
@@ -82,6 +82,9 @@ const api = {
   },
   eventGetDeal: (id) => {
     return axios.get(`${baseUrl}/event/getAlldeal/${id}`)
+  },
+  getNotification: () => {
+    return axios.get(`${baseUrl}/user/notification`)
   }
 }
 

@@ -956,10 +956,10 @@
 
                     <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                         <li class="nav-item dropdown">
-                            <a href="cart.html" class="nav-link" data-toggle="dropdown">
+                            <a href="/cart" class="nav-link" data-toggle="dropdown">
                                 <i class="ec ec-shopping-bag"></i>
-                                <span class="cart-items-count count">4</span>
-                                <span class="cart-items-total-price total-price"><span class="amount">1.215.000 đ</span></span>
+                                <span class="cart-items-count count">{{count}}</span>
+                                <span class="cart-items-total-price total-price"><span class="amount"> {{total}}</span></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-mini-cart">
                                 <li>
@@ -1000,24 +1000,13 @@
                                         <p class="total"><strong>Subtotal:</strong> <span class="amount">£969.98</span></p>
 
                                         <p class="buttons">
-                                            <a class="button wc-forward" href="cart.html">View Cart</a>
+                                            <a class="button wc-forward" href="/cart">View Cart</a>
                                             <a class="button checkout wc-forward" href="checkout.html">Checkout</a>
                                         </p>
 
                                     </div>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-wishlist nav navbar-nav pull-right flip">
-                        <li class="nav-item">
-                            <a href="wishlist.html" class="nav-link"><i class="ec ec-favorites"></i></a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-compare nav navbar-nav pull-right flip">
-                        <li class="nav-item">
-                            <a href="compare.html" class="nav-link"><i class="ec ec-compare"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -1119,8 +1108,8 @@ export default {
   },
   mounted () {
     this.getUser()
-    // this.getMyEvent()
-    // this.sellected = this.$router.apps[0]._route.name
+    this.getMyEvent()
+    this.getNotification()
   },
   methods: {
     async logOut () {
@@ -1140,6 +1129,21 @@ export default {
         }
       }
     },
+    async getMyEvent(){
+        let result = await api.getMyEvent();
+        // console.log(result);
+        this.myEvents = result.data.data.Items
+        console.log(this.myEvents)
+        this.myEvents.forEach(event => {
+            this.total += event.price;
+            this.count += 1
+        });
+        this.total = this.total.toLocaleString('vi', { style: 'currency', currency: 'VND' })
+    },
+    async getNotification(){
+        let result = await api.getNotification();
+        console.log(result)
+    }
   }
 }
 </script>

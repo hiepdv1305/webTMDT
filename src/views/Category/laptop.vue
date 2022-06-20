@@ -11,7 +11,7 @@
                         <main id="main" class="site-main">
 
                             <header class="page-header">
-                                <!-- <h1 class="page-title">Điện thoại &amp; Máy tính bảng</h1> -->
+                                <h1 class="page-title">Laptop</h1>
                                 <p class="woocommerce-result-count">Hiển thị 1&ndash;15 trong 20 kết quả</p>
                             </header>
                             <div class="shop-control-bar">
@@ -117,7 +117,7 @@
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
 
-                                                            <img src="../assets/images/products/3.jpg" alt="">
+                                                            <img src="../../assets/images/products/3.jpg" alt="">
 
                                                         </div>
                                                     </a>
@@ -155,7 +155,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/1.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/1.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -201,7 +201,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/2.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/2.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -247,7 +247,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/3.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/3.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -293,7 +293,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/4.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/4.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -339,7 +339,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/5.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/5.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -385,7 +385,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/6.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/6.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -431,7 +431,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/4.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/4.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -477,7 +477,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/2.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/2.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -523,7 +523,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/5.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/5.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -569,7 +569,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/1.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/1.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -615,7 +615,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/6.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/6.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -661,7 +661,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/3.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/3.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -707,7 +707,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/5.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/5.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -753,7 +753,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/4.jpg" alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/4.jpg" alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -799,7 +799,7 @@
                                                     <a href="/event">
                                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                                         <div class="product-thumbnail">
-                                                            <img class="wp-post-image" src="../assets/images/products/2.jpg"  alt="">
+                                                            <img class="wp-post-image" src="../../assets/images/products/2.jpg"  alt="">
                                                         </div>
 
                                                         <div class="product-rating">
@@ -999,7 +999,88 @@
 <script src="../../assets/js/electro.js"></script>
 <script src="../switchstylesheet/switchstylesheet.js"></script>
 <script>
-import api from '../api/api'
+    jQuery(document).ready(function($){
+        $( '.form-adv-pagination' ).on( 'submit', function() {
+            var link        = '#',
+            goto_page   = $( '#goto-page' ).val(),
+            new_link    = link.replace( '%#%', goto_page );
+
+            window.location.href = new_link;
+            return false;
+        });
+    });
+</script>
+<script>
+    (function($) {
+        $(document).ready(function(){
+            $(".changecolor").switchstylesheet( { seperator:"color"} );
+            $('.show-theme-options').click(function(){
+                $(this).parent().toggleClass('open');
+                return false;
+            });
+
+            $('#home-pages').on( 'change', function() {
+                $.ajax({
+                    url : $('#home-pages option:selected').val(),
+                    success:function(res) {
+                        location.href = $('#home-pages option:selected').val();
+                    }
+                });
+            });
+
+            $('#demo-pages').on( 'change', function() {
+                $.ajax({
+                    url : $('#demo-pages option:selected').val(),
+                    success:function(res) {
+                        location.href = $('#demo-pages option:selected').val();
+                    }
+                });
+            });
+
+            $('#header-style').on( 'change', function() {
+                $.ajax({
+                    url : $('#header-style option:selected').val(),
+                    success:function(res) {
+                        location.href = $('#header-style option:selected').val();
+                    }
+                });
+            });
+
+            $('#shop-style').on( 'change', function() {
+                $.ajax({
+                    url : $('#shop-style option:selected').val(),
+                    success:function(res) {
+                        location.href = $('#shop-style option:selected').val();
+                    }
+                });
+            });
+
+            $('#product-category-col').on( 'change', function() {
+                $.ajax({
+                    url : $('#product-category-col option:selected').val(),
+                    success:function(res) {
+                        location.href = $('#product-category-col option:selected').val();
+                    }
+                });
+            });
+
+            $('#single-products').on( 'change', function() {
+                $.ajax({
+                    url : $('#single-products option:selected').val(),
+                    success:function(res) {
+                        location.href = $('#single-products option:selected').val();
+                    }
+                });
+            });
+
+            $('.style-toggle').on( 'click', function() {
+                $(this).parent('.config').toggleClass( 'open' );
+            });
+        });
+})(jQuery);
+</script>
+<script>
+import api from '../../api/api'
 var paginate = require('vuejs-paginate')
 export default {
   name: 'home',
@@ -1009,12 +1090,7 @@ export default {
   data () {
     return {
       count: 0,
-      events:null,
-      pagination: {
-        itemsPerPage: 15,
-        page: 1,
-        paginationItems: []
-      }
+      events:[]
     }
   },
   mounted () {
@@ -1024,30 +1100,33 @@ export default {
     async getAllEvent () {
       let result = await api.getAllEvent()
       console.log(result)
-      this.events = result.data.data.Items
+    //   this.events = result.data.data.Items
+      result.data.data.Items.forEach(item => {
+        if(item.category=='laptop') this.events.push(item)
+      });
     },
   }
 }
 </script>
 <style>
   /* @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"); */
-  @import "../assets/css/animate.min.css";
-  @import "../assets/css/bootstrap.css";
-  @import "../assets/css/bootstrap.min.css";
-  @import "../assets/css/config.css";
-  @import "../assets/css/font-awesome.min.css";
-  @import "../assets/css/font-electro.css";
-  @import "../assets/css/owl-carousel.css";
-  @import "../assets/css/style.css";
-  @import "../assets/css/colors/black.css";
-  @import "../assets/css/colors/blue.css";
-  @import "../assets/css/colors/flat-blue.css";
-  @import "../assets/css/colors/gold.css";
-  @import "../assets/css/colors/green.css";
-  @import "../assets/css/colors/orange.css";
-  @import "../assets/css/colors/pink.css";
-  @import "../assets/css/colors/red.css";
-  @import "../assets/css/colors/yellow.css";
+  @import "../../assets/css/animate.min.css";
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/bootstrap.min.css";
+  @import "../../assets/css/config.css";
+  @import "../../assets/css/font-awesome.min.css";
+  @import "../../assets/css/font-electro.css";
+  @import "../../assets/css/owl-carousel.css";
+  @import "../../assets/css/style.css";
+  @import "../../assets/css/colors/black.css";
+  @import "../../assets/css/colors/blue.css";
+  @import "../../assets/css/colors/flat-blue.css";
+  @import "../../assets/css/colors/gold.css";
+  @import "../../assets/css/colors/green.css";
+  @import "../../assets/css/colors/orange.css";
+  @import "../../assets/css/colors/pink.css";
+  @import "../../assets/css/colors/red.css";
+  @import "../../assets/css/colors/yellow.css";
   @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic");
 
   .progress {

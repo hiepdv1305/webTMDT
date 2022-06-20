@@ -17,6 +17,7 @@
     "vue": "^2.5.17",
     "vue-extend-layout": "^2.0.5",
     "vue-router": "^3.0.1",
+    "vuejs-paginate": "^2.1.0",
     "wow.js": "^1.2.2"
   },
   "devDependencies": {

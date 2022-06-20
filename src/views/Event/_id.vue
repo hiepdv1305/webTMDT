@@ -63,12 +63,12 @@
                                         <h1 itemprop="name" class="product_title entry-title">{{event.eventName}}</h1>
                                         <span class="price">
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width:50%" :aria-valuenow="event.currentPoint" aria-valuemin="0" :aria-valuemax="event.totalPoint"></div>
+                                                <div class="progress-bar progress-bar-striped" role="progressbar" :style="'width:'+(event.currentPoint/event.totalPoint)*100+'%'" :aria-valuenow="event.currentPoint" aria-valuemin="0" :aria-valuemax="event.totalPoint"></div>
                                             </div>
                                             <span class="electro-price" style="font-weight: bold;color: #4a5b6a; margin-top: -15px"><span class="amount">{{event.currentPoint}}</span>/<span>{{event.totalPoint}}</span></span>
                                         </span>
-                                        <div class="availability in-stock">Trạng thái: <span>Đang diễn ra</span></div><!-- .availability -->
-
+                                        <div v-if="event.status == 'active' " class="availability in-stock">Trạng thái: <span>Đang diễn ra</span></div><!-- .availability -->
+                                        <div v-else class="availability in-stock">Trạng thái: <span style="color: red">Kết thúc</span></div><!-- .availability -->
                                         <hr class="single-product-title-divider" />
 
                                         <div class="action-buttons">
@@ -148,7 +148,6 @@
                                             <a :class="{ active: tab ===3 }" @click="tab=3" data-toggle="tab">Danh sách tham gia</a>
                                         </li>
                                     </ul>
-
                                     <div class="tab-content">
                                         <div :class="{ active: tab === 1 }" class="tab-pane in panel entry-content wc-tab">
                                             <div class="electro-description">
@@ -394,6 +393,7 @@
                                             </div><!-- /.electro-advanced-reviews -->
                                         </div><!-- /.panel -->
                                         <div :class="{ active: tab === 3 }" class="tab-pane in panel entry-content wc-tab">
+                                            <div v-if="event.status=='finish'">Con số may mắn là <b>{{event.winnerNumber}}</b>. Chúc mừng <b>{{event.winner}}</b> đã là người chiến thắng sự kiện này</div>
                                             <div v-if="participants.length===0">
                                                 <h3>Bạn hãy là người đầu tiên tham gia sự kiện này</h3>
                                             </div>
@@ -416,7 +416,7 @@
                                                 <span class="sku_wrapper">SKU: <span class="sku" itemprop="sku">FW511948218</span></span>
 
                                                 <span class="posted_in">Category:
-                                                    <a href="product-category.html" rel="tag">Tai nghe</a>
+                                                    <a href="product-category.html" rel="tag">{{event.category}}</a>
                                                 </span>
 
                                                 <span class="tagged_as">Tags:
@@ -826,7 +826,8 @@ export default {
             point: this.point,
             image: this.event.image,
             eventName: this.event.eventName,
-            price: this.point*10000
+            price: this.point*10000,
+            eventPrice: this.event.price
         })
         console.log(result)
         if(result.data.statusCode === 200){
@@ -883,44 +884,7 @@ export default {
      display: table-cell;
      vertical-align: middle;
    }
-     .progress {
-    --bs-progress-height: 0.75rem;
-    --bs-progress-font-size: 0.75rem;
-    --bs-progress-bg: #e9ecef;
-    --bs-progress-border-radius: 0.375rem;
-    --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-    --bs-progress-bar-color: #fff;
-    --bs-progress-bar-bg: #fed700;
-    --bs-progress-bar-transition: width 0.6s ease;
-    display: flex;
-    /* margin-top: -15px; */
-    height: var(--bs-progress-height);
-    overflow: hidden;
-    font-size: var(--bs-progress-font-size);
-    background-color: var(--bs-progress-bg);
-    border-radius: var(--bs-progress-border-radius);
-  }
-  .progress-bar-striped {
-    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-    background-size: var(--bs-progress-height) var(--bs-progress-height);
-}
-.progress-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    color: var(--bs-progress-bar-color);
-    text-align: center;
-    white-space: nowrap;
-    background-color: var(--bs-progress-bar-bg);
-    transition: var(--bs-progress-bar-transition);
-}
-.progress {
-    display: block;
-    width: 100%;
-    height: 0.75rem;
-    margin-bottom: 0.2rem;
-}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -936,4 +900,26 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+.progress {
+    --bs-progress-height: 1rem;
+    --bs-progress-font-size: 0.75rem;
+    --bs-progress-bg: #e9ecef;
+    --bs-progress-border-radius: 0.375rem;
+    --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    --bs-progress-bar-color: #fff;
+    --bs-progress-bar-bg: #fed700;
+    --bs-progress-bar-transition: width 0.6s ease;
+    display: flex;
+    height: var(--bs-progress-height);
+    overflow: hidden;
+    font-size: var(--bs-progress-font-size);
+    background-color: var(--bs-progress-bg);
+    border-radius: var(--bs-progress-border-radius);
+}
+.progress {
+    width: 100%;
+    height: 0.75rem;
+    margin-bottom: 0.2rem;
+}
+
 </style>

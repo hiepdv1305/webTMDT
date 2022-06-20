@@ -19,9 +19,29 @@ export default new Router({
       component: () => import(/* webpackChunkName: "contact" */ './views/Login.vue')
     },
     {
-      path: '/category',
-      name: 'category',
-      component: () => import(/* webpackChunkName: "contact" */ './views/Category.vue')
+      path: '/category/camera',
+      name: 'camera',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Category/camera.vue')
+    },
+    {
+      path: '/category/laptop',
+      name: 'laptop',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Category/laptop.vue')
+    },
+    {
+      path: '/category/phone',
+      name: 'phone',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Category/phone.vue')
+    },
+    {
+      path: '/category/tablet',
+      name: 'tablet',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Category/tablet.vue')
+    },
+    {
+      path: '/category/TV',
+      name: 'TV',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Category/TV.vue')
     },
     {
       path: '/event/:id',

@@ -10,7 +10,11 @@
 
                     <div id="primary" class="content-area">
                         <main id="main" class="site-main">
-                            <article class="page type-page status-publish hentry">
+                            <div v-if="myEvents.length===0">
+                                <h3>Bạn chưa tham gia sự kiện nào</h3>
+                                <a href="/">Tham gia ngay</a>
+                            </div>
+                            <article v-else class="page type-page status-publish hentry">
                                 <header class="entry-header"><h1 itemprop="name" class="entry-title">Sự kiện của bạn</h1></header><!-- .entry-header -->
 
                                 <form>
@@ -18,74 +22,38 @@
                                     <table class="shop_table shop_table_responsive cart">
                                         <thead>
                                             <tr>
-                                                <th class="product-remove">&nbsp;</th>
                                                 <th class="product-thumbnail">&nbsp;</th>
                                                 <th class="product-name">Sự kiện</th>
                                                 <th class="product-price">Giá</th>
                                                 <th class="product-quantity">Số điểm</th>
+                                                <th class="product-quantity">Điểm bắt đầu - kết thúc</th>
                                                 <th class="product-subtotal">Tổng</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            <tr class="cart_item">
-
-                                                <td class="product-remove">
-                                                    <a class="remove" href="#">×</a>
-                                                </td>
+                                            <tr class="cart_item" v-for="event in myEvents" :key="event.dealId">
 
                                                 <td class="product-thumbnail">
-                                                    <a href="single-product.html"><img width="180" height="180" src="../assets/images/products/2.jpg" alt=""></a>
+                                                    <a :href="`/event/`+event.eventId"><img width="180" height="180" :src="event.image" alt=""></a>
                                                 </td>
 
                                                 <td data-title="Product" class="product-name">
-                                                    <a href="single-product.html">Wireless Audio System Multiroom 360</a>
+                                                    <a :href="`/event/`+event.eventId">{{event.eventName}}</a>
                                                 </td>
 
                                                 <td data-title="Price" class="product-price">
-                                                    <span class="amount">$1,999.00</span>
+                                                    <span class="amount">{{event.eventPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span>
                                                 </td>
 
                                                 <td data-title="Quantity" class="product-quantity">
-                                                    <div class="quantity buttons_added"><input type="button" class="minus" value="-">
-                                                        <label>Quantity:</label>
-                                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="cart[92f54963fc39a9d87c2253186808ea61][qty]" max="29" min="0" step="1">
-                                                        <input type="button" class="plus" value="+">
-                                                    </div>
+                                                    <span class="amount">{{event.point}}</span>
                                                 </td>
-
-                                                <td data-title="Total" class="product-subtotal">
-                                                    <span class="amount">$1,999.00</span>
-                                                </td>
-                                            </tr>
-                                            <tr class="cart_item">
-
-                                                <td class="product-remove">
-                                                    <a data-product_sku="5487FB8/26" data-product_id="2606" title="Remove this item" class="remove" href="#">×</a>
-                                                </td>
-
-                                                <td class="product-thumbnail">
-                                                    <a href="single-product.html"><img width="180" height="180" alt="LaptopYoga" class="wp-post-image" src="../assets/images/products/1.jpg"></a>
-                                                </td>
-
-                                                <td data-title="Product" class="product-name">
-                                                    <a href="single-product.html">Tablet White EliteBook  Revolve 810 G2</a>
-                                                </td>
-
-                                                <td data-title="Price" class="product-price">
-                                                    <span class="amount">$1,300.00</span>
-                                                </td>
-
                                                 <td data-title="Quantity" class="product-quantity">
-                                                    <div class="quantity buttons_added"><input type="button" class="minus" value="-">
-                                                        <label>Quantity:</label>
-                                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="cart[a431d70133ef6cf688bc4f6093922b48][qty]" max="30" min="0" step="1">
-                                                        <input type="button" class="plus" value="+">
-                                                    </div>
+                                                    <span class="amount">{{event.beginNumber}}--{{event.endNumber}}</span>
                                                 </td>
-
                                                 <td data-title="Total" class="product-subtotal">
-                                                    <span class="amount">$1,300.00</span>
+                                                    <span class="amount">{{ event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' }) }}</span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -387,156 +355,27 @@
 <script src="../assets/js/electro.js"></script>
 <script src="../switchstylesheet/switchstylesheet.js"></script>
 <script>(function(){if(window===window.parent){document.getElementById('_wp_unfiltered_html_comment_disabled').name='_wp_unfiltered_html_comment';}})();</script>
-<script>
-(function($) {
-    $(document).ready(function(){
-        $(".changecolor").switchstylesheet( { seperator:"color"} );
-        $('.show-theme-options').click(function(){
-            $(this).parent().toggleClass('open');
-            return false;
-        });
 
-        $('#home-pages').on( 'change', function() {
-            $.ajax({
-                url : $('#home-pages option:selected').val(),
-                success:function(res) {
-                    location.href = $('#home-pages option:selected').val();
-                }
-            });
-        });
-
-        $('#demo-pages').on( 'change', function() {
-            $.ajax({
-                url : $('#demo-pages option:selected').val(),
-                success:function(res) {
-                    location.href = $('#demo-pages option:selected').val();
-                }
-            });
-        });
-
-        $('#header-style').on( 'change', function() {
-            $.ajax({
-                url : $('#header-style option:selected').val(),
-                success:function(res) {
-                    location.href = $('#header-style option:selected').val();
-                }
-            });
-        });
-
-        $('#shop-style').on( 'change', function() {
-            $.ajax({
-                url : $('#shop-style option:selected').val(),
-                success:function(res) {
-                    location.href = $('#shop-style option:selected').val();
-                }
-            });
-        });
-
-        $('#product-category-col').on( 'change', function() {
-            $.ajax({
-                url : $('#product-category-col option:selected').val(),
-                success:function(res) {
-                    location.href = $('#product-category-col option:selected').val();
-                }
-            });
-        });
-
-        $('#single-products').on( 'change', function() {
-            $.ajax({
-                url : $('#single-products option:selected').val(),
-                success:function(res) {
-                    location.href = $('#single-products option:selected').val();
-                }
-            });
-        });
-
-        $('.style-toggle').on( 'click', function() {
-            $(this).parent('.config').toggleClass( 'open' );
-        });
-    });
-})(jQuery);
-</script>
-<script>
-    (function($) {
-        $(document).ready(function(){
-            $(".changecolor").switchstylesheet( { seperator:"color"} );
-            $('.show-theme-options').click(function(){
-                $(this).parent().toggleClass('open');
-                return false;
-            });
-
-            $('#home-pages').on( 'change', function() {
-                $.ajax({
-                    url : $('#home-pages option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#home-pages option:selected').val();
-                    }
-                });
-            });
-
-            $('#demo-pages').on( 'change', function() {
-                $.ajax({
-                    url : $('#demo-pages option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#demo-pages option:selected').val();
-                    }
-                });
-            });
-
-            $('#header-style').on( 'change', function() {
-                $.ajax({
-                    url : $('#header-style option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#header-style option:selected').val();
-                    }
-                });
-            });
-
-            $('#shop-style').on( 'change', function() {
-                $.ajax({
-                    url : $('#shop-style option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#shop-style option:selected').val();
-                    }
-                });
-            });
-
-            $('#product-category-col').on( 'change', function() {
-                $.ajax({
-                    url : $('#product-category-col option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#product-category-col option:selected').val();
-                    }
-                });
-            });
-
-            $('#single-products').on( 'change', function() {
-                $.ajax({
-                    url : $('#single-products option:selected').val(),
-                    success:function(res) {
-                        location.href = $('#single-products option:selected').val();
-                    }
-                });
-            });
-
-            $('.style-toggle').on( 'click', function() {
-                $(this).parent('.config').toggleClass( 'open' );
-            });
-        });
-})(jQuery);
-</script>
 <script>
 import api from '../api/api'
 export default {
   name: 'login',
   data () {
     return {
-      schema: {
-      }
+
+        myEvents: []
     }
   },
+  mounted () {
+    this.getMyEvent()
+  },
   methods: {
-
+    async getMyEvent(){
+        let result = await api.getMyEvent();
+        // console.log(result);
+        this.myEvents = result.data.data.Items
+        console.log(this.myEvents)
+    }
   }
 }
 </script>
