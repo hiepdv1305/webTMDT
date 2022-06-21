@@ -1,15 +1,32 @@
 <template>
   <div class="header-area">
             <div class="top-bar hidden-md-down">
-                <div class="container">
+                <div class="container notification-container">
                     <nav>
                         <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
                             <li class="menu-item"><router-link to="/rechange"><button class="action_button"><span>Nạp tiền</span></button></router-link></li>
-                            <li class="menu-item animate-dropdown"><i class="fa fa-bell"></i></li>
+                            <li @click="showNoti= !showNoti" class="menu-item animate-dropdown"><i class="fa fa-bell"></i></li>
                             <li v-if="!user" class="menu-item animate-dropdown"><a title="My Account" href="/login"><i class="ec ec-user"></i>Đăng nhập/Đăng ký</a></li>
                             <li v-else class="menu-item animate-dropdown"><a title="My Account" href="/profile"><i class="ec ec-user"></i>{{user.username}}</a></li>
                         </ul>
                     </nav>
+                    <div v-if="showNoti" class="notification">
+                     <div class="notification-body" id="style">
+                        <div class="card-header" style="display: flex; justify-content: space-between; ">
+                            <div><b>Thông báo</b></div>
+                            <div style="text-decoration: underline; cursor: pointer; color: #0062bd;">Xem tất cả</div>
+                        </div>
+                        <div v-if="notification.length===0">
+                            Bạn không có thông báo nào
+                        </div>
+                        <div v-for="(item, index) in notification" :key="index" style="display: flex; justify-content: space-between;">
+                            <div style="width:90px;height:90px;padding-right: 10px">
+                                <img :src="item.image" alt="">
+                            </div>
+                            <p><a :href="`/event/` + item.eventId" style="color: #333e48; text-align: justify">{{item.content.slice(0,70)}}</a></p>
+                        </div>
+                     </div>
+                    </div>
                 </div>
             </div><!-- /.top-bar -->
 
@@ -1103,13 +1120,18 @@ export default {
       sellected: '',
       user: null,
       total: 0,
-      count: 0
+      count: 0,
+      showNoti: false,
+      notification:[]
     }
   },
   mounted () {
     this.getUser()
     this.getMyEvent()
     this.getNotification()
+    window.setInterval(() => {
+    this.getNotification()
+  }, 1000)
   },
   methods: {
     async logOut () {
@@ -1133,7 +1155,7 @@ export default {
         let result = await api.getMyEvent();
         // console.log(result);
         this.myEvents = result.data.data.Items
-        console.log(this.myEvents)
+        // console.log(this.myEvents)
         this.myEvents.forEach(event => {
             this.total += event.price;
             this.count += 1
@@ -1142,7 +1164,17 @@ export default {
     },
     async getNotification(){
         let result = await api.getNotification();
-        console.log(result)
+        // console.log(result)
+        if(result.data.statusCode===200){
+            // console.log(Array.isArray(result.data.data))
+            if(!Array.isArray(result.data.data)){
+                this.notification[0]= result.data.data
+            }
+            else{
+                this.notification = result.data.data
+                // console.log(this.notification)
+            }
+        }
     }
   }
 }
@@ -1171,5 +1203,32 @@ export default {
   color: #fff;
   font-weight: bold;
   border-color: #fed700;
+}
+.notification-container{
+    position: relative;
+}
+.notification{
+    border: 1px solid #e5e5e5;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    border-radius: 5px;
+    background: #FFF;
+    z-index: 9999;
+    box-shadow: 0px 0px 2px 2px #999999;
+  height: 350px;
+}
+.notification-body{
+    width: 280px;
+    max-height: 350px;
+     /* min-height: 450px; */
+padding: 10px;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.notification-body::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
 }
 </style>

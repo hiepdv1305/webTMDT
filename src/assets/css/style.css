@@ -9799,7 +9799,7 @@ section.section-posts-carousel .comments-link a::before,
 section.section-posts-carousel .likes a::before {
   color: #999999;
   font-family: "font-electro";
-  margin-rightf: 3px;
+  margin-right: 3px;
   vertical-align: middle;
   font-size: 16px;
 }

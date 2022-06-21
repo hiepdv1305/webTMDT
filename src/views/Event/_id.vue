@@ -71,15 +71,6 @@
                                         <div v-else class="availability in-stock">Trạng thái: <span style="color: red">Kết thúc</span></div><!-- .availability -->
                                         <hr class="single-product-title-divider" />
 
-                                        <div class="action-buttons">
-
-                                            <a href="#" class="add_to_wishlist" >
-                                                Yêu thích
-                                            </a>
-
-                                            <a href="#" class="add-to-compare-link" data-product_id="2452">So sánh</a>
-                                        </div><!-- .action-buttons -->
-
                                         <div itemprop="description">
                                             {{event.description}}
                                         </div><!-- .description -->

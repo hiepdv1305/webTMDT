@@ -11,30 +11,17 @@
                         <main id="main" class="site-main">
 
                             <header class="page-header">
-                                <!-- <h1 class="page-title">Điện thoại &amp; Máy tính bảng</h1> -->
-                                <p class="woocommerce-result-count">Hiển thị 1&ndash;15 trong 20 kết quả</p>
+                                <h1 v-if="category=='phone'" class="page-title">Điện thoại</h1>
+                                <h1 v-if="category=='tablet'" class="page-title">Máy tính bảng</h1>
+                                <h1 v-if="category=='laptop'" class="page-title">Laptop</h1>
+                                <h1 v-if="category=='TV'" class="page-title">TV</h1>
+                                <h1 v-if="category=='camera'" class="page-title">Máy ảnh</h1>
+                                <p class="woocommerce-result-count">Hiển thị {{(pagination.page-1)*pagination.itemsPerPage+1}}&ndash;{{Math.min(pagination.page*pagination.itemsPerPage,stock.length)}} trong {{stock.length}} kết quả</p>
                             </header>
                             <div class="shop-control-bar">
-                                <ul class="shop-view-switcher nav nav-tabs" role="tablist">
-                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" title="Grid View" href="#grid"><i class="fa fa-th"></i></a></li>
-                                    <li class="nav-item"><a class="nav-link " data-toggle="tab" title="Grid Extended View" href="#grid-extended"><i class="fa fa-align-justify"></i></a></li>
-                                    <li class="nav-item"><a class="nav-link " data-toggle="tab" title="List View" href="#list-view"><i class="fa fa-list"></i></a></li>
-                                    <li class="nav-item"><a class="nav-link " data-toggle="tab" title="List View Small" href="#list-view-small"><i class="fa fa-th-list"></i></a></li>
-                                </ul>
-                                <form class="woocommerce-ordering" method="get">
-                                    <select name="orderby" class="orderby">
-                                        <option value="menu_order"  selected='selected'>Default sorting</option>
-                                        <option value="popularity" >Sort by popularity</option>
-                                        <option value="rating" >Sort by average rating</option>
-                                        <option value="date" >Sort by newness</option>
-                                        <option value="price" >Sort by price: low to high</option>
-                                        <option value="price-desc" >Sort by price: high to low</option>
-                                    </select>
-                                </form>
-                                <form class="form-electro-wc-ppp"><select name="ppp" onchange="this.form.submit()" class="electro-wc-wppp-select c-select"><option value="15"  selected='selected'>Show 15</option><option value="-1" >Show All</option></select></form>
+                                <form @change="onChange()" class="form-electro-wc-ppp"><select name="ppp" class="electro-wc-wppp-select c-select" v-model.number="pagination.itemsPerPage"><option value="15" selected='selected'>Hiển thị 15</option><option value="30" selected='selected'>Hiển thị 30</option><option :value="stock.length" @click="this.pagination.itemsPerPage = this.stock.length;this.pagination.page=1" >Hiển thị tất cả</option></select></form>
                                 <nav class="electro-advanced-pagination">
-                                    <form method="post" class="form-adv-pagination"><input id="goto-page" size="2" min="1" max="2" step="1" type="number" class="form-control" value="1" /></form> of 2<a class="next page-numbers" href="#">&rarr;</a>
-
+                                    <form class="form-adv-pagination" @change="onChange()"><input v-model.number="pagination.page" id="goto-page" min="1" :max="Math.ceil(stock.length/pagination.itemsPerPage)" step="1" type="number" value="1"/></form> of {{Math.ceil(stock.length/pagination.itemsPerPage)}}<i @click="pagination.page= pagination.page<Math.ceil(stock.length/pagination.itemsPerPage) ? pagination.page +1: pagination.page,onChange()" class="next page-numbers" style="cursor: pointer;">&rarr;</i>
                                 </nav>
                             </div>
 
@@ -950,20 +937,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="shop-control-bar-bottom">
-                                <form class="form-electro-wc-ppp">
-                                    <select class="electro-wc-wppp-select c-select" onchange="this.form.submit()" name="ppp"><option selected="selected" value="15">Hiển thị 15</option><option value="-1">Show All</option></select>
-                                </form>
-                                <p class="woocommerce-result-count">Hiển thị 1&ndash;15 trong 20 kết quả</p>
-                                <nav class="woocommerce-pagination">
-                                    <ul class="page-numbers">
-                                        <li><span class="page-numbers current">1</span></li>
-                                        <li><a href="#" class="page-numbers">2</a></li>
-                                        <li><a href="#" class="next page-numbers">→</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-
                         </main><!-- #main -->
                     </div><!-- #primary -->
 
@@ -971,11 +944,11 @@
                         <aside class="widget woocommerce widget_product_categories electro_widget_product_categories">
                                     <!-- <h3 class="widget-title">Danh mục sản phẩm</h3> -->
                                     <ul>
-                                        <li class="cat-item current-cat"><router-link to="/category/camera">Máy ảnh</router-link></li>
-                                        <li class="cat-item current-cat"><router-link to="/category/phone">Điện thoại</router-link></li>
-                                        <li class="cat-item current-cat"><router-link to="/category/TV">TV</router-link></li>
-                                        <li class="cat-item current-cat"><router-link to="/category/tablet">Máy tính bảng</router-link></li>
-                                        <li class="cat-item current-cat"><router-link to="/category/laptop">Laptop</router-link>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='camera',getAllEvent()">Máy ảnh</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='phone',getAllEvent()">Điện thoại</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='TV',getAllEvent()">TV</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='tablet',getAllEvent()">Máy tính bảng</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='laptop',getAllEvent()">Laptop</div>
                                         </li>
                                     </ul>
                         </aside>
@@ -1009,9 +982,12 @@ export default {
   data () {
     return {
       count: 0,
-      events:null,
+      category: 'all',
+      beforeStock:[],
+      stock: [],
+      events:[],
       pagination: {
-        itemsPerPage: 15,
+        itemsPerPage: 3,
         page: 1,
         paginationItems: []
       }
@@ -1022,10 +998,52 @@ export default {
   },
   methods: {
     async getAllEvent () {
+        console.log(1)
       let result = await api.getAllEvent()
-      console.log(result)
+    //   console.log(result)
       this.events = result.data.data.Items
+      this.beforeStock = result.data.data.Items
+      this.stock=[]
+      switch (this.category) {
+        case 'all':
+            this.stock = this.beforeStock
+            break;
+        case 'phone':
+            this.beforeStock.forEach(item => {
+                if(item.category=='điện thoại') this.stock.push(item)
+            });
+            break;
+        case 'laptop':
+            this.beforeStock.forEach(item => {
+                if(item.category=='laptop') this.stock.push(item)
+            });
+            break;
+        case 'tablet':
+            this.beforeStock.forEach(item => {
+                if(item.category=='máy tính bảng') this.stock.push(item)
+            });
+            break;
+        case 'TV':
+            this.beforeStock.forEach(item => {
+                if(item.category=='TV') this.stock.push(item)
+            });
+            break;
+        case 'camera':
+            this.beforeStock.forEach(item => {
+                if(item.category=='camera') this.stock.push(item)
+            });
+            break;
+        default:
+            break;
+      }
+      this.onChange()
     },
+    onChange() {
+        console.log('The new value is: ', this.pagination.itemsPerPage)
+        console.log('page is: ', this.pagination.page)
+        this.events = this.stock.slice((this.pagination.page-1)*this.pagination.itemsPerPage,this.pagination.page*this.pagination.itemsPerPage)
+        console.log(this.stock)
+    }
   }
 }
 </script>

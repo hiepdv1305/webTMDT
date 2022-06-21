@@ -39,7 +39,7 @@
                                                 </td>
 
                                                 <td data-title="Product" class="product-name">
-                                                    <a :href="`/event/`+event.eventId">{{event.eventName}}</a>
+                                                    <a :href="`/event/`+event.eventId">{{event.eventName.slice(0,60)}}</a>
                                                 </td>
 
                                                 <td data-title="Price" class="product-price">
