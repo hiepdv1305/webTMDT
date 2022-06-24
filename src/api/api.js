@@ -85,6 +85,9 @@ const api = {
   },
   getNotification: () => {
     return axios.get(`${baseUrl}/user/notification`)
+  },
+  getAllWinner: () => {
+    return axios.get(`${baseUrl}/winner/getAll`)
   }
 }
 

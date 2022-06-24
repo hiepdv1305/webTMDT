@@ -25,8 +25,8 @@
                                                 <th class="product-thumbnail">&nbsp;</th>
                                                 <th class="product-name">Sự kiện</th>
                                                 <th class="product-price">Giá</th>
-                                                <th class="product-quantity">Số điểm</th>
-                                                <th class="product-quantity">Điểm bắt đầu - kết thúc</th>
+                                                <th class="product-quantity">Số vé</th>
+                                                <th class="product-quantity">Bắt đầu - kết thúc</th>
                                                 <th class="product-subtotal">Tổng</th>
                                             </tr>
                                         </thead>

@@ -79,7 +79,9 @@
 
                                             <p class="price"><span class="electro-price"><ins><span class="amount">{{event.price}}</span></ins></span></p>
                                         </div><!-- /itemprop -->
-
+                                        <div >
+                                            Số điểm còn lại: <b>{{event.totalPoint-event.currentPoint}}</b>
+                                        </div><!-- .description -->
                                         <div class="variations_form cart">
                                             <div class="single_variation_wrap">
                                                 <div class="woocommerce-variation single_variation"></div>
@@ -165,20 +167,6 @@
                                                     </tbody>
                                                 </table>
                                             </div><!-- /.electro-description -->
-
-                                            <div class="product_meta">
-                                                <span class="sku_wrapper">SKU: <span class="sku" itemprop="sku">FW511948218</span></span>
-
-                                                <span class="posted_in">Category:
-                                                    <a href="product-category.html" rel="tag">Tai nghe</a>
-                                                </span>
-
-                                                <span class="tagged_as">Tags:
-                                                    <a href="product-category.html" rel="tag">Fast</a>,
-                                                    <a href="product-category.html" rel="tag">Gaming</a>, <a href="product-category.html" rel="tag">Strong</a>
-                                                </span>
-
-                                            </div><!-- /.product_meta -->
                                         </div>
                                         <div :class="{ active: tab === 2 }" class="tab-pane panel entry-content wc-tab">
                                             <div id="reviews" class="electro-advanced-reviews">
@@ -392,8 +380,8 @@
                                                 <table>
                                                     <tr>
                                                         <th>Username</th>
-                                                        <th>Số điểm</th>
-                                                        <th>Điểm bắt đầu - kết thúc</th>
+                                                        <th>Số vé</th>
+                                                        <th>Bắt đầu - kết thúc</th>
                                                     </tr>
                                                     <tr v-for="participant in participants" :key="participant.dealId">
                                                         <td>{{participant.username}}</td>
@@ -403,19 +391,6 @@
                                                     </tr>
                                                 </table>
                                             </div>
-                                            <div class="product_meta">
-                                                <span class="sku_wrapper">SKU: <span class="sku" itemprop="sku">FW511948218</span></span>
-
-                                                <span class="posted_in">Category:
-                                                    <a href="product-category.html" rel="tag">{{event.category}}</a>
-                                                </span>
-
-                                                <span class="tagged_as">Tags:
-                                                    <a href="product-category.html" rel="tag">Fast</a>,
-                                                    <a href="product-category.html" rel="tag">Gaming</a>, <a href="product-category.html" rel="tag">Strong</a>
-                                                </span>
-
-                                            </div><!-- /.product_meta -->
                                         </div>
                                     </div>
                                 </div><!-- /.woocommerce-tabs -->

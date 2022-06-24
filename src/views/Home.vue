@@ -19,6 +19,14 @@
                                 <p class="woocommerce-result-count">Hiển thị {{(pagination.page-1)*pagination.itemsPerPage+1}}&ndash;{{Math.min(pagination.page*pagination.itemsPerPage,stock.length)}} trong {{stock.length}} kết quả</p>
                             </header>
                             <div class="shop-control-bar">
+                                <form class="woocommerce-ordering" method="get">
+                                    <select name="orderby" @change="sort()" v-model="sortBy" class="orderby">
+                                        <option value="newest" selected='selected'>Sự kiện mới nhất</option>
+                                        <option value="end" >Sự kiện sắp kết thúc</option>
+                                        <option value="prices_increase"  >Sắp xếp theo giá: Tăng dần</option>
+                                        <option value="price_descending" >Sắp xếp theo giá: Giảm dần</option>
+                                    </select>
+                                </form>
                                 <form @change="onChange()" class="form-electro-wc-ppp"><select name="ppp" class="electro-wc-wppp-select c-select" v-model.number="pagination.itemsPerPage"><option value="15" selected='selected'>Hiển thị 15</option><option value="30" selected='selected'>Hiển thị 30</option><option :value="stock.length" @click="this.pagination.itemsPerPage = this.stock.length;this.pagination.page=1" >Hiển thị tất cả</option></select></form>
                                 <nav class="electro-advanced-pagination">
                                     <form class="form-adv-pagination" @change="onChange()"><input v-model.number="pagination.page" id="goto-page" min="1" :max="Math.ceil(stock.length/pagination.itemsPerPage)" step="1" type="number" value="1"/></form> of {{Math.ceil(stock.length/pagination.itemsPerPage)}}<i @click="pagination.page= pagination.page<Math.ceil(stock.length/pagination.itemsPerPage) ? pagination.page +1: pagination.page,onChange()" class="next page-numbers" style="cursor: pointer;">&rarr;</i>
@@ -921,14 +929,6 @@
                                                                 <span class="price"><span class="electro-price"><span class="amount">{{event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span></span>
                                                                 <router-link :to="`/event/`+ event.eventId" class="button add_to_cart_button">Xem chi tiết</router-link>
                                                             </div><!-- /.price-add-to-cart -->
-
-                                                            <div class="hover-area">
-                                                                <div class="action-buttons">
-                                                                    <a href="#" rel="nofollow" class="add_to_wishlist">Yêu thích</a>
-                                                                    <a href="compare.html" class="add-to-compare-link">So sánh</a>
-                                                                </div>
-                                                            </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -944,11 +944,11 @@
                         <aside class="widget woocommerce widget_product_categories electro_widget_product_categories">
                                     <!-- <h3 class="widget-title">Danh mục sản phẩm</h3> -->
                                     <ul>
-                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='camera',getAllEvent()">Máy ảnh</div></li>
-                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='phone',getAllEvent()">Điện thoại</div></li>
-                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='TV',getAllEvent()">TV</div></li>
-                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='tablet',getAllEvent()">Máy tính bảng</div></li>
-                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='laptop',getAllEvent()">Laptop</div>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='camera',filter()">Máy ảnh</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='phone',filter()">Điện thoại</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='TV',filter()">TV</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='tablet',filter()">Máy tính bảng</div></li>
+                                        <li class="cat-item current-cat" style="cursor: pointer; padding: 10px;"><div @click="category='laptop',filter()">Laptop</div>
                                         </li>
                                     </ul>
                         </aside>
@@ -986,8 +986,9 @@ export default {
       beforeStock:[],
       stock: [],
       events:[],
+      sortBy: 'newest',
       pagination: {
-        itemsPerPage: 3,
+        itemsPerPage: 15,
         page: 1,
         paginationItems: []
       }
@@ -997,14 +998,9 @@ export default {
     this.getAllEvent()
   },
   methods: {
-    async getAllEvent () {
-        console.log(1)
-      let result = await api.getAllEvent()
-    //   console.log(result)
-      this.events = result.data.data.Items
-      this.beforeStock = result.data.data.Items
-      this.stock=[]
-      switch (this.category) {
+    filter(){
+        this.stock= []
+        switch (this.category) {
         case 'all':
             this.stock = this.beforeStock
             break;
@@ -1038,11 +1034,52 @@ export default {
       }
       this.onChange()
     },
+    async getAllEvent () {
+      let result = await api.getAllEvent()
+    //   console.log(result)
+      this.events = result.data.data.Items
+      this.beforeStock = result.data.data.Items
+      this.stock=[]
+    },
     onChange() {
-        console.log('The new value is: ', this.pagination.itemsPerPage)
-        console.log('page is: ', this.pagination.page)
+        // console.log('The new value is: ', this.pagination.itemsPerPage)
+        // console.log('page is: ', this.pagination.page)
         this.events = this.stock.slice((this.pagination.page-1)*this.pagination.itemsPerPage,this.pagination.page*this.pagination.itemsPerPage)
-        console.log(this.stock)
+        // console.log(this.stock)
+    },
+    sort(){
+        switch (this.sortBy) {
+            case 'newest':
+                this.events.sort((a,b)=>{
+                    if (a.createdAt.valueOf()<b.createdAt.valueOf()) return 1;
+                    if (a.createdAt.valueOf()>b.createdAt.valueOf()) return -1;
+                    return 0
+                })
+                break;
+            case 'end':
+                this.events.sort((a,b)=>{
+                    if(a.currentPoint/a.totalPoint<b.currentPoint/b.totalPoint) return 1
+                    if(a.currentPoint/a.totalPoint>b.currentPoint/b.totalPoint) return -1
+                    return 0
+                })
+                break;
+            case 'prices_increase':
+                this.events.sort((a,b)=>{
+                    if (a.price>b.price) return 1;
+                    if (a.price<b.price) return -1;
+                    return 0
+                })
+                break;
+            case 'price_descending':
+                this.events.sort((a,b)=>{
+                    if (a.price<b.price) return 1;
+                    if (a.price>b.price) return -1;
+                    return 0
+                })
+                break;
+            default:
+                break;
+        }
     }
   }
 }
