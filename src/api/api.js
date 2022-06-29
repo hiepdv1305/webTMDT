@@ -88,6 +88,9 @@ const api = {
   },
   getAllWinner: () => {
     return axios.get(`${baseUrl}/winner/getAll`)
+  },
+  reward: (body) => {
+    return axios.post(`${baseUrl}/winner/reward`, body)
   }
 }
 

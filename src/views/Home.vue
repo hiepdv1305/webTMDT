@@ -999,10 +999,13 @@ export default {
   },
   methods: {
     filter(){
+        this.pagination.page=1
         this.stock= []
         switch (this.category) {
         case 'all':
-            this.stock = this.beforeStock
+            this.beforeStock.forEach(item => {
+                this.stock.push(item)
+            });
             break;
         case 'phone':
             this.beforeStock.forEach(item => {
@@ -1030,6 +1033,9 @@ export default {
             });
             break;
         default:
+            this.beforeStock.forEach(item => {
+                this.stock.push(item)
+            });
             break;
       }
       this.onChange()
@@ -1039,7 +1045,7 @@ export default {
     //   console.log(result)
       this.events = result.data.data.Items
       this.beforeStock = result.data.data.Items
-      this.stock=[]
+      this.stock=this.beforeStock
     },
     onChange() {
         // console.log('The new value is: ', this.pagination.itemsPerPage)

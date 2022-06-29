@@ -77,10 +77,10 @@
 
                                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
-                                            <p class="price"><span class="electro-price"><ins><span class="amount">{{event.price}}</span></ins></span></p>
+                                            <p class="price"><span class="electro-price"><ins><span class="amount">{{event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></ins></span></p>
                                         </div><!-- /itemprop -->
                                         <div >
-                                            Số điểm còn lại: <b>{{event.totalPoint-event.currentPoint}}</b>
+                                            Số vé còn lại: <b>{{event.totalPoint-event.currentPoint}}</b>
                                         </div><!-- .description -->
                                         <div class="variations_form cart">
                                             <div class="single_variation_wrap">
@@ -135,7 +135,7 @@
                                         </li> -->
 
                                         <li class="nav-item reviews_tab">
-                                            <a :class="{ active: tab ===2 }" @click="tab=2" data-toggle="tab">Reviews</a>
+                                            <a :class="{ active: tab ===2 }" v-if="user.username===event.winner" @click="tab=2" data-toggle="tab">Nhận thưởng</a>
                                         </li>
                                         <li class="nav-item reviews_tab">
                                             <a :class="{ active: tab ===3 }" @click="tab=3" data-toggle="tab">Danh sách tham gia</a>
@@ -169,207 +169,67 @@
                                             </div><!-- /.electro-description -->
                                         </div>
                                         <div :class="{ active: tab === 2 }" class="tab-pane panel entry-content wc-tab">
-                                            <div id="reviews" class="electro-advanced-reviews">
-                                                <div class="advanced-review row">
-                                                    <div class="col-xs-12 col-md-6">
-                                                        <h2 class="based-title">Based on 3 reviews</h2>
-                                                        <div class="avg-rating">
-                                                            <span class="avg-rating-number">4.3</span> overall
+                                            <div class="wrapper">
+                                                <ul class="steps">
+                                                    <li v-bind:class="{ 'is-active' : step === 1}">Step 1</li>
+                                                    <li v-bind:class="{ 'is-active' : step === 2}">Step 2</li>
+                                                    <li v-bind:class="{ 'is-active' : step === 3}">Step 3</li>
+                                                </ul>
+                                                <form class="form-wrapper"  >
+                                                    <div v-if="step === 1">
+                                                    <header>
+                                                        <h2 class="h2" style="margin-bottom:100px">Chúc mừng bạn đã chiến thắng sự kiện {{event.eventName}}. Bạn vui lòng lựa chọn phương thức nhận thưởng:</h2>
+                                                    </header>
+                                                    <fieldset>
+
+                                                        <div>
+                                                        <input v-model="option" type="radio" id="huey" name="drone" value="product"
+                                                                checked>
+                                                        <label for="huey">Nhận sản phẩm</label>
                                                         </div>
 
-                                                        <div class="rating-histogram">
-                                                            <div class="rating-bar">
-                                                                <div class="star-rating" title="Rated 5 out of 5">
-                                                                    <span style="width:100%"></span>
-                                                                </div>
-                                                                <div class="rating-percentage-bar">
-                                                                    <span style="width:33%" class="rating-percentage">
-
-                                                                    </span>
-                                                                </div>
-                                                                <div class="rating-count">1</div>
-                                                            </div><!-- .rating-bar -->
-
-                                                            <div class="rating-bar">
-                                                                <div class="star-rating" title="Rated 4 out of 5">
-                                                                    <span style="width:80%"></span>
-                                                                </div>
-                                                                <div class="rating-percentage-bar">
-                                                                    <span style="width:67%" class="rating-percentage"></span>
-                                                                </div>
-                                                                <div class="rating-count">2</div>
-                                                            </div><!-- .rating-bar -->
-
-                                                            <div class="rating-bar">
-                                                                <div class="star-rating" title="Rated 3 out of 5">
-                                                                    <span style="width:60%"></span>
-                                                                </div>
-                                                                <div class="rating-percentage-bar">
-                                                                    <span style="width:0%" class="rating-percentage"></span>
-                                                                </div>
-                                                                <div class="rating-count zero">0</div>
-                                                            </div><!-- .rating-bar -->
-
-                                                            <div class="rating-bar">
-                                                                <div class="star-rating" title="Rated 2 out of 5">
-                                                                    <span style="width:40%"></span>
-                                                                </div>
-                                                                <div class="rating-percentage-bar">
-                                                                    <span style="width:0%" class="rating-percentage"></span>
-                                                                </div>
-                                                                <div class="rating-count zero">0</div>
-                                                            </div><!-- .rating-bar -->
-
-                                                            <div class="rating-bar">
-                                                                <div class="star-rating" title="Rated 1 out of 5">
-                                                                    <span style="width:20%"></span>
-                                                                </div>
-                                                                <div class="rating-percentage-bar">
-                                                                    <span style="width:0%" class="rating-percentage"></span>
-                                                                </div>
-                                                                <div class="rating-count zero">0</div>
-                                                            </div><!-- .rating-bar -->
+                                                        <div>
+                                                        <input v-model="option" type="radio" id="dewey" name="drone" value="money">
+                                                        <label for="dewey">Nhận tiền mặt</label>
                                                         </div>
-                                                    </div><!-- /.col -->
-
-                                                    <div class="col-xs-12 col-md-6">
-                                                        <div id="review_form_wrapper">
-                                                            <div id="review_form">
-                                                                <div id="respond" class="comment-respond">
-                                                                    <h3 id="reply-title" class="comment-reply-title">Add a review
-                                                                        <small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a>
-                                                                        </small>
-                                                                    </h3>
-
-                                                                    <form action="#" method="post" id="commentform" class="comment-form">
-                                                                        <p class="comment-form-rating">
-                                                                            <label>Your Rating</label>
-                                                                        </p>
-
-                                                                        <p class="stars">
-                                                                            <span><a class="star-1" href="#">1</a>
-                                                                                <a class="star-2" href="#">2</a>
-                                                                                <a class="star-3" href="#">3</a>
-                                                                                <a class="star-4" href="#">4</a>
-                                                                                <a class="star-5" href="#">5</a>
-                                                                            </span>
-                                                                        </p>
-
-                                                                        <p class="comment-form-comment">
-                                                                            <label for="comment">Your Review</label>
-                                                                            <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-                                                                        </p>
-
-                                                                        <p class="form-submit">
-                                                                            <input name="submit" type="submit" id="submit" class="submit" value="Add Review" />
-                                                                            <input type='hidden' name='comment_post_ID' value='2452' id='comment_post_ID' />
-                                                                            <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-                                                                        </p>
-
-                                                                        <input type="hidden" id="_wp_unfiltered_html_comment_disabled" name="_wp_unfiltered_html_comment_disabled" value="c7106f1f46" />
-                                                                    </form><!-- form -->
-                                                                </div><!-- #respond -->
-                                                            </div>
+                                                    </fieldset>
+                                                    <button type="button" class="next action_button" @click="step=step+1">Tiếp tục</button>
+                                                    </div>
+                                                    <div v-if="step === 2">
+                                                    <div class="page">
+                                                        <div v-if="option == 'product'">
+                                                            <p class="before-register-text">Cho chúng tôi biết thông tin của bạn:</p>
+                                                            <p class="form-row form-row-wide">
+                                                                <label for="reg_email">Họ tên<span class="required">*</span></label>
+                                                                <input v-model="schema.fullname" type="name" class="input-text"/>
+                                                            </p>
+                                                            <p class="form-row form-row-wide">
+                                                                <label for="reg_email">Số điện thoại<span class="required">*</span></label>
+                                                                <input v-model="schema.phonenumber" type="phone" class="input-text"  />
+                                                            </p>
+                                                            <p class="form-row form-row-wide">
+                                                                <label for="reg_email">Địa chỉ<span class="required">*</span></label>
+                                                                <input v-model="schema.address" type="address" class="input-text"/>
+                                                            </p>
                                                         </div>
+                                                        <div v-else>
+                                                            <p class="before-register-text">Chuyển đến bước tiếp theo</p>
+                                                        </div>
+                                                    <div style="display: flex;
+                                                justify-content: flex-end;">
+                                                        <button type="button" class="previous_button" @click="step=step-1">Quay lại</button>
+                                                        <button type="button" class="next action_button" @click="step=step+1,reward()">Tiếp tục</button>
+                                                    </div>
+                                                    </div>
+                                                    </div>
 
-                                                    </div><!-- /.col -->
-                                                </div><!-- /.row -->
-
-                                                <div id="comments">
-
-                                                    <ol class="commentlist">
-                                                        <li itemprop="review" class="comment even thread-even depth-1">
-
-                                                            <div id="comment-390" class="comment_container">
-
-                                                                <img alt='' src="assets/images/blog/avatar.jpg" class="avatar" height='60' width='60' />
-                                                                <div class="comment-text">
-
-                                                                    <div class="star-rating" title="Rated 4 out of 5">
-                                                                        <span style="width:80%"><strong itemprop="ratingValue">4</strong> out of 5</span>
-                                                                    </div>
-
-                                                                    <p class="meta">
-                                                                        <strong>John Doe</strong> &ndash;
-                                                                        <time itemprop="datePublished" datetime="2016-03-03T14:13:48+00:00">March 3, 2016</time>:
-                                                                    </p>
-
-                                                                    <div itemprop="description" class="description">
-                                                                        <p>Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.
-                                                                        </p>
-                                                                    </div>
-
-                                                                    <p class="meta">
-                                                                        <strong itemprop="author">John Doe</strong> &ndash; <time itemprop="datePublished" datetime="2016-03-03T14:13:48+00:00">March 3, 2016</time>
-                                                                    </p>
-
-                                                                </div>
-                                                            </div>
-                                                        </li><!-- #comment-## -->
-
-                                                        <li class="comment odd alt thread-odd thread-alt depth-1">
-
-                                                            <div class="comment_container">
-
-                                                                <img alt='' src="assets/images/blog/avatar.jpg" class="avatar" height='60' width='60' />
-                                                                <div class="comment-text">
-
-                                                                    <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating" class="star-rating" title="Rated 5 out of 5">
-                                                                        <span style="width:100%"><strong itemprop="ratingValue">5</strong> out of 5</span>
-                                                                    </div>
-
-                                                                    <p class="meta">
-                                                                        <strong>Anna Kowalsky</strong> &ndash;
-                                                                        <time itemprop="datePublished" datetime="2016-03-03T14:14:47+00:00">March 3, 2016</time>:
-                                                                    </p>
-
-                                                                    <div itemprop="description" class="description">
-                                                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse eget facilisis odio. Duis sodales augue eu tincidunt faucibus. Etiam justo ligula, placerat ac augue id, volutpat porta dui.
-                                                                        </p>
-                                                                    </div>
-
-                                                                    <p class="meta">
-                                                                        <strong itemprop="author">Anna Kowalsky</strong> &ndash; <time itemprop="datePublished" datetime="2016-03-03T14:14:47+00:00">March 3, 2016</time>
-                                                                    </p>
-
-                                                                </div>
-                                                            </div>
-                                                        </li><!-- #comment-## -->
-
-                                                        <li class="comment odd alt thread-odd thread-alt depth-1">
-
-                                                            <div class="comment_container">
-
-                                                                <img alt='' src="assets/images/blog/avatar.jpg" class="avatar" height='60' width='60' />
-                                                                <div class="comment-text">
-
-                                                                    <div itemprop="reviewRating" class="star-rating" title="Rated 5 out of 5">
-                                                                        <span style="width:100%"><strong itemprop="ratingValue">5</strong> out of 5</span>
-                                                                    </div>
-
-                                                                    <p class="meta">
-                                                                        <strong>Anna Kowalsky</strong> &ndash;
-                                                                        <time itemprop="datePublished" datetime="2016-03-03T14:14:47+00:00">March 3, 2016</time>:
-                                                                    </p>
-
-                                                                    <div itemprop="description" class="description">
-                                                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse eget facilisis odio. Duis sodales augue eu tincidunt faucibus. Etiam justo ligula, placerat ac augue id, volutpat porta dui.
-                                                                        </p>
-                                                                    </div>
-
-                                                                    <p class="meta">
-                                                                        <strong itemprop="author">Anna Kowalsky</strong> &ndash; <time itemprop="datePublished" datetime="2016-03-03T14:14:47+00:00">March 3, 2016</time>
-                                                                    </p>
-
-                                                                </div>
-                                                            </div>
-                                                        </li><!-- #comment-## -->
-                                                    </ol><!-- /.commentlist -->
-
-                                                </div><!-- /#comments -->
-
-                                                <div class="clear"></div>
-                                            </div><!-- /.electro-advanced-reviews -->
+                                                    <div v-if="step === 3">
+                                                        <div v-if="!check" style="text-align: center; color: rgb(211 113 30);">Chờ xử lý</div>
+                                                        <div v-else-if="option=='product'" style="text-align: center; color: green;"> Thành công, sản phẩm sẽ được giao tới quý khách trong vòng 1 tuần </div>
+                                                        <div v-else-if="option=='money'" style="text-align: center; color: green;"> Thành công, kiểm tra tài khoản của bạn, Nếu có bất kỳ khiếu nại nào vui lòng liên hệ hotline để được giải quyết </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div><!-- /.panel -->
                                         <div :class="{ active: tab === 3 }" class="tab-pane in panel entry-content wc-tab">
                                             <div v-if="event.status=='finish'">Con số may mắn là <b>{{event.winnerNumber}}</b>. Chúc mừng <b>{{event.winner}}</b> đã là người chiến thắng sự kiện này</div>
@@ -394,133 +254,6 @@
                                         </div>
                                     </div>
                                 </div><!-- /.woocommerce-tabs -->
-
-                                <div class="related products">
-                                    <h2>Có thể bạn quan tâm</h2>
-
-                                    <ul class="products columns-5">
-
-                                        <li class="product">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-                                                            <img data-echo="assets/images/products/1.jpg" src="assets/images/blank.gif" alt="">
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-
-                                        <li class="product">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-                                                            <img data-echo="assets/images/products/2.jpg" src="assets/images/blank.gif" alt="">
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-
-                                        <li class="product">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-                                                            <img data-echo="assets/images/products/3.jpg" src="assets/images/blank.gif" alt="">
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-
-                                        <li class="product">
-                                            <div class="product-outer">
-                                                <div class="product-inner">
-                                                    <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                    <a href="single-product.html">
-                                                        <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                        <div class="product-thumbnail">
-                                                            <img data-echo="assets/images/products/4.jpg" src="assets/images/blank.gif" alt="">
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="price-add-to-cart">
-                                                        <span class="price">
-                                                            <span class="electro-price">
-                                                                <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                            </span>
-                                                        </span>
-                                                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                    </div><!-- /.price-add-to-cart -->
-
-                                                    <div class="hover-area">
-                                                        <div class="action-buttons">
-                                                            <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                            <a href="#" class="add-to-compare-link">Compare</a>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.product-inner -->
-                                            </div><!-- /.product-outer -->
-                                        </li>
-                                    </ul><!-- /.products -->
-                                </div><!-- /.related -->
                             </div><!-- /.product -->
 
                         </main><!-- /.site-main -->
@@ -528,219 +261,6 @@
                 </div><!-- /.container -->
             </div><!-- /.site-content -->
 
-            <section class="brands-carousel">
-                <h2 class="sr-only">Brands Carousel</h2>
-                <div class="container">
-                    <div id="owl-brands" class="owl-brands owl-carousel unicase-owl-carousel owl-outer-nav">
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Acer</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                     <img src="assets/images/blank.gif" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Apple</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                     <img src="assets/images/blank.gif" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Asus</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                     <img src="assets/images/blank.gif" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Dell</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Gionee</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>HP</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>HTC</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>IBM</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Lenova</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>LG</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Micromax</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Microsoft</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                    </div><!-- /.owl-carousel -->
-
-                </div>
-            </section>
         </div><!-- #page -->
     </body>
 </template>
@@ -758,6 +278,7 @@
 <script>(function(){if(window===window.parent){document.getElementById('_wp_unfiltered_html_comment_disabled').name='_wp_unfiltered_html_comment';}})();</script>
 <script>
 import api from '../../api/api'
+import jwt_decode from 'jwt-decode'
 export default {
   name: 'login',
   data () {
@@ -766,7 +287,16 @@ export default {
       point: 1,
       myModel:false,
       tab:1,
-      participants: []
+      option: 'product',
+      step: 1,
+      participants: [],
+      user: {},
+      schema:{
+        fullname: '',
+        phonenumber: '',
+        address:'',
+      },
+      check: false
     }
   },
   mounted () {
@@ -780,8 +310,9 @@ export default {
       let result = await api.getEvent(id)
       if(result.status ===200){
         this.event = result.data.data
+        if(this.event.status=='finish') this.getUser();
       }
-        this.event.price = this.event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })
+        this.event.price = this.event.price
     },
     async createDeal(){
         if(this.event.currentPoint+this.point>this.event.totalPoint){
@@ -809,8 +340,31 @@ export default {
     async eventGetDeal(){
         let id = this.$route.params.id
         let result = await api.eventGetDeal(id)
-        console.log(result)
+        // console.log(result)
         this.participants = result.data.data.Items
+    },
+    getUser () {
+      let token = localStorage.getItem('accessToken')
+      // console.log(token)
+      if (token) {
+        try {
+          this.user = jwt_decode(token)
+        //   console.log(this.user)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    },
+    async reward(){
+        let result = await api.reward({
+          eventId: this.event.eventId,
+            option: this.option,
+            fullname: this.schema.fullname,
+            phonenumber: this.schema.phonenumber,
+            address: this.schema.address,
+            money: this.event.price
+        })
+        if(result.data.statusCode===200) this.check = true;
     }
   }
 }
@@ -886,6 +440,478 @@ tr:nth-child(even) {
     width: 100%;
     height: 0.75rem;
     margin-bottom: 0.2rem;
+}
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  /* background-color: #3498db; */
+}
+
+h1, h2, h3, h4, h5 ,h6{
+  font-weight: 200;
+}
+
+a{
+  text-decoration: none;
+}
+
+p, li, a{
+  font-size: 14px;
+}
+
+fieldset{
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* GRID */
+
+.twelve { width: 100%; }
+.eleven { width: 91.53%; }
+.ten { width: 83.06%; }
+.nine { width: 74.6%; }
+.eight { width: 66.13%; }
+.seven { width: 57.66%; }
+.six { width: 49.2%; }
+.five { width: 40.73%; }
+.four { width: 32.26%; }
+.three { width: 23.8%; }
+.two { width: 15.33%; }
+.one { width: 6.866%; }
+
+/* COLUMNS */
+
+.col {
+  display: block;
+  float:left;
+  margin: 0 0 0 1.6%
+}
+
+.col:first-of-type {
+  margin-left: 0;
+}
+
+.container{
+  width: 100%;
+  /* max-width: 700px; */
+  margin: 0 auto;
+  /* position: relative; */
+}
+
+.row{
+  padding: 20px 0;
+}
+
+/* CLEARFIX */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+.wrapper{
+  width: 100%;
+  margin: 30px 0;
+}
+
+/* STEPS */
+
+.steps{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+.steps li{
+  display: inline-block;
+  margin: 20px;
+  color: #ccc;
+  padding-bottom: 5px;
+}
+
+.steps li.is-active{
+  border-bottom: 1px solid #3498db;
+  color: #3498db;
+}
+
+/* FORM */
+
+.form-wrapper .section{
+  padding: 0px 20px 30px 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transform: scale(1, 0);
+  -ms-transform: scale(1, 0);
+  -o-transform: scale(1, 0);
+  transform: scale(1, 0);
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+  /* position: absolute; */
+  width: 100%;
+  /* min-height: 300px */
+}
+
+.form-wrapper .section h3{
+  margin-bottom: 30px;
+}
+
+.form-wrapper .section.is-active{
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.form-wrapper .button, .form-wrapper .submit{
+  background-color: #3498db;
+  display: inline-block;
+  padding: 8px 30px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px !important;
+  font-family: 'Open Sans', sans-serif !important;
+  /* position: absolute; */
+  right: 20px;
+  bottom: 20px;
+}
+
+.form-wrapper .submit{
+  border: none;
+  outline: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-wrapper input[type="text"],
+.form-wrapper input[type="password"]{
+  display: block;
+  padding: 10px;
+  margin: 10px auto;
+  background-color: #f1f1f1;
+  border: none;
+  width: 50%;
+  outline: none;
+  font-size: 14px !important;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.form-wrapper input[type="radio"]{
+  display: none;
+}
+
+.form-wrapper input[type="radio"] + label{
+  display: block;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+}
+
+.form-wrapper input[type="radio"] + label:before{
+  content: "✔";
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 100%;
+  background-color: #cab560;
+  color: #fff;
+  display: none;
+}
+
+.form-wrapper input[type="radio"]:checked + label:before{
+  display: block;
+}
+
+.form-wrapper input[type="radio"] + label h4{
+  margin: 15px;
+  color: #ccc;
+}
+
+.form-wrapper input[type="radio"]:checked + label{
+  border: 1px solid #3498db;
+}
+
+.form-wrapper input[type="radio"]:checked + label h4{
+  color: #3498db;
+}
+.field__input{
+  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.field__input:focus::-webkit-input-placeholder{
+  color: var(--uiFieldPlaceholderColor);
+}
+
+.field__input:focus::-moz-placeholder{
+  color: var(--uiFieldPlaceholderColor);
+}
+
+/*
+=====
+CORE STYLES
+=====
+*/
+
+.field{
+  --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+  --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
+  --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);
+  --uiFieldBorderColorActive: var(--fieldBorderColorActive, rgba(22, 22, 22, 1));
+
+  display: var(--fieldDisplay, inline-flex);
+  position: relative;
+  font-size: var(--fieldFontSize, 1rem);
+}
+
+.field__input{
+  box-sizing: border-box;
+  width: var(--fieldWidth, 100%);
+  height: var(--fieldHeight, 3rem);
+  padding: var(--fieldPaddingTop, 1.25rem) var(--uiFieldPaddingRight) var(--fieldPaddingBottom, .5rem) var(--uiFieldPaddingLeft);
+  border-bottom: var(--uiFieldBorderWidth) solid var(--fieldBorderColor, rgba(0, 0, 0, .25));
+}
+
+.field__input:focus{
+  outline: none;
+}
+
+.field__input::-webkit-input-placeholder{
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.field__input::-moz-placeholder{
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.field__input:focus::-webkit-input-placeholder{
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.field__input:focus::-moz-placeholder{
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.field__label-wrap{
+  box-sizing: border-box;
+  pointer-events: none;
+  cursor: text;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.field__label-wrap::after{
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.field__input:focus ~ .field__label-wrap::after{
+  opacity: 1;
+}
+
+.field__label{
+  position: absolute;
+  left: var(--uiFieldPaddingLeft);
+  top: calc(50% - .5em);
+
+  line-height: 1;
+  font-size: var(--fieldHintFontSize, inherit);
+
+  transition: top .2s cubic-bezier(0.9, -0.15, 0.1, 1.15), opacity .2s ease-out, font-size .2s ease-out;
+  will-change: bottom, opacity, font-size;
+}
+
+.field__input:focus ~ .field__label-wrap .field__label,
+.field__input:not(:placeholder-shown) ~ .field__label-wrap .field__label{
+  --fieldHintFontSize: var(--fieldHintFontSizeFocused, .75rem);
+
+  top: var(--fieldHintTopHover, .25rem);
+}
+.field_v1 .field__label-wrap::after{
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  transition: opacity .2s ease-out;
+  will-change: opacity;
+}
+.field_v2 .field__label-wrap{
+  overflow: hidden;
+}
+
+.field_v2 .field__label-wrap::after{
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  transform: translate3d(-105%, 0, 0);
+  will-change: transform, opacity;
+  transition: transform .285s ease-out .2s, opacity .2s ease-out .2s;
+}
+
+.field_v2 .field__input:focus ~ .field__label-wrap::after{
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0;
+}
+
+/*
+effect 3
+*/
+
+.field_v3 .field__label-wrap::after{
+  border: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  will-change: opacity, height;
+  transition: height .2s ease-out, opacity .2s ease-out;
+}
+
+.field_v3 .field__input:focus ~ .field__label-wrap::after{
+  height: 100%;
+}
+
+/*
+=====
+LEVEL 4. SETTINGS
+=====
+*/
+
+.field{
+  --fieldBorderColor: #D1C4E9;
+  --fieldBorderColorActive: #673AB7;
+}
+
+/*
+=====
+DEMO
+=====
+*/
+
+body{
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page{
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 1rem;
+
+  display: grid;
+  grid-gap: 30px;
+}
+
+.linktr{
+  order: -1;
+  padding: 1.75rem;
+  text-align: center;
+}
+
+.linktr__goal{
+  background-color: rgb(209, 246, 255);
+  color: rgb(8, 49, 112);
+  box-shadow: rgb(8 49 112 / 24%) 0px 2px 8px 0px;
+  border-radius: 2rem;
+  padding: .5rem 1.25rem;
+}
+
+@media (min-width: 1024px){
+  .linktr{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+  }
+  .product_list_widget{
+    padding-left: 120px;
+  }
+}
+.r-link{
+    --uirLinkDisplay: var(--rLinkDisplay, inline-flex);
+    --uirLinkTextColor: var(--rLinkTextColor);
+    --uirLinkTextDecoration: var(--rLinkTextDecoration, none);
+
+    display: var(--uirLinkDisplay) !important;
+    color: var(--uirLinkTextColor) !important;
+    text-decoration: var(--uirLinkTextDecoration) !important;
+}
+.previous_button {
+  background: transparent;
+  color: #99a2a8;
+  border-color: #99a2a8;
+}
+.previous_button:hover,.previous_button:focus {
+  background: #405867;
+  border-color: #405867;
+  color: #fff;
+}
+.action_button {
+  background: #fed700;
+  color: #fff;
+  font-weight: bold;
+  border-color: #fed700;
+}
+.action_button:hover,.action_button:focus {
+  background: #405867;
+  border-color: #405867;
 }
 
 </style>

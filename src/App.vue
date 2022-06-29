@@ -17,7 +17,9 @@ export default {
     }
   },
   mounted () {
-    this.getAllWinner()
+    window.setInterval(() => {
+      this.getAllWinner()
+    }, 60000)
   },
   methods: {
     async getAllWinner () {
