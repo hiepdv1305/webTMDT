@@ -7,9 +7,7 @@
                 <div class="container">
 
                     <nav class="woocommerce-breadcrumb">
-                        <a href="home.html">Trang chủ</a>
-                        <span class="delimiter"><i class="fa fa-angle-right"></i></span>
-                        <a href="product-category.html">Loại sản phẩm</a>
+                        <a href="/">Trang chủ</a>
                         <span class="delimiter"><i class="fa fa-angle-right"></i></span>
                         <a href="product-category.html">{{event.category}}</a>
                         <span class="delimiter"><i class="fa fa-angle-right"></i>

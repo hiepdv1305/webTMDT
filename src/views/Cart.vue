@@ -6,7 +6,7 @@
             <div id="content" class="site-content" tabindex="-1">
                 <div class="container">
 
-                    <nav class="woocommerce-breadcrumb"><a href="home.html">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Sự kiện của bạn</nav>
+                    <nav class="woocommerce-breadcrumb"><a href="/">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Sự kiện của bạn</nav>
 
                     <div id="primary" class="content-area">
                         <main id="main" class="site-main">
@@ -38,21 +38,21 @@
                                                     <a :href="`/event/`+event.eventId"><img width="180" height="180" :src="event.image" alt=""></a>
                                                 </td>
 
-                                                <td data-title="Product" class="product-name">
+                                                <td data-title="Sự kiện" class="product-name">
                                                     <a :href="`/event/`+event.eventId">{{event.eventName.slice(0,60)}}</a>
                                                 </td>
 
-                                                <td data-title="Price" class="product-price">
+                                                <td data-title="Giá" class="product-price">
                                                     <span class="amount">{{event.eventPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span>
                                                 </td>
 
-                                                <td data-title="Quantity" class="product-quantity">
+                                                <td data-title="Số vé" class="product-quantity">
                                                     <span class="amount">{{event.point}}</span>
                                                 </td>
-                                                <td data-title="Quantity" class="product-quantity">
+                                                <td data-title="Bắt đầu- kết thúc" class="product-quantity">
                                                     <span class="amount">{{event.beginNumber}}--{{event.endNumber}}</span>
                                                 </td>
-                                                <td data-title="Total" class="product-subtotal">
+                                                <td data-title="Tổng" class="product-subtotal">
                                                     <span class="amount">{{ event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' }) }}</span>
                                                 </td>
                                             </tr>

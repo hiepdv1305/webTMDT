@@ -29,7 +29,7 @@
                                 </form>
                                 <form @change="onChange()" class="form-electro-wc-ppp"><select name="ppp" class="electro-wc-wppp-select c-select" v-model.number="pagination.itemsPerPage"><option value="15" selected='selected'>Hiển thị 15</option><option value="30" selected='selected'>Hiển thị 30</option><option :value="stock.length" @click="this.pagination.itemsPerPage = this.stock.length;this.pagination.page=1" >Hiển thị tất cả</option></select></form>
                                 <nav class="electro-advanced-pagination">
-                                    <form class="form-adv-pagination" @change="onChange()"><input v-model.number="pagination.page" id="goto-page" min="1" :max="Math.ceil(stock.length/pagination.itemsPerPage)" step="1" type="number" value="1"/></form> of {{Math.ceil(stock.length/pagination.itemsPerPage)}}<i @click="pagination.page= pagination.page<Math.ceil(stock.length/pagination.itemsPerPage) ? pagination.page +1: pagination.page,onChange()" class="next page-numbers" style="cursor: pointer;">&rarr;</i>
+                                    <form class="form-adv-pagination" @change="onChange()"><i @click="pagination.page= pagination.page>1 ? pagination.page -1: pagination.page,onChange()" class="fas fa-chevron-right" style="cursor: pointer;margin: 0px 10px;">&#x3c;</i><input v-model.number="pagination.page" id="goto-page" min="1" :max="Math.ceil(stock.length/pagination.itemsPerPage)" step="1" type="number" value="1"/></form> of {{Math.ceil(stock.length/pagination.itemsPerPage)}}<i @click="pagination.page= pagination.page<Math.ceil(stock.length/pagination.itemsPerPage) ? pagination.page +1: pagination.page,onChange()" class="fas fa-chevron-right" style="cursor: pointer;">&#x3e;</i>
                                 </nav>
                             </div>
 
@@ -1045,7 +1045,7 @@ export default {
     //   console.log(result)
       this.events = result.data.data.Items
       this.beforeStock = result.data.data.Items
-      this.stock=this.beforeStock
+      this.filter()
     },
     onChange() {
         // console.log('The new value is: ', this.pagination.itemsPerPage)
@@ -1054,6 +1054,7 @@ export default {
         // console.log(this.stock)
     },
     sort(){
+        this.pagination.page=1
         switch (this.sortBy) {
             case 'newest':
                 this.events.sort((a,b)=>{
