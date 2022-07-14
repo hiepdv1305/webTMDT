@@ -91,6 +91,18 @@ const api = {
   },
   reward: (body) => {
     return axios.post(`${baseUrl}/winner/reward`, body)
+  },
+  changePassword: (body) => {
+    return axios.post(`${baseUrl}/user/changePassword`, body)
+  },
+  getAllRechange: () => {
+    return axios.get(`${baseUrl}/user/getAllRechange`)
+  },
+  acceptRechange: (id) => {
+    return axios.put(`${baseUrl}/user/acceptRechange/${id}`)
+  },
+  denniRechange: (id) => {
+    return axios.put(`${baseUrl}/user/denniRechange/${id}`)
   }
 }
 

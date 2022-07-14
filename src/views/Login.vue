@@ -82,19 +82,10 @@
                                                         </p>
                                                         <p class="form-row form-row-wide">
                                                             <label for="reg_email">Xác nhận mật khẩu<span class="required">*</span></label>
+                                                            <label v-if="invalidconfirm" for="reg_email" style="color: red;">Xác nhận mật khẩu không đúng, vui lòng nhập lại</label>
                                                             <input v-model="registerSchema.confirmpassword" type="password" class="input-text"/>
                                                         </p>
                                                         <button @click="register" class="button"> Đăng ký</button>
-
-                                                        <div class="register-benefits">
-                                                            <h3>Sign up today and you will be able to :</h3>
-                                                            <ul>
-                                                                <li>Speed your way through checkout</li>
-                                                                <li>Track your orders easily</li>
-                                                                <li>Keep a record of all your purchases</li>
-                                                            </ul>
-                                                        </div>
-
                                                     <!-- </form> -->
 
                                                 </div><!-- .col-2 -->
@@ -113,219 +104,6 @@
                 </div><!-- .col-full -->
             </div><!-- #content -->
 
-            <section class="brands-carousel">
-                <h2 class="sr-only">Brands Carousel</h2>
-                <div class="container">
-                    <div id="owl-brands" class="owl-brands owl-carousel unicase-owl-carousel owl-outer-nav">
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Acer</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                     <img src="assets/images/blank.gif" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Apple</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                     <img src="assets/images/blank.gif" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Asus</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                     <img src="assets/images/blank.gif" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Dell</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Gionee</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>HP</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>HTC</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>IBM</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Lenova</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>LG</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Micromax</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                        <div class="item">
-
-                            <a href="#">
-
-                                <figure>
-                                    <figcaption class="text-overlay">
-                                        <div class="info">
-                                            <h4>Microsoft</h4>
-                                        </div><!-- /.info -->
-                                    </figcaption>
-
-                                    <img src="assets/images/blank.gif" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
-
-                                </figure>
-                            </a>
-                        </div><!-- /.item -->
-
-                    </div><!-- /.owl-carousel -->
-
-                </div>
-            </section>
         </div><!-- #page -->
   </body>
 </template>
@@ -355,6 +133,7 @@ export default {
         confirmpassword: '',
         address: ''
       },
+      invalidconfirm: false,
       loginSchema: {
         username: '',
         password: ''
@@ -363,13 +142,18 @@ export default {
   },
   methods: {
     async register () {
-      console.log(this.registerSchema)
-      let result = await api.register(this.registerSchema)
-      console.log(result)
-      if (result.data.statusCode === 200) {
-        // this.$router.push({ path: '/login' })
-        alert('Đăng ký tài khoản thành công')
-      }
+        if(this.registerSchema.password !== this.registerSchema.confirmpassword){
+            this.invalidconfirm = true
+        }else{
+            if(this.invalidconfirm && this.registerSchema.confirmpassword !== '') this.invalidconfirm = false
+            console.log(this.registerSchema)
+            let result = await api.register(this.registerSchema)
+            console.log(result)
+            if (result.data.statusCode === 200) {
+                // this.$router.push({ path: '/login' })
+                alert('Đăng ký tài khoản thành công')
+            }
+        }
     },
     async login () {
       if (this.loginSchema.username === '') {

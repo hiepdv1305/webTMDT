@@ -29,8 +29,11 @@
             <div class="card mb-4">
                 <div class="card-header" style="display: flex; justify-content: space-between; ">
                     <div>Thông tin tài khoản</div>
-                    <div v-if="!edit" @click="edit=true" style="text-decoration: underline; cursor: pointer; color: #0062bd;"><i class="fa fa-pencil"></i> Cập nhật</div>
-                    <div v-if="edit" @click="edit=false" style="text-decoration: underline; cursor: pointer; color: #0062bd;"><i class="fa fa-close"></i> Đóng</div>
+                    <div style="display: flex;">
+                        <div v-if="!edit" @click="myModel=true" style="text-decoration: underline; cursor: pointer; color: #0062bd;margin-right: 10px;"> Đổi mật khẩu</div>
+                        <div v-if="!edit" @click="edit=true" style="text-decoration: underline; cursor: pointer; color: #0062bd;"><i class="fa fa-pencil"></i> Cập nhật</div>
+                        <div v-if="edit" @click="edit=false" style="text-decoration: underline; cursor: pointer; color: #0062bd;"><i class="fa fa-close"></i> Đóng</div>
+                    </div>
                 </div>
                 <div class="card-body" v-if="!edit" style="padding: 10px 20px;">
                     <div>
@@ -52,6 +55,44 @@
                     <div style="display: flex; justify-content: flex-end;">
                         <button @click="logout" class="btn btn-primary" type="button">Đăng xuất</button>
                     </div>
+                </div>
+                <div v-if="myModel">
+                    <transition name="model">
+                    <div class="modal-mask">
+                    <div class="modal-wrapper">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            Đổi mật khẩu
+                        <button type="button" class="close" @click="myModel=false"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <label v-if="checkInvalid" style="color: red;">Xác thực mật khẩu không chính xác</label>
+                                <p class="form-row form-row-wide">
+                                    <label for="reg_email">Mật khẩu cũ<span class="required">*</span></label>
+                                    <input v-model="changePasswordSchema.oldPassword" type="password" class="input-text"/>
+                                </p>
+                                <p class="form-row form-row-wide">
+                                    <label for="reg_email">Mật khẩu mới<span class="required">*</span></label>
+                                    <input v-model="changePasswordSchema.newPassword" type="password" class="input-text"  />
+                                </p>
+                                <p class="form-row form-row-wide">
+                                    <label for="reg_email">Nhập lại mật khẩu mới<span class="required">*</span></label>
+                                    <input v-model="changePasswordSchema.confirmPassword" type="password" class="input-text"/>
+                                </p>
+                            </div>
+                        <br />
+                        <div align="center">
+                        <button class="" type="button" @click="myModel=false">Hủy</button>
+                        <button style="background-color: #fed700; margin-left: 10px" type="button" @click="changePassword">Đổi mật khẩu</button>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    </transition>
                 </div>
                 <div class="card-body" v-if="edit" style="padding: 10px 20px;">
                     <div class="mb-3">
@@ -97,7 +138,14 @@ export default {
   data () {
     return {
         user: {},
-        edit: false
+        edit: false,
+        myModel:false,
+        checkInvalid: false,
+        changePasswordSchema: {
+            oldPassword: '',
+            newPassword: '',
+            confirmPassword: ''
+        }
     }
   },
   mounted () {
@@ -131,6 +179,21 @@ export default {
         if(res.status === 200){
             alert("Cập nhật thông tin cá nhân thành công");
             window.location.reload();
+        }
+    },
+    async changePassword(){
+        if(this.changePasswordSchema.oldPassword === ''|| this.changePasswordSchema.newPassword === ''|| this.changePasswordSchema.confirmPassword === '') alert('Không được để trống')
+        else if(this.changePasswordSchema.newPassword !== this.changePasswordSchema.confirmPassword) this.checkInvalid = true
+        else{
+            let result = await api.changePassword(this.changePasswordSchema)
+            console.log(result)
+            if(result.data.statusCode ===200) {
+                alert('Thay đổi mật khẩu thành công')
+                this.myModel= false
+            }
+            else{
+                alert(result.data.message)
+            }
         }
     }
   }
@@ -196,4 +259,20 @@ color:#69707a;
     margin-left: 1rem;
     margin-right: 1rem;
 }
+.modal-mask {
+     position: fixed;
+     z-index: 9998;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, .5);
+     display: table;
+     transition: opacity .3s ease;
+   }
+
+   .modal-wrapper {
+     display: table-cell;
+     vertical-align: middle;
+   }
 </style>

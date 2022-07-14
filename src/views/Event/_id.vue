@@ -124,112 +124,114 @@
 
                                 <div class="woocommerce-tabs wc-tabs-wrapper">
                                     <ul class="nav nav-tabs electro-nav-tabs tabs wc-tabs" role="tablist">
-                                        <li class="nav-item description_tab">
-                                            <a :class="{ active: tab ===1 }" @click="tab=1" data-toggle="tab">Mô tả</a>
-                                        </li>
 <!--
                                         <li class="nav-item specification_tab">
                                             <a href="#tab-specification" data-toggle="tab">Specification</a>
                                         </li> -->
 
                                         <li class="nav-item reviews_tab">
-                                            <a :class="{ active: tab ===2 }" v-if="user.username===event.winner" @click="tab=2" data-toggle="tab">Nhận thưởng</a>
+                                            <a :class="{ active: tab ===1 }" v-if="user.username===event.winner" @click="tab=1" data-toggle="tab">Nhận thưởng</a>
                                         </li>
                                         <li class="nav-item reviews_tab">
-                                            <a :class="{ active: tab ===3 }" @click="tab=3" data-toggle="tab">Danh sách tham gia</a>
+                                            <a :class="{ active: tab ===2 }" @click="tab=2" data-toggle="tab">Danh sách tham gia</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content">
-                                        <div :class="{ active: tab === 1 }" class="tab-pane in panel entry-content wc-tab">
-                                            <div class="electro-description">
-
-                                                <h3>Perfectly Done</h3>
-                                                <p>Praesent ornare, ex a interdum consectetur, lectus diam sodales elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem semper viverra. In lobortis egestas massa. Nam nec massa nisi. Suspendisse potenti. Quisque suscipit vulputate dui quis volutpat. Ut id elit facilisis, feugiat est in, tempus lacus. Ut ultrices dictum metus, a ultricies ex vulputate ac. Ut id cursus tellus, non tempor quam. Morbi porta diam nisi, id finibus nunc tincidunt eu.</p>
-                                                <table class="layout">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <h3>Wireless</h3>
-                                                                <p>Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.</p>
-                                                                <h3>Fresh Design</h3>
-                                                                <p>Integer bibendum aliquet ipsum, in ultrices enim sodales sed. Quisque ut urna vitae lacus laoreet malesuada eu at massa. Pellentesque nibh augue, pellentesque nec dictum vel, pretium a arcu. Duis eu urna suscipit, lobortis elit quis, ullamcorper massa.</p>
-                                                                <h3>Fabolous Sound</h3>
-                                                                <p>Cras rutrum, nibh a sodales accumsan, elit sapien ultrices sapien, eget semper lectus ex congue elit. Nullam dui elit, fermentum a varius at, iaculis non dolor. In hac habitasse platea dictumst.</p>
-                                                            </td>
-
-                                                            <td>
-                                                                <img class="alignright" :src="event.image" alt="">
-
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div><!-- /.electro-description -->
-                                        </div>
-                                        <div :class="{ active: tab === 2 }" class="tab-pane panel entry-content wc-tab">
+                                        <div :class="{ active: tab === 1 }" class="tab-pane panel entry-content wc-tab">
                                             <div class="wrapper">
                                                 <ul class="steps">
                                                     <li v-bind:class="{ 'is-active' : step === 1}">Step 1</li>
                                                     <li v-bind:class="{ 'is-active' : step === 2}">Step 2</li>
-                                                    <li v-bind:class="{ 'is-active' : step === 3}">Step 3</li>
                                                 </ul>
                                                 <form class="form-wrapper"  >
                                                     <div v-if="step === 1">
-                                                    <header>
-                                                        <h2 class="h2" style="margin-bottom:100px">Chúc mừng bạn đã chiến thắng sự kiện {{event.eventName}}. Bạn vui lòng lựa chọn phương thức nhận thưởng:</h2>
-                                                    </header>
-                                                    <fieldset>
+                                                        <main id="main" class="site-main">
+                                                            <article id="post-8" class="hentry">
 
-                                                        <div>
-                                                        <input v-model="option" type="radio" id="huey" name="drone" value="product"
-                                                                checked>
-                                                        <label for="huey">Nhận sản phẩm</label>
-                                                        </div>
+                                                                <div class="entry-content">
+                                                                    <div class="woocommerce">
+                                                                        <div class="customer-login-form">
+                                                                            <span class="or-text">or</span>
 
-                                                        <div>
-                                                        <input v-model="option" type="radio" id="dewey" name="drone" value="money">
-                                                        <label for="dewey">Nhận tiền mặt</label>
-                                                        </div>
-                                                    </fieldset>
-                                                    <button type="button" class="next action_button" @click="step=step+1">Tiếp tục</button>
+                                                                            <div class="col2-set" id="customer_login">
+
+                                                                                <div class="col-1">
+
+                                                                                    <h2>Nhận tiền</h2>
+
+                                                                                    <!-- <form method="post" class="login"> -->
+
+                                                                                        <p class="before-login-text">Tiền sẽ được cộng vào tài khoản của quý khách bằng 80% giá trị sản phẩm</p>
+                                                                                        <p class="form-row">
+                                                                                            <button class="button" @click="reward(), option = 'money', step =2">Nhận tiền</button>
+                                                                                        </p>
+
+                                                                                    <!-- </form> -->
+
+                                                                                </div><!-- .col-1 -->
+
+                                                                                <div class="col-2">
+
+                                                                                    <h2>Nhận sản phẩm</h2>
+
+                                                                                    <!-- <form> -->
+
+                                                                                        <p class="before-register-text">Cho chúng tôi biết thông tin để sản phẩm tới tay bạn nhanh nhất</p>
+
+                                                                                        <p class="form-row form-row-wide">
+                                                                                            <label for="reg_email">Họ tên<span class="required">*</span></label>
+                                                                                            <input v-model="schema.fullname" type="address" class="input-text"  />
+                                                                                        </p>
+                                                                                        <p class="form-row form-row-wide">
+                                                                                            <label for="reg_email">Số điện thoại<span class="required">*</span></label>
+                                                                                            <input v-model="schema.phonenumber" type="phone" class="input-text"  />
+                                                                                        </p>
+                                                                                        <p class="form-row form-row-wide">
+                                                                                            <label for="reg_email">Địa chỉ<span class="required">*</span></label>
+                                                                                            <input v-model="schema.address" type="address" class="input-text"/>
+                                                                                        </p>
+                                                                                        <button class="button" @click="reward(), option='product', step=2"> Đăng ký</button>
+                                                                                    <!-- </form> -->
+
+                                                                                </div><!-- .col-2 -->
+
+                                                                            </div><!-- .col2-set -->
+
+                                                                        </div><!-- /.customer-login-form -->
+                                                                    </div><!-- .woocommerce -->
+                                                                </div><!-- .entry-content -->
+
+                                                            </article><!-- #post-## -->
+
+                                                        </main><!-- #main -->
                                                     </div>
                                                     <div v-if="step === 2">
-                                                    <div class="page">
-                                                        <div v-if="option == 'product'">
-                                                            <p class="before-register-text">Cho chúng tôi biết thông tin của bạn:</p>
-                                                            <p class="form-row form-row-wide">
-                                                                <label for="reg_email">Họ tên<span class="required">*</span></label>
-                                                                <input v-model="schema.fullname" type="name" class="input-text"/>
-                                                            </p>
-                                                            <p class="form-row form-row-wide">
-                                                                <label for="reg_email">Số điện thoại<span class="required">*</span></label>
-                                                                <input v-model="schema.phonenumber" type="phone" class="input-text"  />
-                                                            </p>
-                                                            <p class="form-row form-row-wide">
-                                                                <label for="reg_email">Địa chỉ<span class="required">*</span></label>
-                                                                <input v-model="schema.address" type="address" class="input-text"/>
-                                                            </p>
+                                                        <div v-if="!check" style="text-align: center; color: rgb(211 113 30);"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+                                                          <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+                                                          <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+                                                        </svg><div>Đang xử lý</div></div>
+                                                        <div v-else-if="option=='product'" style="text-align: center; color: green;">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                          <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                                                        </svg>
+                                                        <div>
+                                                          Thành công, sản phẩm sẽ được giao tới quý khách trong vòng 1 tuần
+                                                        </div>  </div>
+                                                        <div v-else-if="option=='money'" style="text-align: center; color: green;">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                          <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                                                        </svg>
+                                                        <div>
+                                                          Thành công, kiểm tra tài khoản của bạn, Nếu có bất kỳ khiếu nại nào vui lòng liên hệ hotline để được giải quyết
                                                         </div>
-                                                        <div v-else>
-                                                            <p class="before-register-text">Chuyển đến bước tiếp theo</p>
-                                                        </div>
-                                                    <div style="display: flex;
-                                                justify-content: flex-end;">
-                                                        <button type="button" class="previous_button" @click="step=step-1">Quay lại</button>
-                                                        <button type="button" class="next action_button" @click="step=step+1,reward()">Tiếp tục</button>
-                                                    </div>
-                                                    </div>
-                                                    </div>
-
-                                                    <div v-if="step === 3">
-                                                        <div v-if="!check" style="text-align: center; color: rgb(211 113 30);">Chờ xử lý</div>
-                                                        <div v-else-if="option=='product'" style="text-align: center; color: green;"> Thành công, sản phẩm sẽ được giao tới quý khách trong vòng 1 tuần </div>
-                                                        <div v-else-if="option=='money'" style="text-align: center; color: green;"> Thành công, kiểm tra tài khoản của bạn, Nếu có bất kỳ khiếu nại nào vui lòng liên hệ hotline để được giải quyết </div>
+                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div><!-- /.panel -->
-                                        <div :class="{ active: tab === 3 }" class="tab-pane in panel entry-content wc-tab">
+                                        <div :class="{ active: tab === 2 }" class="tab-pane in panel entry-content wc-tab">
                                             <div v-if="event.status=='finish'">Con số may mắn là <b>{{event.winnerNumber}}</b>. Chúc mừng <b>{{event.winner}}</b> đã là người chiến thắng sự kiện này</div>
                                             <div v-if="participants.length===0">
                                                 <h3>Bạn hãy là người đầu tiên tham gia sự kiện này</h3>
@@ -362,7 +364,11 @@ export default {
             address: this.schema.address,
             money: this.event.price
         })
+        console.log(result)
         if(result.data.statusCode===200) this.check = true;
+        else{
+          alert('Xảy ra lỗi')
+        }
     }
   }
 }

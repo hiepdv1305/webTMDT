@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <nav class="woocommerce-breadcrumb"><a href="/">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Nạp tiền</nav>
+    <nav class="woocommerce-breadcrumb"><a href="/">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Rút tiền</nav>
     <div class="wrapper">
       <ul class="steps">
         <li v-bind:class="{ 'is-active' : step === 1}">Step 1</li>
@@ -115,8 +115,7 @@
         </div>
         <div v-if="step === 2">
         <div style="text-align: center;">
-          <h3 class="h3">Điền thông tin chuyển khoản vào mẫu sau để hoàn tất quá trình nạp tiền</h3>
-          <h5>(Chuyển tiền tới tài khoản: {{currentBankAccount[0].accountNumber}}- chủ tài khoản: {{ currentBankAccount[0].account }} với nội dung: <i>webTMDT naptien {{schema.code}}</i>)</h5 >
+          <h3 class="h3">Điền thông tin chuyển khoản vào mẫu sau để hoàn tất quá trình rút tiền</h3>
         </div>
           <div class="page">
             <div v-if="check" style="color: red"> Không thể bỏ trống </div>
@@ -138,12 +137,6 @@
                 <span class="field__label">Số tiền</span>
               </span>
             </label>
-            <label class="field field_v2">
-              <input v-model="schema.code" class="field__input" readonly>
-              <span class="field__label-wrap">
-                <span class="field__label">Cú pháp</span>
-              </span>
-            </label>
           <div style="display: flex;
     justify-content: flex-end;">
             <button type="button" class="previous_button" @click="step=step-1">Quay lại</button>
@@ -158,6 +151,9 @@
               <aside class="widget clearfix">
                   <div class="body"><h4 class="widget-title"></h4>
                       <ul class="product_list_widget">
+                        <li>
+                              <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Ngân hàng:</b></span></ins></span>
+                          </li>
                           <li>
                               <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Số tài khoản:</b></span></ins></span>
                           </li>
@@ -169,9 +165,6 @@
                           <li>
                               <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Số tiền:</b></span></ins></span>
                           </li>
-                          <li>
-                              <span class="electro-price" style="margin-left: 0px;"><ins><span class="amount"><b>Cú pháp:</b></span></ins></span>
-                          </li>
                       </ul>
                   </div>
               </aside>
@@ -180,6 +173,9 @@
             <aside class="widget clearfix">
                 <div class="body">
                     <ul class="product_list_widget">
+                        <li>
+                                  <span class="electro-price"  style="margin-left: 0px;"><ins><span class="amount">{{schema.bankName}}</span></ins></span>
+                        </li>
                         <li>
                                   <span class="electro-price"  style="margin-left: 0px;"><ins><span class="amount">{{schema.bankAccountNumber}}</span></ins></span>
                         </li>
@@ -191,9 +187,6 @@
                         <li>
                                 <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span>
                         </li>
-                        <li>
-                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.code}}</span></span>
-                        </li>
                     </ul>
                 </div>
             </aside>
@@ -201,7 +194,7 @@
           </div>
          <div style="display: flex;justify-content: center; margin-top: 30px;">
          <button type="button" class="previous_button" @click="step=step-1">Quay lại</button>
-           <button type="button" class="next action_button" @click="rechange">Đồng ý</button>
+           <button type="button" class="next action_button">Đồng ý</button>
          </div>
         </div>
         <fieldset class="section">
@@ -227,7 +220,6 @@ import viettinbank from '../assets/bankaccount/viettinbank.json'
 import vpbank from '../assets/bankaccount/vpbank.json'
 // const https = require('https')
 // const config = require('../../config/config')
-const randomstring = require('randomstring')
 export default {
   name: 'rechange',
   components: {},
@@ -262,7 +254,6 @@ export default {
   mounted () {
     // this.getEvent()
     // console.log(this.agribank)
-    this.randomCode()
   },
   methods: {
     checkValid () {
@@ -271,10 +262,6 @@ export default {
       } else {
         this.step += 1
       }
-    },
-    randomCode () {
-      this.schema.code = randomstring.generate(10)
-      // console.log(this.code)
     },
     async create () {
       this.step += 1
@@ -316,13 +303,20 @@ export default {
       // await api.createrechange(this.schema)
     },
     async rechange () {
-      let result = await api.rechange(this.schema)
-      console.log(result)
-      if (result.data.statusCode === 200) {
-        alert('Giao dịch đang được xử lý')
-        window.location.replace('/profile')
+      let user = await api.getUserInfomation()
+      if (user.data.data.amout < this.schema.amout) {
+        alert('Số tiền phải nhỏ hơn số dư tài khoản của bạn')
+      } else if (this.schema.amout<10000) {
+        alert('Số tiền phải lớn hơn 10.000 đ')
       } else {
-        alert('lỗi hệ thống, xin thử lại sau')
+        let result = await api.rechange(this.schema)
+        console.log(result)
+        if (result.data.statusCode === 200) {
+          alert('Giao dịch đang được xử lý')
+          window.location.replace('/profile')
+        } else {
+          alert('lỗi hệ thống, xin thử lại sau')
+        }
       }
     }
   }

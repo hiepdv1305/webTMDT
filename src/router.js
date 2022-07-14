@@ -19,6 +19,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "contact" */ './views/Login.vue')
     },
     {
+      path: '/acceptRechange',
+      name: 'acceptRechange',
+      component: () => import(/* webpackChunkName: "contact" */ './views/AcceptRechange.vue')
+    },
+    {
       path: '/event/:id',
       name: 'event',
       component: () => import(/* webpackChunkName: "contact" */ './views/Event/_id.vue')
@@ -33,6 +38,12 @@ export default new Router({
       path: '/rechange',
       name: 'rechange',
       component: () => import(/* webpackChunkName: "contact" */ './views/Rechange.vue')
+
+    },
+    {
+      path: '/withdrawal',
+      name: 'withdrawal',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Withdrawal.vue')
 
     },
     {

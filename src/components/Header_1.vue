@@ -4,7 +4,9 @@
                 <div class="container notification-container">
                     <nav>
                         <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
+                            <li class="menu-item"><router-link to="/withdrawal"><button class=""><span>Rút tiền</span></button></router-link></li>
                             <li class="menu-item"><router-link to="/rechange"><button class="action_button"><span>Nạp tiền</span></button></router-link></li>
+                            <li class="menu-item"><span>{{ userInfo.amout }}</span></li>
                             <li @click="showNoti= !showNoti" class="menu-item animate-dropdown"><i class="fa fa-bell"></i></li>
                             <li v-if="!user" class="menu-item animate-dropdown"><a title="My Account" href="/login"><i class="ec ec-user"></i>Đăng nhập/Đăng ký</a></li>
                             <li v-else class="menu-item animate-dropdown"><a title="My Account" href="/profile"><i class="ec ec-user"></i>{{user.username}}</a></li>
@@ -178,6 +180,9 @@
                                 <ul id="menu-all-departments-menu-1" class="nav nav-inline yamm">
                                     <li class="highlight menu-item animate-dropdown ">
                                         <a title="Thông tin cá nhân" href="/profile">Thông tin cá nhân</a>
+                                    </li>
+                                    <li class="highlight menu-item animate-dropdown ">
+                                        <a title="Nạp tiền" href="/rechange">Nạp tiền</a>
                                     </li>
                                     <li class="highlight menu-item animate-dropdown ">
                                         <a title="Danh sách trúng thưởng" href="/winner">Danh sách trúng thưởng</a>
@@ -815,6 +820,7 @@ export default {
     return {
       sellected: '',
       user: null,
+      userInfo: {},
       total: 0,
       count: 0,
       showNoti: false,
@@ -826,6 +832,7 @@ export default {
     this.getUser()
     this.getMyEvent()
     this.getNotification()
+    this.getUserInfomation()
     window.setInterval(() => {
     this.getNotification()
   }, 30000)
@@ -872,7 +879,15 @@ export default {
                 // console.log(this.notification)
             }
         }
-    }
+    },
+    async getUserInfomation(){
+        let res = await api.getUserInfomation();
+        console.log(res)
+        if(res.data.statusCode === 200){
+            this.userInfo = res.data.data
+            this.userInfo.amout = this.userInfo.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })
+        }
+    },
   }
 }
 </script>
