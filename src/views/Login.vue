@@ -1,110 +1,114 @@
 <template>
+
   <body class="page home page-template-default">
     <div id="page" class="hfeed site">
-            <a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
-            <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-            <div id="content" class="site-content" tabindex="-1">
-                <div class="container">
+      <a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
+      <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+      <div id="content" class="site-content" tabindex="-1">
+        <div class="container">
 
-                    <nav class="woocommerce-breadcrumb" ><a href="/">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Đăng nhập</nav><!-- .woocommerce-breadcrumb -->
+          <nav class="woocommerce-breadcrumb"><a href="/">Trang chủ</a><span class="delimiter"><i
+                class="fa fa-angle-right"></i></span>Đăng nhập</nav><!-- .woocommerce-breadcrumb -->
 
-                    <div id="primary" class="content-area">
-                        <main id="main" class="site-main">
-                            <article id="post-8" class="hentry">
+          <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+              <article id="post-8" class="hentry">
 
-                                <div class="entry-content">
-                                    <div class="woocommerce">
-                                        <div class="customer-login-form">
-                                            <span class="or-text">or</span>
+                <div class="entry-content">
+                  <div class="woocommerce">
+                    <div class="customer-login-form">
+                      <span class="or-text">or</span>
 
-                                            <div class="col2-set" id="customer_login">
+                      <div class="col2-set" id="customer_login">
 
-                                                <div class="col-1">
+                        <div class="col-1">
 
-                                                    <h2>Đăng nhập</h2>
+                          <h2>Đăng nhập</h2>
 
-                                                    <!-- <form method="post" class="login"> -->
+                          <!-- <form method="post" class="login"> -->
 
-                                                        <p class="before-login-text">Mừng trở lại! Đăng nhập vào tài khoản của bạn</p>
+                          <p class="before-login-text">Mừng trở lại! Đăng nhập vào tài khoản của bạn</p>
 
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="username">Tên đăng nhập<span class="required">*</span></label>
-                                                            <input v-model="loginSchema.username" type="text" class="input-text"/>
-                                                        </p>
+                          <p class="form-row form-row-wide">
+                            <label for="username">Tên đăng nhập<span class="required">*</span></label>
+                            <input v-model="loginSchema.username" type="text" class="input-text" />
+                          </p>
 
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="password">Mật khẩu<span class="required">*</span></label>
-                                                            <input v-model="loginSchema.password" class="input-text" type="password" />
-                                                        </p>
+                          <p class="form-row form-row-wide">
+                            <label for="password">Mật khẩu<span class="required">*</span></label>
+                            <input v-model="loginSchema.password" class="input-text" type="password" />
+                          </p>
 
-                                                        <p class="form-row">
-                                                            <button @click="login" class="button">Đăng nhập</button>
-                                                            <label for="rememberme" class="inline"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Nhớ tài khoản</label>
-                                                        </p>
+                          <p class="form-row">
+                            <button @click="login" class="button">Đăng nhập</button>
+                            <label for="rememberme" class="inline"><input name="rememberme" type="checkbox"
+                                id="rememberme" value="forever" /> Nhớ tài khoản</label>
+                          </p>
 
-                                                        <p class="lost_password"><a href="login-and-register.html">Quên mật khẩu?</a></p>
+                          <p class="lost_password"><a href="login-and-register.html">Quên mật khẩu?</a></p>
 
-                                                    <!-- </form> -->
+                          <!-- </form> -->
 
-                                                </div><!-- .col-1 -->
+                        </div><!-- .col-1 -->
 
-                                                <div class="col-2">
+                        <div class="col-2">
 
-                                                    <h2>Đăng ký</h2>
+                          <h2>Đăng ký</h2>
 
-                                                    <!-- <form> -->
+                          <!-- <form> -->
 
-                                                        <p class="before-register-text">Tạo tài khoản</p>
+                          <p class="before-register-text">Tạo tài khoản</p>
 
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Email<span class="required">*</span></label>
-                                                            <input v-model="registerSchema.email" type="email" class="input-text" />
-                                                        </p>
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Họ tên<span class="required">*</span></label>
-                                                            <input v-model="registerSchema.fullname" type="text" class="input-text"  />
-                                                        </p>
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Số điện thoại<span class="required">*</span></label>
-                                                            <input v-model="registerSchema.phonenumber" type="phone" class="input-text"  />
-                                                        </p>
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Địa chỉ<span class="required">*</span></label>
-                                                            <input v-model="registerSchema.address" type="address" class="input-text"/>
-                                                        </p>
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Tên đăng nhập<span class="required">*</span></label>
-                                                            <input v-model="registerSchema.username" type="text" class="input-text"/>
-                                                        </p>
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Mật khẩu<span class="required">*</span></label>
-                                                            <input v-model="registerSchema.password" type="password" class="input-text"/>
-                                                        </p>
-                                                        <p class="form-row form-row-wide">
-                                                            <label for="reg_email">Xác nhận mật khẩu<span class="required">*</span></label>
-                                                            <label v-if="invalidconfirm" for="reg_email" style="color: red;">Xác nhận mật khẩu không đúng, vui lòng nhập lại</label>
-                                                            <input v-model="registerSchema.confirmpassword" type="password" class="input-text"/>
-                                                        </p>
-                                                        <button @click="register" class="button"> Đăng ký</button>
-                                                    <!-- </form> -->
+                          <p class="form-row form-row-wide">
+                            <label for="reg_email">Email<span class="required">*</span></label>
+                            <input v-model="registerSchema.email" type="email" class="input-text" />
+                          </p>
+                          <p class="form-row form-row-wide">
+                            <label for="reg_email">Họ tên<span class="required">*</span></label>
+                            <input v-model="registerSchema.fullname" type="text" class="input-text" />
+                          </p>
+                          <p class="form-row form-row-wide">
+                            <label for="reg_email">Số điện thoại<span class="required">*</span></label>
+                            <input v-model="registerSchema.phonenumber" type="phone" class="input-text" />
+                          </p>
+                          <p class="form-row form-row-wide">
+                            <label for="reg_email">Địa chỉ<span class="required">*</span></label>
+                            <input v-model="registerSchema.address" type="address" class="input-text" />
+                          </p>
+                          <p class="form-row form-row-wide">
+                            <label for="reg_email">Tên đăng nhập<span class="required">*</span></label>
+                            <input v-model="registerSchema.username" type="text" class="input-text" />
+                          </p>
+                          <p class="form-row form-row-wide">
+                            <label for="reg_email">Mật khẩu<span class="required">*</span></label>
+                            <input v-model="registerSchema.password" type="password" class="input-text" />
+                          </p>
+                          <p class="form-row form-row-wide">
+                            <label for="reg_email">Xác nhận mật khẩu<span class="required">*</span></label>
+                            <label v-if="invalidconfirm" for="reg_email" style="color: red;">Xác nhận mật khẩu không
+                              đúng, vui lòng nhập lại</label>
+                            <input v-model="registerSchema.confirmpassword" type="password" class="input-text" />
+                          </p>
+                          <button @click="register" class="button"> Đăng ký</button>
+                          <!-- </form> -->
 
-                                                </div><!-- .col-2 -->
+                        </div><!-- .col-2 -->
 
-                                            </div><!-- .col2-set -->
+                      </div><!-- .col2-set -->
 
-                                        </div><!-- /.customer-login-form -->
-                                    </div><!-- .woocommerce -->
-                                </div><!-- .entry-content -->
+                    </div><!-- /.customer-login-form -->
+                  </div><!-- .woocommerce -->
+                </div><!-- .entry-content -->
 
-                            </article><!-- #post-## -->
+              </article><!-- #post-## -->
 
-                        </main><!-- #main -->
-                    </div><!-- #primary -->
+            </main><!-- #main -->
+          </div><!-- #primary -->
 
-                </div><!-- .col-full -->
-            </div><!-- #content -->
+        </div><!-- .col-full -->
+      </div><!-- #content -->
 
-        </div><!-- #page -->
+    </div><!-- #page -->
   </body>
 </template>
 <script src="../assets/js/jquery.min.js"></script>
@@ -178,22 +182,33 @@ export default {
 }
 </script>
 <style>
-  @import "../assets/css/animate.min.css";
-  @import "../assets/css/bootstrap.css";
-  @import "../assets/css/bootstrap.min.css";
-  @import "../assets/css/config.css";
-  @import "../assets/css/font-awesome.min.css";
-  @import "../assets/css/font-electro.css";
-  @import "../assets/css/owl-carousel.css";
-  @import "../assets/css/style.css";
-  @import "../assets/css/colors/black.css";
-  @import "../assets/css/colors/blue.css";
-  @import "../assets/css/colors/flat-blue.css";
-  @import "../assets/css/colors/gold.css";
-  @import "../assets/css/colors/green.css";
-  @import "../assets/css/colors/orange.css";
-  @import "../assets/css/colors/pink.css";
-  @import "../assets/css/colors/red.css";
-  @import "../assets/css/colors/yellow.css";
-  @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic");
+@import "../assets/css/animate.min.css";
+@import "../assets/css/bootstrap.css";
+@import "../assets/css/bootstrap.min.css";
+@import "../assets/css/config.css";
+@import "../assets/css/font-awesome.min.css";
+@import "../assets/css/font-electro.css";
+@import "../assets/css/owl-carousel.css";
+@import "../assets/css/style.css";
+@import "../assets/css/colors/black.css";
+@import "../assets/css/colors/blue.css";
+@import "../assets/css/colors/flat-blue.css";
+@import "../assets/css/colors/gold.css";
+@import "../assets/css/colors/green.css";
+@import "../assets/css/colors/orange.css";
+@import "../assets/css/colors/pink.css";
+@import "../assets/css/colors/red.css";
+@import "../assets/css/colors/yellow.css";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic");
+
+.page {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  padding: 1rem;
+  display: grid;
+  grid-gap: 30px;
+}
 </style>
