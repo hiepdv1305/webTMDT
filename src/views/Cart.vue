@@ -28,6 +28,7 @@
                                                 <th class="product-quantity">Số vé</th>
                                                 <th class="product-quantity">Bắt đầu - kết thúc</th>
                                                 <th class="product-subtotal">Tổng</th>
+                                                <th class="product-subtotal">Con số chiến thắng</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -373,7 +374,7 @@ export default {
     async getMyEvent(){
         let result = await api.getMyEvent();
         // console.log(result);
-        this.myEvents = result.data.data.Items
+        this.myEvents = result.data.data
         console.log(this.myEvents)
     }
   }

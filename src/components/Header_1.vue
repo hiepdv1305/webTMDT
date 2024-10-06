@@ -1039,7 +1039,7 @@ export default {
     async getMyEvent(){
         let result = await api.getMyEvent();
         // console.log(result);
-        this.myEvents = result.data.data.Items
+        this.myEvents = result.data.data
         // console.log(this.myEvents)
         this.myEvents.forEach(event => {
             this.total += event.price;

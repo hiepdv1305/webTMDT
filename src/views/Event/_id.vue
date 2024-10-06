@@ -83,9 +83,9 @@
 
                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
-                      <p class="price"><span class="electro-price"><ins><span
-                              class="amount">{{ event.price.toLocaleString('vi', {
-                                style: 'currency', currency: 'VND'
+                      <p class="price"><span class="electro-price"><ins><span class="amount">{{
+                        event.price.toLocaleString('vi', {
+                          style: 'currency', currency: 'VND'
                               })}}</span></ins></span></p>
                     </div><!-- /itemprop -->
                     <div>
@@ -116,7 +116,8 @@
                                       <div class="modal-body">
                                         <h5>Bạn có chắc muốn dùng {{ (point * 10000).toLocaleString('vi', {
                                           style:
-                                          'currency', currency: 'VND' })}} để mua {{ point }} điểm không</h5>
+                                            'currency', currency: 'VND'
+                                        }) }} để mua {{ point }} điểm không</h5>
                                         <br />
                                         <div align="center">
                                           <button class="" type="button" @click="myModel = false">Hủy</button>
@@ -266,7 +267,8 @@
                     </div><!-- /.panel -->
                     <div :class="{ active: tab === 2 }" class="tab-pane in panel entry-content wc-tab">
                       <div v-if="event.status == 'finish'">Con số may mắn là <b>{{ event.winnerNumber }}</b>. Chúc mừng
-                        <b>{{ event.winner }}</b> đã là người chiến thắng sự kiện này</div>
+                        <b>{{ event.winner }}</b> đã là người chiến thắng sự kiện này
+                      </div>
                       <div v-if="participants.length === 0">
                         <h3>Bạn hãy là người đầu tiên tham gia sự kiện này</h3>
                       </div>
@@ -280,7 +282,8 @@
                           <tr v-for="participant in participants" :key="participant.dealId">
                             <td>{{ participant.username }}</td>
                             <td>{{ participant.point }}</td>
-                            <td v-if="participant.beginNumber === participant.endNumber">{{ participant.beginNumber }}</td>
+                            <td v-if="participant.beginNumber === participant.endNumber">{{ participant.beginNumber }}
+                            </td>
                             <td v-else>{{ participant.beginNumber }}--{{ participant.endNumber }}</td>
                           </tr>
                         </table>
@@ -375,12 +378,10 @@ export default {
         let id = this.$route.params.id
         let result = await api.eventGetDeal(id)
         // console.log(result)
-        this.participants = result.data.data.Items
+        this.participants = result.data.data
     },
-    myModel_(){
-    // console.log(1)
-     this.myModel = !this.myModel
-     console.log(this.myModel)
+    buyNow(){
+     this.myModel = true
     },
     getUser () {
       let token = localStorage.getItem('accessToken')
@@ -403,7 +404,7 @@ export default {
             address: this.schema.address,
             money: this.event.price
         })
-        console.log(result)
+        // console.log(result)
         if(result.data.statusCode===200) this.check = true;
         else{
           alert('Xảy ra lỗi')
