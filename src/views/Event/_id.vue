@@ -155,7 +155,8 @@
                     </li>
                   </ul>
                   <div class="tab-content">
-                    <div :class="{ active: tab === 1 }" class="tab-pane panel entry-content wc-tab">
+                    <div :class="{ active: tab === 1 }" v-if="user.username === event.winner"
+                      class="tab-pane panel entry-content wc-tab">
                       <div class="wrapper">
                         <ul class="steps">
                           <li v-bind:class="{ 'is-active': step === 1 }">Step 1</li>
@@ -182,7 +183,7 @@
                                           <p class="before-login-text">Tiền sẽ được cộng vào tài khoản của quý khách
                                             bằng 80% giá trị sản phẩm</p>
                                           <p class="form-row">
-                                            <button class="button" @click="reward(), option = 'money', step = 2">Nhận
+                                            <button class="button" @click="reward('money'), step = 2">Nhận
                                               tiền</button>
                                           </p>
 
@@ -211,7 +212,7 @@
                                             <label for="reg_email">Địa chỉ<span class="required">*</span></label>
                                             <input v-model="schema.address" type="address" class="input-text" />
                                           </p>
-                                          <button class="button" @click="reward(), option = 'product', step = 2"> Đăng
+                                          <button class="button" @click="reward('product'), step = 2"> Đăng
                                             ký</button>
                                           <!-- </form> -->
 
@@ -323,7 +324,7 @@ export default {
       event: {},
       point: 1,
       myModel:false,
-      tab:1,
+      tab:2,
       option: 'product',
       step: 1,
       participants: [],
@@ -349,7 +350,9 @@ export default {
         this.event = result.data.data
         if(this.event.status=='finish') this.getUser();
       }
-        this.event.price = this.event.price
+      if (this.user.username === this.event.winner) this.tab = 1
+      // console.log(this.event)
+      this.event.price = this.event.price
     },
     async createDeal(){
         if(this.event.currentPoint+this.point>this.event.totalPoint){
@@ -389,22 +392,22 @@ export default {
       if (token) {
         try {
           this.user = jwt_decode(token)
-        //   console.log(this.user)
+          console.log(this.user)
         } catch (err) {
           console.log(err)
         }
       }
     },
-    async reward(){
+    async reward(op){
         let result = await api.reward({
-          eventId: this.event.eventId,
-            option: this.option,
+            eventId: this.event._id,
+            option: op,
             fullname: this.schema.fullname,
             phonenumber: this.schema.phonenumber,
             address: this.schema.address,
-            money: this.event.price
+            money: this.event.price*0.8
         })
-        // console.log(result)
+        console.log(result)
         if(result.data.statusCode===200) this.check = true;
         else{
           alert('Xảy ra lỗi')

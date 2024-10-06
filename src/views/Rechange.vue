@@ -133,7 +133,7 @@
               </span>
             </label>
             <label class="field field_v2">
-              <input v-model.number="schema.amout" class="field__input" placeholder="e.g. 100000">
+              <input v-model.number="schema.amount" class="field__input" placeholder="e.g. 100000">
               <span class="field__label-wrap">
                 <span class="field__label">Số tiền</span>
               </span>
@@ -189,7 +189,7 @@
                         </li>
 
                         <li>
-                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span>
+                                <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.amount.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span>
                         </li>
                         <li>
                                 <span class="electro-price"  style="margin-left: 0px;"><span class="amount">{{schema.code}}</span></span>
@@ -243,7 +243,7 @@ export default {
         bankName: '',
         bankAccountNumber: '',
         bankAccount: '',
-        amout: '',
+        amount: '',
         code: ''
       },
       currentBankAccount: [],
@@ -266,7 +266,7 @@ export default {
   },
   methods: {
     checkValid () {
-      if (!this.schema.bankAccountNumber || !this.schema.bankAccount || !this.schema.amout) {
+      if (!this.schema.bankAccountNumber || !this.schema.bankAccount || !this.schema.amount) {
         this.check = true
       } else {
         this.step += 1

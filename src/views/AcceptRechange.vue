@@ -56,7 +56,7 @@
                                                 </td>
 
                                                 <td data-title="Số vé" class="product-quantity">
-                                                    <span class="amount">{{item.amout}}</span>
+                                                    <span class="amount">{{item.amount}}</span>
                                                 </td>
                                                 <td data-title="Bắt đầu- kết thúc" class="product-quantity">
                                                     <span class="amount">Đang xử lý</span>

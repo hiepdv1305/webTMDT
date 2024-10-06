@@ -275,7 +275,7 @@
             </label>
             <label class="field field_v2">
               <input
-                v-model.number="schema.amout"
+                v-model.number="schema.amount"
                 class="field__input"
                 placeholder="e.g. 100000"
               />
@@ -382,7 +382,7 @@
                     <li>
                       <span class="electro-price" style="margin-left: 0px"
                         ><span class="amount">{{
-                          schema.amout.toLocaleString('vi', {
+                          schema.amount.toLocaleString('vi', {
                             style: 'currency',
                             currency: 'VND'
                           })
@@ -442,7 +442,7 @@ export default {
         bankName: '',
         bankAccountNumber: '',
         bankAccount: '',
-        amout: '',
+        amount: '',
         code: ''
       },
       currentBankAccount: [],
@@ -467,7 +467,7 @@ export default {
       if (
         !this.schema.bankAccountNumber ||
         !this.schema.bankAccount ||
-        !this.schema.amout
+        !this.schema.amount
       ) {
         this.check = true
       } else {
@@ -515,9 +515,9 @@ export default {
     },
     async rechange () {
       let user = await api.getUserInfomation()
-      if (user.data.data.amout < this.schema.amout) {
+      if (user.data.data.amount < this.schema.amount) {
         alert('Số tiền phải nhỏ hơn số dư tài khoản của bạn')
-      } else if (this.schema.amout < 10000) {
+      } else if (this.schema.amount < 10000) {
         alert('Số tiền phải lớn hơn 10.000 đ')
       } else {
         let result = await api.rechange(this.schema)
