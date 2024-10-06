@@ -17,7 +17,8 @@
                         </div>
                         <!-- Profile picture help block-->
                         <div class=" font-italic text-primary mb-4"><b>{{ user.username }}</b></div>
-                        <div class=" font-italic text-muted mb-4" style="padding: 8.5%;">Số dư tài khoản:<b> {{ user.amout }}</b></div>
+                        <div class=" font-italic text-muted mb-4" style="padding: 8.5%;">Số dư tài khoản:<b> {{
+                            user.balance.toLocaleString('vi', { style: 'currency', currency: 'VND' }) }}</b></div>
                         <!-- Profile picture upload button-->
                         <!-- <button class="btn btn-primary" type="button">Cập nhật</button> -->
                     </div>
@@ -110,21 +111,21 @@
                     </div>
                     <div class="card-body" v-if="edit" style="padding: 10px 20px;">
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Họ tên</label>
+                            <label class="small mb-1">Họ tên</label>
                             <input v-model="user.fullname" class="form-control" id="inputEmailAddress" type="text"
                                 placeholder="Enter your email address">
                         </div>
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputPhone">Số điện thoại</label>
-                            <input v-model="user.phonenumber" class="form-control" id="inputPhone" type="tel">
+                            <label class="small mb-1">Số điện thoại</label>
+                            <input v-model="user.phonenumber" class="form-control" id="inputEmailAddress" type="text">
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email</label>
+                            <label class="small mb-1">Email</label>
                             <input v-model="user.email" class="form-control" id="inputEmailAddress" type="email">
                         </div>
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Địa chỉ</label>
+                            <label class="small mb-1">Địa chỉ</label>
                             <input v-model="user.address" class="form-control" id="inputEmailAddress" type="text">
                         </div>
                         <!-- Save changes button-->
@@ -170,7 +171,7 @@ export default {
   methods: {
     async getUserInfomation(){
         let res = await api.getUserInfomation();
-        console.log(res)
+        // console.log(res)
         if(res.data.statusCode === 200){
             this.user = res.data.data
             this.user.amout = this.user.amout.toLocaleString('vi', { style: 'currency', currency: 'VND' })
@@ -186,7 +187,8 @@ export default {
     //   window.location.reload();
     },
     async updateUser(){
-        let res=await api.updateUser({
+        // console.log(this.user)
+        let res = await api.updateUser({
             fullname: this.user.fullname,
             address: this.user.address,
             phonenumber: this.user.phonenumber,
@@ -202,7 +204,7 @@ export default {
         else if(this.changePasswordSchema.newPassword !== this.changePasswordSchema.confirmPassword) this.checkInvalid = true
         else{
             let result = await api.changePassword(this.changePasswordSchema)
-            console.log(result)
+            // console.log(result)
             if(result.data.statusCode ===200) {
                 alert('Thay đổi mật khẩu thành công')
                 this.myModel= false

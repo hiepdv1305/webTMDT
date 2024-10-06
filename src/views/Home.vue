@@ -37,7 +37,7 @@
 
                                 <div role="tabpanel" class="tab-pane" id="grid" aria-expanded="true">
 
-                                    <ul v-for="(event,index ) in events" :key="event.eventId" class="products columns-3" style="display:flex">
+                                    <ul v-for="(event,index ) in events" :key="event._id" class="products columns-3" style="display:flex">
                                         <li v-if="index%3===0" class="product first">
                                             <div class="product-outer">
                                                 <div class="product-inner">
@@ -837,7 +837,7 @@
                                 </div>
 
                                 <div role="tabpanel" class="tab-pane " id="list-view" aria-expanded="true">
-                                    <ul v-for="event in events" :key="event.eventId" class="products columns-3">
+                                    <ul v-for="event in events" :key="event._id" class="products columns-3">
                                         <li class="product list-view">
                                             <div class="media">
                                                 <div class="media-left">
@@ -901,18 +901,18 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane active" id="list-view-small" aria-expanded="true">
 
-                                    <ul v-for="event in events" :key="event.eventId" class="products columns-3">
+                                    <ul v-for="event in events" :key="event._id" class="products columns-3">
                                         <li class="product list-view list-view-small">
                                             <div class="media">
                                                 <div class="media-left">
-                                                    <router-link :to="`/event/`+ event.eventId">
+                                                    <router-link :to="`/event/`+ event._id">
                                                         <img class="wp-post-image" :src="event.image" alt="">
                                                     </router-link>
                                                 </div>
                                                 <div class="media-body media-middle">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">{{event.category}}</a></span><router-link :to="`/event/`+ event.eventId"><h3>{{event.eventName}}</h3>
+                                                            <span class="loop-product-categories"><a rel="tag" href="product-category.html">{{event.category}}</a></span><router-link :to="`/event/`+ event._id"><h3>{{event.eventName}}</h3>
                                                                 <div class="product-short-description">
                                                                     <ul style="padding-left: 18px;">
                                                                         {{event.description}}
@@ -927,7 +927,7 @@
                                                         <div class="col-xs-12">
                                                             <div class="price-add-to-cart">
                                                                 <span class="price"><span class="electro-price"><span class="amount">{{event.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}}</span></span></span>
-                                                                <router-link :to="`/event/`+ event.eventId" class="button add_to_cart_button">Xem chi tiết</router-link>
+                                                                <router-link :to="`/event/`+ event._id" class="button add_to_cart_button">Xem chi tiết</router-link>
                                                             </div><!-- /.price-add-to-cart -->
                                                         </div>
                                                     </div>
@@ -1009,7 +1009,7 @@ export default {
             break;
         case 'phone':
             this.beforeStock.forEach(item => {
-                if(item.category=='điện thoại') this.stock.push(item)
+                if(item.category=='phone') this.stock.push(item)
             });
             break;
         case 'laptop':
@@ -1019,7 +1019,7 @@ export default {
             break;
         case 'tablet':
             this.beforeStock.forEach(item => {
-                if(item.category=='máy tính bảng') this.stock.push(item)
+                if(item.category=='tablet') this.stock.push(item)
             });
             break;
         case 'TV':
@@ -1042,9 +1042,9 @@ export default {
     },
     async getAllEvent () {
       let result = await api.getAllEvent()
-    //   console.log(result)
-      this.events = result.data.data.Items
-      this.beforeStock = result.data.data.Items
+      console.log(result)
+      this.events = result.data.data
+      this.beforeStock = result.data.data
       this.filter()
     },
     onChange() {

@@ -17,7 +17,7 @@
                     </div><!-- #primary -->
                     <table>
                         <tr>
-                            <th>Username</th>
+                            <th>Tên</th>
                             <th>Số điểm</th>
                             <th>Sự kiện</th>
                             <th>Con số may mắn</th>

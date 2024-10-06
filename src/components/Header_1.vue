@@ -1012,10 +1012,10 @@ export default {
   mounted () {
     this.getUser()
     this.getMyEvent()
-    this.getNotification()
+    // this.getNotification()
     this.getUserInfomation()
     window.setInterval(() => {
-    this.getNotification()
+    // this.getNotification()
   }, 30000)
   },
   methods: {
@@ -1047,20 +1047,20 @@ export default {
         });
         this.total = this.total.toLocaleString('vi', { style: 'currency', currency: 'VND' })
     },
-    async getNotification(){
-        let result = await api.getNotification();
-        // console.log(result)
-        if(result.data.statusCode===200){
-            // console.log(Array.isArray(result.data.data))
-            if(!Array.isArray(result.data.data)){
-                this.notification[0]= result.data.data
-            }
-            else{
-                this.notification = result.data.data
-                // console.log(this.notification)
-            }
-        }
-    },
+    // async getNotification(){
+    //     let result = await api.getNotification();
+    //     // console.log(result)
+    //     if(result.data.statusCode===200){
+    //         // console.log(Array.isArray(result.data.data))
+    //         if(!Array.isArray(result.data.data)){
+    //             this.notification[0]= result.data.data
+    //         }
+    //         else{
+    //             this.notification = result.data.data
+    //             // console.log(this.notification)
+    //         }
+    //     }
+    // },
     async getUserInfomation(){
         let res = await api.getUserInfomation();
         console.log(res)

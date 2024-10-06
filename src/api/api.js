@@ -1,7 +1,7 @@
 import axios from 'axios'
-// const baseUrl = 'http://localhost:3000/dev'
+const baseUrl = 'http://localhost:3000/dev'
 // online
-const baseUrl = 'https://kb6gzqb65k.execute-api.us-east-1.amazonaws.com/dev'
+// const baseUrl = 'https://kb6gzqb65k.execute-api.us-east-1.amazonaws.com/dev'
 // request interceptor to add the auth token header to requests
 axios.interceptors.request.use(
   (config) => {
@@ -55,8 +55,8 @@ const api = {
   register: (body) => {
     return axios.post(`${baseUrl}/user/register`, body)
   },
-  getAllEvent: (body) => {
-    return axios.get(`${baseUrl}/event/getAll`, body)
+  getAllEvent: () => {
+    return axios.get(`${baseUrl}/event/get`)
   },
   getEvent: (id) => {
     return axios.get(`${baseUrl}/event/get/${id}`)
@@ -76,8 +76,8 @@ const api = {
   rechange: (body) => {
     return axios.post(`${baseUrl}/user/rechange`, body)
   },
-  getUserInfomation: (body) => {
-    return axios.get(`${baseUrl}/user/getinfomation`, body)
+  getUserInfomation: () => {
+    return axios.get(`${baseUrl}/user/getinfomation`)
   },
   updateUser: (body) => {
     return axios.post(`${baseUrl}/user/update`, body)

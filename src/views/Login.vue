@@ -150,12 +150,16 @@ export default {
             this.invalidconfirm = true
         }else{
             if(this.invalidconfirm && this.registerSchema.confirmpassword !== '') this.invalidconfirm = false
-            console.log(this.registerSchema)
+            // console.log(this.registerSchema)
             let result = await api.register(this.registerSchema)
-            console.log(result)
+            // console.log(result)
             if (result.data.statusCode === 200) {
+              localStorage.setItem('accessToken')
                 // this.$router.push({ path: '/login' })
                 alert('Đăng ký tài khoản thành công')
+            }
+            else{
+              alert(result.data.message)
             }
         }
     },
@@ -167,11 +171,14 @@ export default {
       } else {
         try {
           let result = await api.login(this.loginSchema)
-          console.log(result)
+          // console.log(result)
           if (result.data.statusCode === 200) {
             localStorage.setItem('accessToken', result.data.data)
 
             window.location.replace('/')
+          }
+          else{
+            alert(result.data.message)
           }
         } catch (e) {
           alert(e.message)
