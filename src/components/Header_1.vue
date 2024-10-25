@@ -8,7 +8,7 @@
                                         tiền</span></button></router-link></li>
                         <li class="menu-item"><router-link to="/rechange"><button class="action_button"><span>Nạp
                                         tiền</span></button></router-link></li>
-                        <li class="menu-item"><span><b>{{ userInfo.amount }}</b></span></li>
+                        <li class="menu-item"><span><b>{{ userInfo.balance }}</b></span></li>
                         <li @click="showNoti = !showNoti" class="menu-item animate-dropdown"><i class="fa fa-bell"></i>
                         </li>
                         <li v-if="!user" class="menu-item animate-dropdown"><a title="My Account" href="/login"><i
@@ -1066,7 +1066,7 @@ export default {
         console.log(res)
         if(res.data.statusCode === 200){
             this.userInfo = res.data.data
-            this.userInfo.amount = this.userInfo.balance.toLocaleString('vi', { style: 'currency', currency: 'VND' })
+            this.userInfo.balance = this.userInfo.balance.toLocaleString('vi', { style: 'currency', currency: 'VND' })
         }
     },
   }

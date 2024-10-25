@@ -1,7 +1,7 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3000/dev'
+// const baseUrl = 'http://localhost:3000/dev'
 // online
-// const baseUrl = 'https://kb6gzqb65k.execute-api.us-east-1.amazonaws.com/dev'
+const baseUrl = 'https://d3odl5187b.execute-api.ap-southeast-1.amazonaws.com/dev'
 // request interceptor to add the auth token header to requests
 axios.interceptors.request.use(
   (config) => {
